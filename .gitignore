@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/FarOut.sln
+/Debug
+/sfml-window-2.dll
+/sfml-system-2.dll
+/sfml-graphics-2.dll
+/FarOut.vcxproj.user
+/FarOut.vcxproj.filters
+/FarOut.vcxproj
