@@ -11,3 +11,11 @@
 /FarOut.vcxproj.user
 /FarOut.vcxproj.filters
 /FarOut.vcxproj
+
+
+################################################################################
+# bitwerk section: linux commandline gcc Makefile and Target 
+################################################################################
+
+Makefile
+FarOut
