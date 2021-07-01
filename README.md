@@ -11,7 +11,7 @@ Jeffrey Jernstrom
 
 ### System
 
-![State Diagram](statediagram1.png)
+![State Diagram](./statediagram1.png)
 
 ### Graphics
 
