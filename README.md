@@ -1,15 +1,16 @@
 # FarOut
-An Open Source Space Game / Engine for CS461
+An Open Source 2D Space Game Library for SFML 
 
-Amila Ferron
-Mack Foggia
-Taylor Noah
-Jeffrey Jernstrom 
-
+Amila Ferron, Mack Foggia, Taylor Noah, and Jeffrey Jernstrom 2021
 
 ## Overview
 
-### System
+This repository contains a library that extends SFML to provide functionality to create simple 2D space-themed games. 
+
+### Context Control System
+
+The "Context Control System" address the need for a games over all structure and manages game resources at the highest level. 
+State machine
 
 ![State Diagram](./statediagram1.png)
 
@@ -18,5 +19,25 @@ Jeffrey Jernstrom
 ### Data
 
 ## Build Instruction
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Acknowledgments 
 
 
