@@ -32,11 +32,11 @@ On Linux, ![here] (https://www.sfml-dev.org/tutorials/2.5/start-linux.php) are i
 
 ### Prototype
 
-The project demo will consist of a single scene where a ship moves across a starfield background and encounters other game objects. This will be completed by the end of week 3.
+The project demo will consist of a single scene where a ship is controlled by a player to move across a starfield background encountering other game objects. This will be completed by the end of week 3.
 
 ### Minimum Viable Product
 
-A completed project will include, at least, a "Context Control System" to navigate through the scenes, multiple levels of play, menus, a looping background of stars, a ship, and another game object of our choosing.
+A completed project will include, at least, a "Context Control System" to navigate through the scenes, multiple levels of play, menus, a looping background of stars, a ship, and another game object of our choosing. This will be completed by the end of week 6.
 
 
 
