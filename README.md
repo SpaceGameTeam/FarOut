@@ -25,7 +25,7 @@ Scenes are organized in a graph and information for each session stored external
 
 ## Build Instruction
 
-On Linux, ![here] (https://www.sfml-dev.org/tutorials/2.5/start-linux.php) are instructions on installing SFML and compiling a program.
+On Linux, <a href=https://www.sfml-dev.org/tutorials/2.5/start-linux.php>here</a> are instructions on installing SFML and compiling a program.
 
 
 ## Project Roadmap
