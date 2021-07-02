@@ -38,6 +38,9 @@ The project demo will consist of a single scene where a ship is controlled by a 
 
 A completed project will include, at least, a "Context Control System" to navigate through the scenes, multiple levels of play, menus, a looping background of stars, a ship, and another game object of our choosing. This will be completed by the end of week 6.
 
+### Post-class Plans
+
+After the course is completed, the range of characters and game objects will be expanded and features will be added to allow saving a user's games and information and move into to multi-player networking.
 
 
 
