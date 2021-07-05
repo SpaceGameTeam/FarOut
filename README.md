@@ -46,22 +46,6 @@ After the course is completed, the range of characters and game objects will be 
 ## Related Works
 -SDL Check them out [here](https://www.libsdl.org/).
 
-test
-test
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ## Acknowledgments 
 
