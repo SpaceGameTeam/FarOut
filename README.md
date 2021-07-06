@@ -9,10 +9,7 @@ This repository contains a library that extends SFML to provide functionality to
 
 ### Context Control System
 
-The "Context Control System" address the need for a game's overall structure and manages game resources at the highest level. 
-State machine
-
-![State Diagram](./statediagram1.png)
+The "Context Control System" addresses the need for a game's overall structure and manages game resources at the highest level. It provides basic "system calls" for the scenes, switches between scenes, and generates the main game loop. 
 
 ### Graphics
 
@@ -20,13 +17,14 @@ Scenes are populated with a collection of example game objects and graphical ele
 
 ### Data
 
-Scenes are organized in a graph and information for each session stored externally.
+Scenes are organized in a data structure and information for each session stored externally.
 
 
+<!--- Save for a more relevent time...
 ## Build Instruction
 
 On Linux, <a href=https://www.sfml-dev.org/tutorials/2.5/start-linux.php>here</a> are instructions on installing SFML and compiling a program.
-
+-->
 
 ## Project Roadmap
 
@@ -44,6 +42,19 @@ After the course is completed, the range of characters and game objects will be 
 
 
 ## Related Works
--SDL Check them out [here](https://www.libsdl.org/).
+
+[ÖbEngine](https://github.com/ObEngine/ObEngine) is a free and open-source 2D game engine.
+
+[Vigilante](https://github.com/gamepopper/Vigilante-Game-Framework) Framework (or VFrame for short) is a high level framework built to run with SFML to make 2D games with basic 3D rendering.
+
+[The Nero Game Engine version II](https://github.com/NeroGames/Nero-Game-Engineu), is a Professional 2D Game Engine built around SFML and Box2D.
+
+[xygine](https://github.com/fallahn/xygine) 2D Game Engine Framework built around SFML.
+
+[SFML Utils](https://github.com/Krozark/SFML-utils) provides extra utilities to the SFML library for game development.
+
+[SDL](https://www.libsdl.org/) Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.
+
+We found a few other projects scattered about, but they are incomplete and inactive.
 
 ## Acknowledgments 
