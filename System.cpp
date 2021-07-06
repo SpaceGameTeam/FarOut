@@ -10,11 +10,13 @@ System::System() :
 	view = window.getDefaultView(); //again, might move into scenes
 }
 
+
+// This function starts the window and runs the game loop
 void System::runWindow() {
-	sf::Time dt;
-	sf::Time timer;
+	sf::Time dt; //SFML time object for tracking time between updates
+	sf::Time timer; //Currently not used
 	
-	while (window.isOpen()) {
+	while (window.isOpen()) { //This is the game loop
 
 		//Event check
 		sf::Event event;
@@ -23,6 +25,9 @@ void System::runWindow() {
 				window.close();
 		}
 
+		//Restart returns the amount of time on the clock (aka stopwatch) and
+		//starts it from zero again. This is the amount of time since the last
+		//time we came through this loop
 		dt = clock.restart();
 
 		window.clear();
@@ -35,6 +40,8 @@ void System::runWindow() {
 
 
 
+// Basic actions to be taken each loop, including calling update
+// and draw functions for the active scene, and checking some key events
 void System::update(sf::Time dt) {
 
 	//Keyboard events     ---Most keyboard events will need to be passed into the active scene

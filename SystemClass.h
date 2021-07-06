@@ -7,11 +7,15 @@
 class System {
 public:
 	System();
+
+	// Starts the window and runs the game loop
 	void runWindow();
 
 	// Function to request a scene change (takes name/ID of new scene)
 
 private:
+	// Basic actions to be taken each loop, including calling update
+	// and draw functions for the active scene, and checking some key events
 	void update(sf::Time dt);
 
 	//Data module
