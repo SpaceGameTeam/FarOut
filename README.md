@@ -9,7 +9,7 @@ This repository contains a library that extends SFML to provide functionality to
 
 ### Context Control System
 
-The "Context Control System" address the need for a game's overall structure and manages game resources at the highest level. 
+The "Context Control System" address the need for a game's overall structure and manages game resources at the highest level. It provides basic "system calls" for the scenes, switches between scenes, and generates the main game loop. 
 
 ### Graphics
 
@@ -17,7 +17,7 @@ Scenes are populated with a collection of example game objects and graphical ele
 
 ### Data
 
-Scenes are organized in a graph and information for each session stored externally.
+Scenes are organized in a data structure and information for each session stored externally.
 
 
 ## Build Instruction
