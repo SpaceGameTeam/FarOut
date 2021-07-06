@@ -10,9 +10,6 @@ This repository contains a library that extends SFML to provide functionality to
 ### Context Control System
 
 The "Context Control System" address the need for a game's overall structure and manages game resources at the highest level. 
-State machine
-
-![State Diagram](./statediagram1.png)
 
 ### Graphics
 
