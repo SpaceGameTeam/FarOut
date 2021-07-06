@@ -20,10 +20,11 @@ Scenes are populated with a collection of example game objects and graphical ele
 Scenes are organized in a data structure and information for each session stored externally.
 
 
+<!--- Save for a more relevent time...
 ## Build Instruction
 
 On Linux, <a href=https://www.sfml-dev.org/tutorials/2.5/start-linux.php>here</a> are instructions on installing SFML and compiling a program.
-
+-->
 
 ## Project Roadmap
 
