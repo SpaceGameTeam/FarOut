@@ -1,11 +1,10 @@
 #include <SFML/Graphics.hpp>
 #include "SystemClass.h"
 
+    
+
 int main()
 {
-    System system;
-
-    system.runWindow();
 
 
     // Here for posterity
