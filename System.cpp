@@ -1,18 +1,23 @@
 #include "SystemClass.h"
 
+// Singular global instance of the System class
+SystemClass System;
 
-System::System() :
+
+//Constructor
+SystemClass::SystemClass() :
 	desktop(sf::VideoMode::getDesktopMode()),
 	window(desktop, "FarOut")
 {
 	window.setVerticalSyncEnabled(true);
 	//window.setMouseCursorVisible(false); //debug
 	view = window.getDefaultView(); //again, might move into scenes
+	runWindow();
 }
 
 
 // This function starts the window and runs the game loop
-void System::runWindow() {
+void SystemClass::runWindow() {
 	sf::Time dt; //SFML time object for tracking time between updates
 	sf::Time timer; //Currently not used
 	
@@ -42,7 +47,7 @@ void System::runWindow() {
 
 // Basic actions to be taken each loop, including calling update
 // and draw functions for the active scene, and checking some key events
-void System::update(sf::Time dt) {
+void SystemClass::update(sf::Time dt) {
 
 	//Keyboard events     ---Most keyboard events will need to be passed into the active scene
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
@@ -56,3 +61,5 @@ void System::update(sf::Time dt) {
 	//Draw active scene
 
 }
+
+
