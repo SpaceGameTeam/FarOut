@@ -5,7 +5,7 @@
 
 
 
-class GameObject {
+class GameObject : public sf::Drawable, public sf::Transformable {
 public:
 	GameObject();
 
