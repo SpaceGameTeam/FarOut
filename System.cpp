@@ -16,6 +16,21 @@ SystemClass::SystemClass() :
 }
 
 
+
+// Push and pop scenes to the sceneStack to be call during update and draw
+void SystemClass::pushScene(const Scene * toPush)
+{
+	sceneStack.push_front(toPush);
+
+}
+
+void SystemClass::popScene()
+{
+	sceneStack.pop_front();
+
+}
+
+
 // This function starts the window and runs the game loop
 void SystemClass::runWindow() {
 	sf::Time dt; //SFML time object for tracking time between updates

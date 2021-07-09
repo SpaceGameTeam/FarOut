@@ -14,8 +14,8 @@ public:
 	// Function to request a scene change (takes name/ID of new scene)
 
 	// Active Scene Stack functions
-	void pushScene(const Scene &toPush);
-	void popScene(const Scene &toPop);
+	void pushScene(const Scene * toPush);
+	void popScene();
 
 	// Potential functions to access stored data
 
@@ -29,7 +29,7 @@ private:
 
 	//Data module
 	//Scenes (probably stored in hash table)
-	std::forward_list<Scene> sceneStack;
+	std::forward_list<const Scene *> sceneStack;
 
 	//Window stuff
 	sf::VideoMode desktop;
