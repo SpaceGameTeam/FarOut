@@ -59,6 +59,8 @@ void SystemClass::update(sf::Time dt) {
 	Ship ship;
     ship.update(dt);
 	window.draw(ship);
+    view.setCenter(ship.getPosition());
+	window.setView(view);
 
 
 

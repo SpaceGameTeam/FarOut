@@ -3,7 +3,8 @@
 Ship::Ship(){
     // We don't know what to set movementSpeed to. 
     // Will wait until we can test on a background of stars to see how it works.
-    movementSpeed = 0.0;
+    movementSpeed = 10.0;
+    // Body[0].position = sf::Vector2f(0.f, 50.f);
     Body.setPointCount(11);
 	Body.setPoint(0, sf::Vector2f(0.f, 50.f));
 	Body.setPoint(1, sf::Vector2f(-5.f, 45.f));
@@ -19,6 +20,8 @@ Ship::Ship(){
 	Body.setOutlineThickness(5.f);
 	Body.setFillColor(sf::Color::Black);
 	Body.scale(0.5f, 0.5f);
+
+    setPosition(0, 0);
 }
 
 void Ship::draw(sf::RenderTarget& target, sf::RenderStates states)const{
@@ -53,5 +56,6 @@ void Ship::update(sf::Time dt){
 		shipMovement -= movementSpeed * dt.asSeconds() * sf::Vector2f(-sin(getRotation() * (3.1415 / 180)), 
 			cos(getRotation() * (3.1415 / 180)));
 	}
+
 
 }
