@@ -1,6 +1,9 @@
 #include "Ship.h"
 
 Ship::Ship(){
+    // We don't know what to set movementSpeed to. 
+    // Will wait until we can test on a background of stars to see how it works.
+    movementSpeed = 0.0;
     Body.setPointCount(11);
 	Body.setPoint(0, sf::Vector2f(0.f, 50.f));
 	Body.setPoint(1, sf::Vector2f(-5.f, 45.f));
@@ -16,4 +19,39 @@ Ship::Ship(){
 	Body.setOutlineThickness(5.f);
 	Body.setFillColor(sf::Color::Black);
 	Body.scale(0.5f, 0.5f);
+}
+
+void Ship::draw(sf::RenderTarget& target, sf::RenderStates states)const{
+    states.transform *= getTransform();
+    target.draw(Body, states); 
+}
+
+
+void Ship::update(sf::Time dt){
+    sf::Vector2f shipMovement = sf::Vector2f(0.f, 0.f);
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+		rotate(-230.f * dt.asSeconds());
+	}
+	
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+		rotate(230.f * dt.asSeconds());
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
+		shipMovement = sf::Vector2f(0.f, 0.f);
+		setPosition(0, 0);
+		// coords.setPosition(-(desktop.width / 2.f), -(desktop.height / 2.f) + 50);
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+		shipMovement += movementSpeed * dt.asSeconds() * sf::Vector2f(-sin(getRotation() * (3.1415 / 180)), 
+			cos(getRotation() * (3.1415 / 180))); 
+	}
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+		shipMovement -= movementSpeed * dt.asSeconds() * sf::Vector2f(-sin(getRotation() * (3.1415 / 180)), 
+			cos(getRotation() * (3.1415 / 180)));
+	}
+
 }
