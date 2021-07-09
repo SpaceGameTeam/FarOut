@@ -4,6 +4,7 @@
 #ifndef SHIP
 #define SHIP
 #include "GameObject.h"
+#include <math.h>
 
 class Ship : public GameObject {
 public:

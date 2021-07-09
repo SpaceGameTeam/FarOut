@@ -1,7 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 // Would like to add math.h include to System.h
-#include <math.h>
 
 // #pragma once
 
