@@ -2,8 +2,9 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include <stack>
-#include <list>
+#include <forward_list>
+
+#include "Scene.h"
 
 
 class SystemClass {
@@ -13,8 +14,8 @@ public:
 	// Function to request a scene change (takes name/ID of new scene)
 
 	// Active Scene Stack functions
-	void pushScene();
-	void popScene();
+	void pushScene(const Scene &toPush);
+	void popScene(const Scene &toPop);
 
 	// Potential functions to access stored data
 
@@ -28,6 +29,7 @@ private:
 
 	//Data module
 	//Scenes (probably stored in hash table)
+	std::forward_list<Scene> sceneStack;
 
 	//Window stuff
 	sf::VideoMode desktop;
