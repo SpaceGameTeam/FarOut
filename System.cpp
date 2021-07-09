@@ -17,18 +17,25 @@ SystemClass::SystemClass() :
 
 
 
-// Push and pop scenes to the sceneStack to be call during update and draw
-void SystemClass::pushScene(const Scene * toPush)
+// Push to the sceneStack to be call during update and draw
+void SystemClass::pushScene(Scene * toPush)
 {
 	sceneStack.push_front(toPush);
 
 }
 
-void SystemClass::popScene()
+
+
+// Pop scenes from the sceneStack
+// Return true for success, false for empty stack
+bool SystemClass::popScene()
 {
 	sceneStack.pop_front();
 
+  // TODO Check for empty 
+	return true;
 }
+
 
 
 // This function starts the window and runs the game loop
@@ -71,9 +78,15 @@ void SystemClass::update(sf::Time dt) {
 
 
 
-	//Update active scene (dt)
+	//Update active scenes (dt)
+	for (currentScene = sceneStack.begin(); currentScene != sceneStack.end(); ++currentScene)
+		(*currentScene)->update(dt);
 
 	//Draw active scene
+	for (currentScene = sceneStack.begin(); currentScene != sceneStack.end(); ++currentScene)
+		//(*currentScene)->draw(window);
+		;
+
 
 }
 
