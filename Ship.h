@@ -8,8 +8,6 @@
 #include <math.h>
 
 
-// Would like to add fps to System.h
-FPS fps;
 
 
 

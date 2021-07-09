@@ -1,5 +1,4 @@
 #include "SystemClass.h"
-#include "Ship.h"
 
 // Singular global instance of the System class
 SystemClass System;
@@ -56,6 +55,7 @@ void SystemClass::update(sf::Time dt) {
 		window.close();
 	}
 
+    // Draw the ship
     ship.update(dt);
 	window.draw(ship);
 

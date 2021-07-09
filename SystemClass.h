@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+// Would like to remove #include of Ship.h, just here to test the ship drawing
+#include "Ship.h"
 
 
 class SystemClass {
