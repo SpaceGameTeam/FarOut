@@ -28,7 +28,7 @@ void Ship::draw(sf::RenderTarget& target, sf::RenderStates states)const{
 
 
 void Ship::update(sf::Time dt){
-    sf::Vector2f shipMovement = sf::Vector2f(0.f, 0.f);
+    sf::Vector2f shipMovement = sf::Vector2f(20.f, 20.f);
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
 		rotate(-230.f * dt.asSeconds());
