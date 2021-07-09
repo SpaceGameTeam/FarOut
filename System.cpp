@@ -57,6 +57,7 @@ void SystemClass::update(sf::Time dt) {
     // Draw the ship
 	// This is just here for testing
 	Ship ship;
+	ship.move(dt);
     ship.update(dt);
 	window.draw(ship);
     view.setCenter(ship.getPosition());

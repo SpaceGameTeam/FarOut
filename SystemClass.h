@@ -1,14 +1,16 @@
-#pragma once
-
 #include <SFML/Graphics.hpp>
 #include <iostream>
-// Would like to remove #include of Ship.h, just here to test the ship drawing
-// #include "GameObject.h"
-#include "Ship.h"
+// Would like to add math.h include to System.h
+#include <math.h>
 
+// #pragma once
 
 #ifndef SYSCLS
 #define SYSCLS
+
+// Would like to remove #include of Ship.h, just here to test the ship drawing
+#include "Ship.h"
+
 class SystemClass {
 public:
 	SystemClass();
