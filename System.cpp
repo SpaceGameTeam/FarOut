@@ -32,7 +32,7 @@ bool SystemClass::popScene()
 {
 	sceneStack.pop_front();
 
-  // TODO Check for empty 
+  // TODO Check for empty list
 	return true;
 }
 
@@ -84,9 +84,7 @@ void SystemClass::update(sf::Time dt) {
 
 	//Draw active scene
 	for (currentScene = sceneStack.begin(); currentScene != sceneStack.end(); ++currentScene)
-		//(*currentScene)->draw(window);
-		;
-
+		(*currentScene)->draw(window);
 
 }
 
