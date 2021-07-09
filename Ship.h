@@ -1,9 +1,5 @@
-// #pragma once
-
 // Change this #include to FarOut.h eventually
 // #include "FarOut.h"
-// Would like to include math.h in SystemClass.h 
-// #include <math.h>
 
 #ifndef SHIP
 #define SHIP
@@ -17,6 +13,7 @@ public:
     void move(sf::Time dt);
 
 private:
+    void setMercuryPoints();
     sf::ConvexShape Body;
     float movementSpeed;
     sf::Vector2f movement;

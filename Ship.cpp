@@ -1,9 +1,20 @@
 #include "Ship.h"
 
 Ship::Ship(){
-    // We don't know what to set movementSpeed to. 
-    // Will wait until we can test on a background of stars to see how it works.
+    // Check movementSpeed setting when star background is working
     movementSpeed = 363.0;
+
+    // Create the ship
+    // Can be exchanged with other functions to create other ships
+    setMercuryPoints();
+
+    setPosition(0, 0);
+}
+
+
+
+// Sets points for a basic spacecraft outline
+void Ship::setMercuryPoints(){
     Body.setPointCount(36);
 	Body.setPoint(0, sf::Vector2f(0.f, 45.f));
 	Body.setPoint(1, sf::Vector2f(-7.f, 45.f));
@@ -45,12 +56,11 @@ Ship::Ship(){
 	Body.setOutlineThickness(3.f);
 	Body.setFillColor(sf::Color::Black);
 	Body.scale(0.5f, 0.5f);
-
-    setPosition(0, 0);
 }
 
 
 
+// Overridden draw function
 void Ship::draw(sf::RenderTarget& target, sf::RenderStates states)const{
     states.transform *= getTransform();
     target.draw(Body, states); 
@@ -58,6 +68,7 @@ void Ship::draw(sf::RenderTarget& target, sf::RenderStates states)const{
 
 
 
+// Move or rotate the ship when keys are pressed
 void Ship::update(sf::Time dt){
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
@@ -88,6 +99,8 @@ void Ship::update(sf::Time dt){
 
 
 
+// Move the ship
+// Overrides Transformable move function to allow storage of movement as Ship class data member
 void Ship::move(sf::Time dt){
     sf::Transformable::move(movement * dt.asSeconds());
 }

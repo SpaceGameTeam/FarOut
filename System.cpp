@@ -65,9 +65,6 @@ void SystemClass::update(sf::Time dt) {
 		window.close();
 	}
 
-
-
-
 	//Update active scene (dt)
 
 	//Draw active scene
