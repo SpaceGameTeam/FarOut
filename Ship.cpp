@@ -3,7 +3,7 @@
 Ship::Ship(){
     // We don't know what to set movementSpeed to. 
     // Will wait until we can test on a background of stars to see how it works.
-    movementSpeed = 10.0;
+    movementSpeed = 363.0;
     Body.setPointCount(36);
 	Body.setPoint(0, sf::Vector2f(0.f, 45.f));
 	Body.setPoint(1, sf::Vector2f(-7.f, 45.f));
