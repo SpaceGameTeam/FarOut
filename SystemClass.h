@@ -2,6 +2,8 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <stack>
+#include <list>
 
 
 class SystemClass {
@@ -9,6 +11,10 @@ public:
 	SystemClass();
 
 	// Function to request a scene change (takes name/ID of new scene)
+
+	// Active Scene Stack functions
+	void pushScene();
+	void popScene();
 
 	// Potential functions to access stored data
 
