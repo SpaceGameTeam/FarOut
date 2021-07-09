@@ -4,7 +4,8 @@
 #include "SystemClass.h"
 
 
-
+#ifndef GAMEOBJ
+#define GAMEOBJ
 class GameObject : public sf::Drawable, public sf::Transformable {
 public:
 	GameObject();
@@ -15,14 +16,4 @@ public:
 };
 
 
-class VisableObject: public GameObject {
-public:
-	VisableObject();
-
-	virtual void update(sf::Time dt) = 0;
-	virtual void draw(sf::RenderWindow window) = 0;
-
-protected:
-	sf::Texture texture;
-	sf::Sprite sprite;
-};
+#endif

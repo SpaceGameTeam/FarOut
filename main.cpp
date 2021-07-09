@@ -2,7 +2,7 @@
 //#include "SystemClass.h"
 
 // GameObject.h contains the above includes, left for posterity
-#include "GameObject.h"
+// #include "GameObject.h"
 
     
 

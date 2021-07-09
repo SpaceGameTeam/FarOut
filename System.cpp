@@ -50,7 +50,6 @@ void SystemClass::runWindow() {
 void SystemClass::update(sf::Time dt) {
 
 	//Keyboard events     ---Most keyboard events will need to be passed into the active scene
-    Ship ship;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
 		window.close();
 	}

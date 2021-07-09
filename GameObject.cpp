@@ -3,7 +3,3 @@
 GameObject::GameObject() {
 
 }
-
-VisableObject::VisableObject(){
-
-}

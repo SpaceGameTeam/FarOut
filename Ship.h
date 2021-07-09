@@ -7,9 +7,9 @@
 // Would like to include math.h in GameObject.h 
 #include <math.h>
 
-
-
-
+#ifndef SHIP
+#define SHIP
+class GameObject;
 
 class Ship : public GameObject {
 public:
@@ -22,3 +22,4 @@ private:
     float movementSpeed;
 
 };
+#endif

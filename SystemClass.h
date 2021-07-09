@@ -3,9 +3,12 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 // Would like to remove #include of Ship.h, just here to test the ship drawing
+// #include "GameObject.h"
 #include "Ship.h"
 
 
+#ifndef SYSCLS
+#define SYSCLS
 class SystemClass {
 public:
 	SystemClass();
@@ -30,4 +33,6 @@ private:
 	sf::RenderWindow window;
 	sf::View view; //not sure if this should be here or in each scene
 	sf::Clock clock;
+	Ship ship;
 };
+#endif
