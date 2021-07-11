@@ -12,7 +12,7 @@ Ship::Ship(){
 }
 
 
-
+/*
 // Sets points for a basic spacecraft outline
 void Ship::setMercuryPoints(){
     Body.setPointCount(36);
@@ -56,6 +56,33 @@ void Ship::setMercuryPoints(){
 	Body.setOutlineThickness(3.f);
 	Body.setFillColor(sf::Color::Black);
 	Body.scale(0.5f, 0.5f);
+}
+*/
+
+// Sets points for a basic spacecraft outline
+// Ship body #2
+void Ship::setMercuryPoints() {
+	Body.setPointCount(14);
+	Body.setPoint(0, sf::Vector2f(0.f, 0.f));
+	Body.setPoint(1, sf::Vector2f(-7.f, 0.f));
+	Body.setPoint(2, sf::Vector2f(-13.f, -8.f));
+	Body.setPoint(3, sf::Vector2f(-19.f, 4.f));
+	Body.setPoint(4, sf::Vector2f(-19.f, 12.f));
+	Body.setPoint(5, sf::Vector2f(-13.f, 17.f));
+	Body.setPoint(6, sf::Vector2f(-13.f, 38.f));
+	Body.setPoint(7, sf::Vector2f(0.f, 62.f));
+	Body.setPoint(8, sf::Vector2f(13.f, 38.f));
+	Body.setPoint(9, sf::Vector2f(13.f, 17.f));
+	Body.setPoint(10, sf::Vector2f(19.f, 12.f));
+	Body.setPoint(11, sf::Vector2f(19.f, 4.f));
+	Body.setPoint(12, sf::Vector2f(13.f, -8.f));
+	Body.setPoint(13, sf::Vector2f(7.f, 0.f));
+	
+
+
+	Body.setOutlineThickness(3.f);
+	Body.setFillColor(sf::Color::Blue);
+	Body.scale(0.75f, 0.75f);
 }
 
 
