@@ -1,11 +1,13 @@
-#include <SFML/Graphics.hpp>
-#include "SystemClass.h"
+//#include <SFML/Graphics.hpp>
+//#include "SystemClass.h"
+
+// GameObject.h contains the above includes, left for posterity
+// #include "GameObject.h"
+
+    
 
 int main()
 {
-    System system;
-
-    system.runWindow();
 
 
     // Here for posterity
