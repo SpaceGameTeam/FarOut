@@ -15,9 +15,12 @@ public:
 
 private:
     void setMercuryPoints();
-    sf::ConvexShape Body;
+    void setBlueShipPoints();
+    void setBlueShipHitbox();
+    sf::ConvexShape body;
     float movementSpeed;
     sf::Vector2f movement;
+    sf::ConvexShape hitbox;
 
 };
 #endif
