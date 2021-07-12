@@ -37,8 +37,6 @@ Run the provided Makefile in project directory then run the executable.
 >./FarOut
 ~~~
 
-## Build Instructions  
-
 ### Windows  
 These instructions are specifically for use with Microsoft Visual Studio  
 The general instructions for SFML can be found [here](https://www.sfml-dev.org/tutorials/2.5/start-vc.php) with useful snapshots.  
