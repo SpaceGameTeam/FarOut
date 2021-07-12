@@ -42,6 +42,9 @@ bool SystemClass::popScene()
 void SystemClass::runWindow() {
 	sf::Time dt; //SFML time object for tracking time between updates
 	sf::Time timer; //Currently not used
+
+    // Remove this when done testing ship implementation
+	Ship ship;
 	
 	while (window.isOpen()) { //This is the game loop
 
@@ -60,6 +63,14 @@ void SystemClass::runWindow() {
 		window.clear();
 
 		update(dt);
+		// Remove the next 8 lines when done testing ship implementation
+		// Draw the ship
+		// This is just here for testing
+		ship.move(dt);
+		ship.update(dt);
+		window.draw(ship);
+		view.setCenter(ship.getPosition());
+		window.setView(view);
 
 		window.display();
 	}
@@ -76,15 +87,11 @@ void SystemClass::update(sf::Time dt) {
 		window.close();
 	}
 
-
-
-	//Update active scenes (dt)
-	for (currentScene = sceneStack.begin(); currentScene != sceneStack.end(); ++currentScene)
-		(*currentScene)->update(dt);
+	//Update active scene (dt)
 
 	//Draw active scene
-	for (currentScene = sceneStack.begin(); currentScene != sceneStack.end(); ++currentScene)
-		(*currentScene)->draw(window);
+	// for (currentScene = sceneStack.begin(); currentScene != sceneStack.end(); ++currentScene)
+		// (*currentScene)->draw(window);
 
 }
 

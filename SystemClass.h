@@ -1,11 +1,16 @@
-#pragma once
-
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <forward_list>
 
 #include "Scene.h"
 
+// #pragma once
+
+#ifndef SYSCLS
+#define SYSCLS
+
+// Would like to remove #include of Ship.h, just here to test the ship drawing
+#include "Ship.h"
 
 class SystemClass {
 public:
@@ -37,4 +42,6 @@ private:
 	sf::RenderWindow window;
 	sf::View view; //not sure if this should be here or in each scene
 	sf::Clock clock;
+	// Ship ship;
 };
+#endif
