@@ -14,9 +14,8 @@ public:
     void move(sf::Time dt);
 
 private:
-    void setMercuryPoints();
-    void setBlueShipPoints();
-    void setBlueShipHitbox();
+    void setMercuryPoints(sf::ConvexShape * shape);
+    void setBlueShipPoints(sf::ConvexShape * shape);
     sf::ConvexShape body;
     float movementSpeed;
     sf::Vector2f movement;
