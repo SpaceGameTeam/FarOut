@@ -98,11 +98,11 @@ void Ship::draw(sf::RenderTarget& target, sf::RenderStates states)const{
 // Move or rotate the ship when keys are pressed
 void Ship::update(sf::Time dt){
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::H)) {
 		rotate(-230.f * dt.asSeconds());
 	}
-	
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::L)) {
 		rotate(230.f * dt.asSeconds());
 	}
 
@@ -111,12 +111,12 @@ void Ship::update(sf::Time dt){
 		setPosition(0, 0);
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::K)) {
 		movement += movementSpeed * dt.asSeconds() * sf::Vector2f(-sin(getRotation() * (3.1415 / 180)), 
 			cos(getRotation() * (3.1415 / 180))); 
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::J)) {
 		movement -= movementSpeed * dt.asSeconds() * sf::Vector2f(-sin(getRotation() * (3.1415 / 180)), 
 			cos(getRotation() * (3.1415 / 180)));
 	}
