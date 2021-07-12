@@ -42,6 +42,5 @@ private:
 	sf::RenderWindow window;
 	sf::View view; //not sure if this should be here or in each scene
 	sf::Clock clock;
-	// Ship ship;
 };
 #endif
