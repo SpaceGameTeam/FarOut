@@ -31,11 +31,11 @@ git clone https://github.com/SpaceGameTeam/FarOut <destination>
 
 Download and install SFML <a href=https://www.sfml-dev.org/tutorials/2.5/start-linux.php>here</a>.
 
-Run the provided Makefile in project directory:
+Run the provided Makefile in project directory then run the executable.
 ~~~
 >make FarOut
 
->./Farout
+>./FarOut
 ~~~
 
 ## Project Roadmap
