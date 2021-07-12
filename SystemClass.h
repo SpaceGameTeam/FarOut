@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <forward_list>
+#include <unordered_map>
 
 #include "Scene.h"
 
@@ -13,9 +14,14 @@ public:
 
 	// Function to request a scene change (takes name/ID of new scene)
 
-	// Active Scene Stack functions
+	// Active Scene Stack Functions
 	void pushScene(Scene * toPush);
 	bool popScene();
+
+  // Scene Collection Functions
+	bool addScene(int id, Scene * toadd);
+	Scene * getScene(int id);
+	bool removeScene(int id);
 
 	// Potential functions to access stored data
 
@@ -28,9 +34,10 @@ private:
 	void update(sf::Time dt);
 
 	//Data module
-	//Scenes (probably stored in hash table)
+	//Scenes - All scenes in the hash table and active scenes in the stack
 	std::forward_list<Scene *> sceneStack;
 	std::forward_list<Scene *>::iterator currentScene;
+	std::unordered_map<Scene *> sceneCollectino;
 
 	//Window stuff
 	sf::VideoMode desktop;
