@@ -120,8 +120,8 @@ void SystemClass::update(sf::Time dt) {
 
 
 	//Draw active scene
-	// for (currentScene = sceneStack.begin(); currentScene != sceneStack.end(); ++currentScene)
-		// (*currentScene)->draw(window);
+	for (currentScene = sceneStack.begin(); currentScene != sceneStack.end(); ++currentScene)
+		(*currentScene)->draw(window);
 
 }
 
