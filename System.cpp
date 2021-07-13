@@ -38,6 +38,33 @@ bool SystemClass::popScene()
 
 
 
+// Add a scene to the collection
+bool SystemClass::addScene(int id, Scene * toadd)
+{
+
+	return false;
+}
+
+
+
+// Return a scene from the scene collection
+Scene * SystemClass::getScene(int id)
+{
+
+	return NULL;
+}
+
+
+
+// Remove a scene from the scene collection 
+bool SystemClass::removeScene(int id)
+{
+
+	return false;
+}
+
+
+
 // This function starts the window and runs the game loop
 void SystemClass::runWindow() {
 	sf::Time dt; //SFML time object for tracking time between updates
@@ -87,7 +114,10 @@ void SystemClass::update(sf::Time dt) {
 		window.close();
 	}
 
-	//Update active scene (dt)
+	//Update active scenes (dt)
+	for (currentScene = sceneStack.begin(); currentScene != sceneStack.end(); ++currentScene)
+		(*currentScene)->update(dt);
+
 
 	//Draw active scene
 	// for (currentScene = sceneStack.begin(); currentScene != sceneStack.end(); ++currentScene)

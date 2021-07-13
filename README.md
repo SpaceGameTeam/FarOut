@@ -14,17 +14,48 @@ The "Context Control System" addresses the need for a game's overall structure a
 ### Graphics
 
 Scenes are populated with a collection of example game objects and graphical elements. Game objects include a ship, alien ship, and other objects potentially found in space and are made using SFML's graphics module including sprites, shapes, and textures. 
-
 ### Data
 
 Scenes are organized in a data structure and information for each session stored externally.
 
 
-<!--- Save for a more relevent time...
 ## Build Instruction
 
-On Linux, <a href=https://www.sfml-dev.org/tutorials/2.5/start-linux.php>here</a> are instructions on installing SFML and compiling a program.
--->
+### Linux
+
+Clone the FarOut repo to your local machine
+~~~
+git clone https://github.com/SpaceGameTeam/FarOut <destination>
+~~~
+
+Download and install SFML <a href=https://www.sfml-dev.org/tutorials/2.5/start-linux.php>here</a>.
+
+Run the provided Makefile in project directory then run the executable.
+~~~
+>make FarOut
+
+>./FarOut
+~~~
+
+### Windows  
+These instructions are specifically for use with Microsoft Visual Studio  
+The general instructions for SFML can be found [here](https://www.sfml-dev.org/tutorials/2.5/start-vc.php) with useful snapshots.  
+1) Download and install the most recent Visula Studio SFML install [here](https://www.sfml-dev.org/download/sfml/2.5.1/)  
+2) Open Visual Studio and create a new project.  
+3) In the Project pull down, choose the bottom most option. It should be called "[Your Project Name] Properties"  
+4) Click the "C/C++" option in the sidebar.  
+5) To the right, add the file path of the "include" file of your SFML file to the "Additional Include Directories" and click apply.  
+6) In the sidebar click "Linker"  
+7) Add the file path of the  "lib" file of your SFML file to the "Additional Library Directories". Click apply.
+8) In the side bar under Linker, click "Input".   
+9) Add "sfml-graphics.lib", "sfml-system.lib", "sfml-window.lib", and "sfml-audio.lib" into "Additional Libraries". Click apply.  
+10) Copy all the .dll files in the "bin" file of your SFML file to your project folder.  
+11) In the git pull down, click "clone repository" and enter: "https://github.com/SpaceGameTeam/FarOut.git"  
+
+You should be able to run it now! But Just in case, here are some tips:
+- Try both the 32bit and the 64 bit SFML install. The SFML website says use 32bit unless you have good reason to use 64bit.
+- Ensure you did not install SFML into a protected folder. It is reccomended to install SFML into C:\.
+
 
 ## Project Roadmap
 
