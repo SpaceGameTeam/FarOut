@@ -19,13 +19,23 @@ Scenes are populated with a collection of example game objects and graphical ele
 Scenes are organized in a data structure and information for each session stored externally.
 
 
-<!--- Save for a more relevent time...
 ## Build Instruction
 
-On Linux, <a href=https://www.sfml-dev.org/tutorials/2.5/start-linux.php>here</a> are instructions on installing SFML and compiling a program.
--->
+### Linux
 
-## Build Instructions  
+Clone the FarOut repo to your local machine
+~~~
+git clone https://github.com/SpaceGameTeam/FarOut <destination>
+~~~
+
+Download and install SFML <a href=https://www.sfml-dev.org/tutorials/2.5/start-linux.php>here</a>.
+
+Run the provided Makefile in project directory then run the executable.
+~~~
+>make FarOut
+
+>./FarOut
+~~~
 
 ### Windows  
 These instructions are specifically for use with Microsoft Visual Studio  
