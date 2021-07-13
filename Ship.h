@@ -14,10 +14,12 @@ public:
     void move(sf::Time dt);
 
 private:
-    void setMercuryPoints();
-    sf::ConvexShape Body;
+    void setMercuryPoints(sf::ConvexShape * shape);
+    void setBlueShipPoints(sf::ConvexShape * shape);
+    sf::ConvexShape body;
     float movementSpeed;
     sf::Vector2f movement;
+    sf::ConvexShape hitbox;
 
 };
 #endif
