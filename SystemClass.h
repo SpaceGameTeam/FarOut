@@ -42,7 +42,7 @@ private:
 	//Scenes - All scenes in the hash table and active scenes in the stack
 	std::forward_list<Scene *> sceneStack;
 	std::forward_list<Scene *>::iterator currentScene;
-	std::unordered_map<Scene *> sceneCollection;
+	std::unordered_map<int, Scene *> sceneCollection;
 
 	//Window stuff
 	sf::VideoMode desktop;
