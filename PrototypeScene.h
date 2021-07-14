@@ -1,4 +1,7 @@
-#pragma once
+// #pragma once
+
+#ifndef PROTO
+#define PROTO
 #include "Scene.h"
 #include "GameObject.h"
 
@@ -30,7 +33,4 @@ private:
 	Background bg;
 
 };
-
-
-
-
+#endif
