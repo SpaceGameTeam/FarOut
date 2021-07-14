@@ -21,6 +21,6 @@ private:
     sf::ConvexShape Body;
     float movementSpeed;
     sf::Vector2f movement;
-
+    
 };
 #endif

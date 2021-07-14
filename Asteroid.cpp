@@ -16,8 +16,8 @@ Asteroid::Asteroid() {
 
 // Sets points for the asteroid
 void Asteroid::setMercuryPoints() {
-	Body.setPointCount();
-	Body.setPoint(0, sf::Vector2f(0.f, 0.f));
+	Body.setPointCount(103);
+	Body.setPoint(0, sf::Vector2f(0.f, 60.f));
 	Body.setPoint(1, sf::Vector2f(0.f, 60.f));
 	Body.setPoint(2, sf::Vector2f(6.f, 60.f));
 	Body.setPoint(3, sf::Vector2f(6.f, 58.f));
@@ -127,8 +127,8 @@ void Asteroid::setMercuryPoints() {
 
 
 	Body.setOutlineThickness(3.f);
-	Body.setFillColor(sf::Color::Blue);
-	Body.scale(0.75f, 0.75f);
+	Body.setFillColor(sf::Color(184,115,52,255));
+	//Body.scale(1f, 1f);
 }
 
 
@@ -140,7 +140,7 @@ void Asteroid::draw(sf::RenderTarget& target, sf::RenderStates states)const {
 }
 
 
-
+void Asteroid::update(sf::Time dt) {}
 
 
 
