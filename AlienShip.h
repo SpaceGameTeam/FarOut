@@ -29,9 +29,7 @@ class EllipseShape : public sf:: Shape {
 
 class AlienShip : public GameObject {
 public:
-	AlienShip();
 	AlienShip(GameObject* commObject);
-
     void draw(sf::RenderTarget& target, sf::RenderStates states)const;
 	void update(sf::Time dt);
     void move(sf::Time dt);
@@ -43,7 +41,7 @@ private:
 	sf::VertexArray saucer; 
     sf::RectangleShape midline;
     sf::ConvexShape hitbox;
-    GameObject* ship; // could be a data structure of GameObject*s
+    GameObject* ship; // could be a data structure of GameObject pointers
 
     void setAlienShipPoints(sf::ConvexShape * shape);
     void setSaucerPoints(sf::VertexArray * shape);

@@ -70,7 +70,7 @@ void SystemClass::runWindow() {
 	sf::Time dt; //SFML time object for tracking time between updates
 	sf::Time timer; //Currently not used
 
-    // Remove this when done testing ship implementation
+    // Move the next two lines to a prototype scene when ready 
 	Ship ship;
 	AlienShip alien(&ship);
 	
@@ -91,7 +91,7 @@ void SystemClass::runWindow() {
 		window.clear();
 
 		update(dt);
-		// Remove the next 8 lines when done testing ship implementation
+		// Move the next 9 lines to a prototype scene when ready 
 		// Draw the ship
 		ship.move(dt);
 		alien.move(dt);
@@ -100,7 +100,6 @@ void SystemClass::runWindow() {
 		window.draw(ship);
 		window.draw(alien);
 		view.setCenter(ship.getPosition());
-		// view.setCenter(ship.getPosition());
 		window.setView(view);
 
 		window.display();

@@ -53,11 +53,8 @@ sf::Vector2f EllipseShape::getPoint(std::size_t index) const {
 
 
 
-// AlienShip::AlienShip(GameObject * commObject){}
-
-
-
-// AlienShip::AlienShip(){
+// Takes a GameObject pointer as an argument, but this could also be a
+// data structure of GameObjects to facilitate communication
 AlienShip::AlienShip(GameObject * commObject){
 	ship = commObject;
     movementSpeed = 363.0;
@@ -99,7 +96,7 @@ AlienShip::AlienShip(GameObject * commObject){
 
 
 
-// Sets points for Alien ship 
+// Sets points for Alien ship, just used for the hitbox 
 void AlienShip::setAlienShipPoints(sf::ConvexShape * shape) {
 	shape->setPointCount(7);
 	shape->setPoint(0, sf::Vector2f(-50.f, 0.f));
@@ -124,7 +121,7 @@ void AlienShip::draw(sf::RenderTarget& target, sf::RenderStates states)const{
 
 
 
-// Move or rotate the ship when keys are pressed
+// Chase the ship! A momentum term would help here
 void AlienShip::update(sf::Time dt){
 	sf::Vector2f diff = ship->getPosition() - getPosition();
 	float magnitude = sqrt (diff.x * diff.x + diff.y * diff.y);
