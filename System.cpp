@@ -48,7 +48,7 @@ bool SystemClass::addScene(int id, std::shared_ptr<Scene> toadd)
 
 
 // Return a scene from the scene collection
-Scene * SystemClass::getScene(int id)
+std::shared_ptr<Scene> SystemClass::getScene(int id)
 {
 
 	return NULL;
