@@ -90,7 +90,7 @@ void Ship::setBlueShipPoints(sf::ConvexShape * shape) {
 void Ship::draw(sf::RenderTarget& target, sf::RenderStates states)const{
     states.transform *= getTransform();
     target.draw(body, states); 
-    target.draw(hitbox, states); 
+    // target.draw(hitbox, states); 
 }
 
 

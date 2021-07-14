@@ -40,7 +40,7 @@ private:
     EllipseShape dome;
 	sf::VertexArray saucer; 
     sf::RectangleShape midline;
-    sf::VertexArray hitbox;
+    sf::ConvexShape hitbox;
 
     void setAlienShipPoints(sf::ConvexShape * shape);
     void setSaucerPoints(sf::VertexArray * shape);

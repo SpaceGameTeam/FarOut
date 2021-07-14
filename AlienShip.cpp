@@ -59,10 +59,6 @@ AlienShip::AlienShip(){
     movementSpeed = 363.0;
 
     // Create the ship
-    // Can be exchanged with other functions to create other ships
-	// setAlienShipPoints(&body);
-	body.setOutlineThickness(2.f);
-	body.setFillColor(sf::Color::Blue);
 	saucer.setPrimitiveType(sf::TriangleStrip);
 	saucer.resize(8);
 	saucer[0].position = sf::Vector2f(-70.f, -15.f);
@@ -87,20 +83,14 @@ AlienShip::AlienShip(){
 	midline.setOutlineThickness(1.f);
 	dome.setPosition(-50, -45);
 	dome.setFillColor(sf::Color(255, 255, 255, 150));
-	// saucer.position = sf::Vector2f(50.f, 50.f);
-	// body.setPosition(50, 50);
 	midline.setPosition(-70, -15);
-	// body.scale(0.75f, 0.75f);
 
-    /*
 	setAlienShipPoints(&hitbox);
 	hitbox.setOutlineThickness(3.f);
 	hitbox.setFillColor(sf::Color::Transparent);
 	hitbox.setOutlineColor(sf::Color::Red);
-	hitbox.scale(0.75f, 0.75f);
-	*/
 
-    // setPosition(0, 0);
+    setPosition(0, 300);
 }
 
 
@@ -111,9 +101,10 @@ void AlienShip::setAlienShipPoints(sf::ConvexShape * shape) {
 	shape->setPoint(0, sf::Vector2f(-50.f, 0.f));
 	shape->setPoint(1, sf::Vector2f(-70.f, -15.f));
 	shape->setPoint(2, sf::Vector2f(-50.f, -30.f));
-	shape->setPoint(3, sf::Vector2f(50.f, -30.f));
-	shape->setPoint(4, sf::Vector2f(70.f, -15.f));
-	shape->setPoint(5, sf::Vector2f(50.f, 0.f));
+	shape->setPoint(3, sf::Vector2f(0.f, -45.f));
+	shape->setPoint(4, sf::Vector2f(50.f, -30.f));
+	shape->setPoint(5, sf::Vector2f(70.f, -15.f));
+	shape->setPoint(6, sf::Vector2f(50.f, 0.f));
 }
 
 
@@ -122,7 +113,6 @@ void AlienShip::setAlienShipPoints(sf::ConvexShape * shape) {
 void AlienShip::draw(sf::RenderTarget& target, sf::RenderStates states)const{
     states.transform *= getTransform();
 	target.draw(dome, states);
-    // target.draw(body, states); 
     target.draw(saucer, states); 
     target.draw(midline, states); 
     // target.draw(hitbox, states); 
@@ -132,7 +122,7 @@ void AlienShip::draw(sf::RenderTarget& target, sf::RenderStates states)const{
 
 // Move or rotate the ship when keys are pressed
 void AlienShip::update(sf::Time dt){
-
+/*
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::H)) {
 		rotate(-230.f * dt.asSeconds());
 	}
@@ -155,7 +145,7 @@ void AlienShip::update(sf::Time dt){
 		movement -= movementSpeed * dt.asSeconds() * sf::Vector2f(-sin(getRotation() * (3.1415 / 180)), 
 			cos(getRotation() * (3.1415 / 180)));
 	}
-
+*/
 
 }
 

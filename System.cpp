@@ -93,12 +93,13 @@ void SystemClass::runWindow() {
 		update(dt);
 		// Remove the next 8 lines when done testing ship implementation
 		// Draw the ship
-		// This is just here for testing
-		// ship.move(dt);
-		// ship.update(dt);
-		// window.draw(ship);
+		ship.move(dt);
+		alien.move(dt);
+		ship.update(dt);
+		alien.update(dt);
+		window.draw(ship);
 		window.draw(alien);
-		view.setCenter(alien.getPosition());
+		view.setCenter(ship.getPosition());
 		// view.setCenter(ship.getPosition());
 		window.setView(view);
 
