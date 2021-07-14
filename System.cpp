@@ -109,18 +109,20 @@ void SystemClass::runWindow() {
 // and draw functions for the active scene, and checking some key events
 void SystemClass::update(sf::Time dt) {
 
-	//Keyboard events     ---Most keyboard events will need to be passed into the active scene
+	// Keyboard events     ---Most keyboard events will need to be passed into the active scene
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
 		window.close();
 	}
 
-	//Update active scenes (dt)
-	for (currentScene = sceneStack.begin(); currentScene != sceneStack.end(); ++currentScene)
+
+  // Do these loops skip the first element?
+	// Update active scenes (dt)
+	for (currentScene = sceneStack.end(); currentScene != sceneStack.begin(); --currentScene)
 		(*currentScene)->update(dt);
 
 
-	//Draw active scene
-	for (currentScene = sceneStack.begin(); currentScene != sceneStack.end(); ++currentScene)
+	// Draw active scene
+	for (currentScene = sceneStack.end(); currentScene != sceneStack.begin(); --currentScene)
 		(*currentScene)->draw(window);
 
 }
