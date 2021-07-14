@@ -1,14 +1,32 @@
-#pragma once
-
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <forward_list>
+#include <unordered_map>
 
+#include "Scene.h"
+
+// #pragma once
+
+#ifndef SYSCLS
+#define SYSCLS
+
+// Would like to remove #include of Ship.h, just here to test the ship drawing
+#include "Ship.h"
 
 class SystemClass {
 public:
 	SystemClass();
 
 	// Function to request a scene change (takes name/ID of new scene)
+
+	// Active Scene Stack Functions
+	void pushScene(Scene * toPush);
+	bool popScene();
+
+  // Scene Collection Functions
+	bool addScene(int id, Scene * toadd);
+	Scene * getScene(int id);
+	bool removeScene(int id);
 
 	// Potential functions to access stored data
 
@@ -21,7 +39,10 @@ private:
 	void update(sf::Time dt);
 
 	//Data module
-	//Scenes (probably stored in hash table)
+	//Scenes - All scenes in the hash table and active scenes in the stack
+	std::forward_list<Scene *> sceneStack;
+	std::forward_list<Scene *>::iterator currentScene;
+	std::unordered_map<int, Scene *> sceneCollection;
 
 	//Window stuff
 	sf::VideoMode desktop;
@@ -29,3 +50,4 @@ private:
 	sf::View view; //not sure if this should be here or in each scene
 	sf::Clock clock;
 };
+#endif
