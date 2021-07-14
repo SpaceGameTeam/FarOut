@@ -4,6 +4,21 @@
 
 
 
+class Background : public GameObject {
+public:
+	Background();
+
+	void update(sf::Time dt);
+	void draw(sf::RenderTarget& target, sf::RenderStates states)const;
+
+private:
+	sf::Texture texture;
+	sf::Sprite sprite;
+};
+
+
+
+
 class PrototypeScene : public Scene {
 public:
 	PrototypeScene();
@@ -12,19 +27,10 @@ public:
 	void draw(sf::RenderWindow& window);
 
 private:
-
+	Background bg;
 
 };
 
 
 
-class Background : public GameObject {
-public:
-	Background();
 
-	void update(sf::Time dt);
-	void draw(sf::RenderTarget& target, sf::RenderStates states);
-
-private:
-	
-};
