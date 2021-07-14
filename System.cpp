@@ -72,7 +72,7 @@ void SystemClass::runWindow() {
 
     // Remove this when done testing ship implementation
 	Ship ship;
-	AlienShip alien;
+	AlienShip alien(&ship);
 	
 	while (window.isOpen()) { //This is the game loop
 

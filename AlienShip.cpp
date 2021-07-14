@@ -41,7 +41,6 @@ sf::Vector2f EllipseShape::getPoint(std::size_t index) const {
 	float x = std::cos(angle) * m_radius.x;
 	float y = std::sin(angle) * m_radius.y;
 
-	std::cout << "Point " << index << " : (" << x << ", " << y << ")\n"; 
 	return sf::Vector2f(m_radius.x + x, m_radius.y + y);
 }
 
@@ -54,8 +53,13 @@ sf::Vector2f EllipseShape::getPoint(std::size_t index) const {
 
 
 
-AlienShip::AlienShip(){
-    // Check movementSpeed setting when star background is working
+// AlienShip::AlienShip(GameObject * commObject){}
+
+
+
+// AlienShip::AlienShip(){
+AlienShip::AlienShip(GameObject * commObject){
+	ship = commObject;
     movementSpeed = 363.0;
 
     // Create the ship
@@ -122,31 +126,9 @@ void AlienShip::draw(sf::RenderTarget& target, sf::RenderStates states)const{
 
 // Move or rotate the ship when keys are pressed
 void AlienShip::update(sf::Time dt){
-/*
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::H)) {
-		rotate(-230.f * dt.asSeconds());
-	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::L)) {
-		rotate(230.f * dt.asSeconds());
-	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
-		movement = sf::Vector2f(0.f, 0.f);
-		setPosition(0, 0);
-	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::K)) {
-		movement += movementSpeed * dt.asSeconds() * sf::Vector2f(-sin(getRotation() * (3.1415 / 180)), 
-			cos(getRotation() * (3.1415 / 180))); 
-	}
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::J)) {
-		movement -= movementSpeed * dt.asSeconds() * sf::Vector2f(-sin(getRotation() * (3.1415 / 180)), 
-			cos(getRotation() * (3.1415 / 180)));
-	}
-*/
-
+	sf::Vector2f diff = ship->getPosition() - getPosition();
+	float magnitude = sqrt (diff.x * diff.x + diff.y * diff.y);
+	movement += movementSpeed * dt.asSeconds() * diff / magnitude;
 }
 
 
