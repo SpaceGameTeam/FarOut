@@ -72,6 +72,7 @@ void SystemClass::runWindow() {
 
     // Remove this when done testing ship implementation
 	Ship ship;
+	AlienShip alien;
 	
 	while (window.isOpen()) { //This is the game loop
 
@@ -93,10 +94,12 @@ void SystemClass::runWindow() {
 		// Remove the next 8 lines when done testing ship implementation
 		// Draw the ship
 		// This is just here for testing
-		ship.move(dt);
-		ship.update(dt);
-		window.draw(ship);
-		view.setCenter(ship.getPosition());
+		// ship.move(dt);
+		// ship.update(dt);
+		// window.draw(ship);
+		window.draw(alien);
+		view.setCenter(alien.getPosition());
+		// view.setCenter(ship.getPosition());
 		window.setView(view);
 
 		window.display();

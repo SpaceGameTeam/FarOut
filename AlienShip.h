@@ -8,12 +8,13 @@
 
 
 const int NUMPOINTS = 30;
+const sf::Vector2f DOMERADIUS(50.f, 20.f);
 
 
 // Ellipse class modeled after https://www.sfml-dev.org/tutorials/2.0/graphics-shape.php
 class EllipseShape : public sf:: Shape {
     public :
-        explicit EllipseShape(const sf::Vector2f& radius = sf::Vector2f(0, 0));
+        explicit EllipseShape(const sf::Vector2f& radius);
         void setRadius(const sf::Vector2f& radius);
         const sf::Vector2f& getRadius() const;
         virtual std::size_t getPointCount() const;
@@ -34,12 +35,15 @@ public:
     void move(sf::Time dt);
 
 private:
-    void setAlienShipPoints(sf::ConvexShape * shape);
-    sf::ConvexShape body;
-    EllipseShape dome;
     float movementSpeed;
     sf::Vector2f movement;
-    sf::ConvexShape hitbox;
+    EllipseShape dome;
+	sf::VertexArray saucer; 
+    sf::RectangleShape midline;
+    sf::VertexArray hitbox;
+
+    void setAlienShipPoints(sf::ConvexShape * shape);
+    void setSaucerPoints(sf::VertexArray * shape);
 
 };
 #endif
