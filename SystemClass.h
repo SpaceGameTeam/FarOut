@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include <forward_list>
+#include <memory>
+#include <list>
 #include <unordered_map>
 
 #include "Scene.h"
@@ -20,11 +21,11 @@ public:
 	// Function to request a scene change (takes name/ID of new scene)
 
 	// Active Scene Stack Functions
-	void pushScene(Scene * toPush);
+	void pushScene(std::shared_ptr<Scene> toPush);
 	bool popScene();
 
   // Scene Collection Functions
-	bool addScene(int id, Scene * toadd);
+	bool addScene(int id, std::shared_ptr<Scene> toadd);
 	Scene * getScene(int id);
 	bool removeScene(int id);
 
@@ -40,9 +41,9 @@ private:
 
 	//Data module
 	//Scenes - All scenes in the hash table and active scenes in the stack
-	std::forward_list<Scene *> sceneStack;
-	std::forward_list<Scene *>::iterator currentScene;
-	std::unordered_map<int, Scene *> sceneCollection;
+	std::list<std::shared_ptr<Scene>> sceneStack;
+	std::list<std::shared_ptr<Scene>>::iterator currentScene;
+	std::unordered_map<int, std::shared_ptr<Scene>> sceneCollection;
 
 	//Window stuff
 	sf::VideoMode desktop;

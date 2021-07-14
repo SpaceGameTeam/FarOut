@@ -18,7 +18,7 @@ SystemClass::SystemClass() :
 
 
 // Push to the sceneStack to be call during update and draw
-void SystemClass::pushScene(Scene * toPush)
+void SystemClass::pushScene(std::shared_ptr<Scene> toPush)
 {
 	sceneStack.push_front(toPush);
 
@@ -39,7 +39,7 @@ bool SystemClass::popScene()
 
 
 // Add a scene to the collection
-bool SystemClass::addScene(int id, Scene * toadd)
+bool SystemClass::addScene(int id, std::shared_ptr<Scene> toadd)
 {
 
 	return false;
