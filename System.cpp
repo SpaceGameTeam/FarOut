@@ -22,6 +22,7 @@ void SystemClass::pushScene(std::shared_ptr<Scene> toPush)
 {
 	sceneStack.push_front(toPush);
 
+  return;
 }
 
 
@@ -30,9 +31,11 @@ void SystemClass::pushScene(std::shared_ptr<Scene> toPush)
 // Return true for success, false for empty stack
 bool SystemClass::popScene()
 {
+	if (sceneStack.empty())
+	  return false;
+
 	sceneStack.pop_front();
 
-  // TODO Check for empty list
 	return true;
 }
 

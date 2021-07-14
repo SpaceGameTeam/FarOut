@@ -26,7 +26,7 @@ public:
 
   // Scene Collection Functions
 	bool addScene(int id, std::shared_ptr<Scene> toadd);
-	Scene * getScene(int id);
+	std::shared_ptr<Scene> getScene(int id);
 	bool removeScene(int id);
 
 	// Potential functions to access stored data
