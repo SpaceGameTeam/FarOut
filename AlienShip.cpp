@@ -48,7 +48,7 @@ sf::Vector2f EllipseShape::getPoint(std::size_t index) const {
 
 
 ////////////////////////////////////////////////////////////////////////////
-///  Ellipse Shape Class 
+///  AlienShip Shape Class 
 ////////////////////////////////////////////////////////////////////////////
 
 
@@ -123,9 +123,11 @@ void AlienShip::draw(sf::RenderTarget& target, sf::RenderStates states)const{
 
 // Chase the ship! A momentum term would help here
 void AlienShip::update(sf::Time dt){
-	sf::Vector2f diff = ship->getPosition() - getPosition();
-	float magnitude = sqrt (diff.x * diff.x + diff.y * diff.y);
-	movement += movementSpeed * dt.asSeconds() * diff / magnitude;
+	sf::Vector2f diff = ship->getPosition() + sf::Vector2f(0, 300) - getPosition();
+	if (abs(diff.x) > 10 || abs(diff.y) > 10) {
+		float magnitude = sqrt (diff.x * diff.x + diff.y * diff.y);
+		movement += movementSpeed * dt.asSeconds() * diff / magnitude;
+	}
 }
 
 
