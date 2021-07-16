@@ -6,9 +6,8 @@
 //Background stuff
 
 Background::Background() {
-	//TODO this doesn't work, not sure why
-	//texture.loadFromFile("Assets/pixelated_halo_starfield_by_necro_skeletal_d56he85.png");
-	//sprite.setTexture(texture);
+	texture.loadFromFile("Assets/pixelated_halo_starfield_by_necro_skeletal_d56he85.png");
+	sprite.setTexture(texture);
 }
 
 void Background::update(sf::Time dt) {}
