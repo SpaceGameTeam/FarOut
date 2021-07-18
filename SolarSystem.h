@@ -15,6 +15,7 @@ class Sun : public GameObject {
     private:
         sf::CircleShape mass;
         sf::CircleShape hitbox;
+        int radius;
 };
 
 

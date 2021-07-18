@@ -11,8 +11,8 @@
 
 
 Sun::Sun(){
-
-    mass.setRadius(10);
+    radius = 10;
+    mass.setRadius(radius);
     mass.setOutlineColor(sf::Color(28, 57, 5));
     mass.setOutlineThickness(3); 
     mass.setFillColor(sf::Color(255, 154, 1));
