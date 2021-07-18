@@ -70,10 +70,11 @@ void SystemClass::runWindow() {
 	sf::Time dt; //SFML time object for tracking time between updates
 	sf::Time timer; //Currently not used
 
-    // Move the next two lines to a prototype scene when ready 
+    // Move the next three lines to a prototype scene when ready 
 	Ship ship;
 	AlienShip alien(&ship);
-	
+	Asteroid asteroid;
+
 	while (window.isOpen()) { //This is the game loop
 
 		//Event check
@@ -95,10 +96,13 @@ void SystemClass::runWindow() {
 		// Draw the ship
 		ship.move(dt);
 		alien.move(dt);
+		asteroid.move(dt);
 		ship.update(dt);
 		alien.update(dt);
+		asteroid.update(dt);
 		window.draw(ship);
 		window.draw(alien);
+		window.draw(asteroid);
 		view.setCenter(ship.getPosition());
 		window.setView(view);
 
