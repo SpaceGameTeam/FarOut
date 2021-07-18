@@ -73,6 +73,7 @@ void SystemClass::runWindow() {
     // Move the next two lines to a prototype scene when ready 
 	Ship ship;
 	AlienShip alien(&ship);
+	PrototypeScene scene;
 	
 	while (window.isOpen()) { //This is the game loop
 
@@ -93,6 +94,9 @@ void SystemClass::runWindow() {
 		update(dt);
 		// Move the next 9 lines to a prototype scene when ready 
 		// Draw the ship
+		// This is just here for testing
+		scene.update(dt);
+		scene.draw(window);
 		ship.move(dt);
 		alien.move(dt);
 		ship.update(dt);

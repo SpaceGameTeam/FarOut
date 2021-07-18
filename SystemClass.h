@@ -13,6 +13,7 @@
 // Would like to remove #include of Ship.h, just here to test the ship drawing
 #include "Ship.h"
 #include "AlienShip.h"
+#include "PrototypeScene.h"
 
 class SystemClass {
 public:

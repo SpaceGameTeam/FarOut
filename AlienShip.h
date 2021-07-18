@@ -36,6 +36,7 @@ public:
 
 private:
     float movementSpeed;
+    float distanceFromShip;
     sf::Vector2f movement;
     EllipseShape dome;
 	sf::VertexArray saucer; 

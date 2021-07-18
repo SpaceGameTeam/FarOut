@@ -57,7 +57,8 @@ sf::Vector2f EllipseShape::getPoint(std::size_t index) const {
 // data structure of GameObjects to facilitate communication
 AlienShip::AlienShip(GameObject * commObject){
 	ship = commObject;
-    movementSpeed = 363.0;
+    movementSpeed = 0.0;
+	distanceFromShip = 500;
 
     // Create the ship
 	saucer.setPrimitiveType(sf::TriangleStrip);
@@ -91,7 +92,7 @@ AlienShip::AlienShip(GameObject * commObject){
 	hitbox.setFillColor(sf::Color::Transparent);
 	hitbox.setOutlineColor(sf::Color::Red);
 
-    setPosition(0, 300);
+    setPosition(300, distanceFromShip);
 }
 
 
@@ -123,9 +124,10 @@ void AlienShip::draw(sf::RenderTarget& target, sf::RenderStates states)const{
 
 // Chase the ship! A momentum term would help here
 void AlienShip::update(sf::Time dt){
-	sf::Vector2f diff = ship->getPosition() + sf::Vector2f(0, 300) - getPosition();
+	sf::Vector2f diff = ship->getPosition() + sf::Vector2f(300, 500) - getPosition();
 	if (abs(diff.x) > 10 || abs(diff.y) > 10) {
 		float magnitude = sqrt (diff.x * diff.x + diff.y * diff.y);
+		movementSpeed += 0.01 * (magnitude - (distanceFromShip - 300));
 		movement += movementSpeed * dt.asSeconds() * diff / magnitude;
 	}
 }
