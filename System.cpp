@@ -74,6 +74,8 @@ void SystemClass::runWindow() {
 	Ship ship;
 	AlienShip alien(&ship);
 	PrototypeScene scene;
+	Sun sun;
+	Planet mercury(3, 50, sf::Color::Green, &sun);
 	
 	while (window.isOpen()) { //This is the game loop
 
@@ -99,10 +101,14 @@ void SystemClass::runWindow() {
 		scene.draw(window);
 		ship.move(dt);
 		alien.move(dt);
+		mercury.move(dt);
 		ship.update(dt);
 		alien.update(dt);
+		mercury.update(dt);
 		window.draw(ship);
 		window.draw(alien);
+		window.draw(sun);
+		window.draw(mercury);
 		view.setCenter(ship.getPosition());
 		window.setView(view);
 

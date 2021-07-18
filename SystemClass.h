@@ -14,6 +14,7 @@
 #include "Ship.h"
 #include "AlienShip.h"
 #include "PrototypeScene.h"
+#include "SolarSystem.h"
 
 class SystemClass {
 public:
