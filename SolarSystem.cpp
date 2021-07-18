@@ -30,7 +30,7 @@ Sun::Sun(){
 void Sun::draw(sf::RenderTarget& target, sf::RenderStates states)const{
     states.transform *= getTransform();
     target.draw(mass, states); 
-    target.draw(hitbox, states); 
+    // target.draw(hitbox, states); 
 }
 
 
@@ -66,7 +66,7 @@ Planet::Planet(int radius, int dist, sf::Color color, Sun* systemCenter){
 void Planet::draw(sf::RenderTarget& target, sf::RenderStates states)const{
     states.transform *= getTransform();
     target.draw(mass, states); 
-    target.draw(hitbox, states); 
+    // target.draw(hitbox, states); 
 }
 
 
