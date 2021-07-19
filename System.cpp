@@ -70,19 +70,11 @@ void SystemClass::runWindow() {
 	sf::Time dt; //SFML time object for tracking time between updates
 	sf::Time timer; //Currently not used
 
-    // Move the next two lines to a prototype scene when ready 
+    // Move the next lines (to 87) to a prototype scene when ready 
 	Ship ship;
 	AlienShip alien(&ship);
 	PrototypeScene scene;
-    /*	
-	int num = 4;
-	GameObject* solar[num];
-	solar[0] = new Star(10, sf::Color(28, 57, 5), 3, sf::Color(255, 154, 1), sf::Vector2f(300, 0));
-	solar[1] = new Planet(3, 30, sf::Color::Green, solar[0], 0.01);
-	solar[2] = new Planet(5, 60, sf::Color::Blue, solar[0], 0.01);
-	solar[3] = new Planet(10, 90, sf::Color::Magenta, solar[0], 0.01);
-	PlanetarySystem solarSystem(sf::Vector2f (200, 400), solar, num);
-	*/
+	// Create a planetary system
 	Star sun(2000, sf::Color(28, 57, 5), 3, sf::Color(255, 154, 1), sf::Vector2f(300, -10000));
 	Planet a(50, 3000, sf::Color::Green, &sun, 0.01);
 	Planet b(80, 4000, sf::Color::Blue, &sun, 0.001);
@@ -130,10 +122,8 @@ void SystemClass::runWindow() {
 		g.update(dt);
 		h.update(dt);
 		i.update(dt);
-		// solarSystem.update(dt);
 		window.draw(ship);
 		window.draw(alien);
-		// window.draw(solarSystem);
 		window.draw(sun);
 		window.draw(a);
 		window.draw(b);
