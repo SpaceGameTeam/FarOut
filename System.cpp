@@ -74,7 +74,8 @@ void SystemClass::runWindow() {
 	Ship ship;
 	AlienShip alien(&ship);
 	PrototypeScene scene;
-	Sun sun;
+	PlanetarySystem 
+	Star sun;
 	Planet mercury(3, 50, sf::Color::Green, &sun);
 	
 	while (window.isOpen()) { //This is the game loop

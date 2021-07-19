@@ -1,16 +1,18 @@
-// Solar System class
+// Planetary System class
 
 
-#ifndef SOLARSYS 
-#define SOLARSYS
+#ifndef PLSYS 
+#define PLSYS
 #include "GameObject.h"
 #include <math.h>
 
-class Sun : public GameObject {
+class Star : public GameObject {
     public:
-        Sun();
+        Star();
+        Star(int size, sf::Color outline, int outlineWidth, sf::Color fill, sf::Vector2f position);
         void draw(sf::RenderTarget& target, sf::RenderStates states)const;
         void update(sf::Time dt);
+        void move(sf::Time dt);
 
     private:
         sf::CircleShape mass;
@@ -22,7 +24,7 @@ class Sun : public GameObject {
 class Planet : public GameObject {
     public:
         // Could add to these parameters texture, rings, moons
-        Planet(int radius, int orbitDistance, sf::Color color, Sun* systemCenter);
+        Planet(int radius, int orbitDistance, sf::Color color, Star* systemCenter, float movementFactor);
         void draw(sf::RenderTarget& target, sf::RenderStates states)const;
         void update(sf::Time dt);
         void move(sf::Time dt);
@@ -33,11 +35,22 @@ class Planet : public GameObject {
         int orbitDistance;
         float orbitAngle;
         sf::Vector2f movement;
-        Sun* sun;
+        Star* star;
+        float angleChange;
 };
 
 
-
+class PlanetarySystem : public GameObject {
+    public: 
+        PlanetarySystem(sf::Vector2f position, GameObject** systemObjects);
+        void draw(sf::RenderTarget& target, sf::RenderStates states)const;
+        void update(sf::Time dt);
+        void move(sf::Time dt);
+    
+    private:
+        GameObject** gravityBoundObjects;
+        int numObjects;
+};
 
 
 #endif
