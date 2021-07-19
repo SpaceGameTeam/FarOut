@@ -74,6 +74,7 @@ void SystemClass::runWindow() {
 	Ship ship;
 	AlienShip alien(&ship);
 	PrototypeScene scene;
+    /*	
 	int num = 4;
 	GameObject* solar[num];
 	solar[0] = new Star(10, sf::Color(28, 57, 5), 3, sf::Color(255, 154, 1), sf::Vector2f(300, 0));
@@ -81,6 +82,17 @@ void SystemClass::runWindow() {
 	solar[2] = new Planet(5, 60, sf::Color::Blue, solar[0], 0.01);
 	solar[3] = new Planet(10, 90, sf::Color::Magenta, solar[0], 0.01);
 	PlanetarySystem solarSystem(sf::Vector2f (200, 400), solar, num);
+	*/
+	Star sun(2000, sf::Color(28, 57, 5), 3, sf::Color(255, 154, 1), sf::Vector2f(300, -10000));
+	Planet a(50, 3000, sf::Color::Green, &sun, 0.01);
+	Planet b(80, 4000, sf::Color::Blue, &sun, 0.001);
+	Planet c(100, 5000, sf::Color::Magenta, &sun, 0.005);
+	Planet d(40, 8000, sf::Color::Yellow, &sun, 0.001);
+	Planet e(1000, 10000, sf::Color::Cyan, &sun, 0.0009);
+	Planet f(750, 15000, sf::Color::Green, &sun, 0.0008);
+	Planet g(300, 18000, sf::Color::Blue, &sun, 0.0009);
+	Planet h(300, 20000, sf::Color::Yellow, &sun, 0.002);
+	Planet i(30, 25000, sf::Color::Yellow, &sun, 0.003);
 	
 	while (window.isOpen()) { //This is the game loop
 
@@ -108,19 +120,41 @@ void SystemClass::runWindow() {
 		alien.move(dt);
 		ship.update(dt);
 		alien.update(dt);
-		solarSystem.update(dt);
+		sun.update(dt);
+		a.update(dt);
+		b.update(dt);
+		c.update(dt);
+		d.update(dt);
+		e.update(dt);
+		f.update(dt);
+		g.update(dt);
+		h.update(dt);
+		i.update(dt);
+		// solarSystem.update(dt);
 		window.draw(ship);
 		window.draw(alien);
-		window.draw(solarSystem);
+		// window.draw(solarSystem);
+		window.draw(sun);
+		window.draw(a);
+		window.draw(b);
+		window.draw(c);
+		window.draw(d);
+		window.draw(e);
+		window.draw(f);
+		window.draw(g);
+		window.draw(h);
+		window.draw(i);
 		view.setCenter(ship.getPosition());
 		window.setView(view);
 
 		window.display();
 	}
 
+	/*
 	for(int i = 0; i < num; ++i){
 		delete solar[i];
 	}
+	*/
 }
 
 
