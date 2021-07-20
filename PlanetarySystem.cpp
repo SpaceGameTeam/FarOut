@@ -14,6 +14,7 @@
 
 
 
+// Default constructor makes a tiny star
 Star::Star(){
     radius = 10;
     mass.setRadius(radius);
@@ -32,6 +33,7 @@ Star::Star(){
 
 
 
+// Constructor with arguments 
 Star::Star(int size, sf::Color outline, int outlineWidth, sf::Color fill, sf::Vector2f position){
     radius = size;
     mass.setRadius(size);
@@ -47,6 +49,7 @@ Star::Star(int size, sf::Color outline, int outlineWidth, sf::Color fill, sf::Ve
     setPosition(position);
     setOrigin(radius, radius);
 }
+
 
 
 void Star::draw(sf::RenderTarget& target, sf::RenderStates states)const{
@@ -114,6 +117,10 @@ void Planet::update(sf::Time dt){
 
 
 
+// Creates a system that's just an array, where systemObjects[0] is the star everything else orbits
+// The array is created by the client and passed in as an argument
+// The constructor also takes the position and number of objects total in the system as arguments
+// (counting the star)
 PlanetarySystem::PlanetarySystem(sf::Vector2f position, GameObject** systemObjects, int numObj){
     gravityBoundObjects = systemObjects; 
     numObjects = numObj;
@@ -122,6 +129,7 @@ PlanetarySystem::PlanetarySystem(sf::Vector2f position, GameObject** systemObjec
 
 
 
+// Draw each object in the planetary system 
 void PlanetarySystem::draw(sf::RenderTarget& target, sf::RenderStates states)const{
     for (int i = 0; i < numObjects; ++i){
         gravityBoundObjects[i]->draw(target, states);
@@ -130,6 +138,7 @@ void PlanetarySystem::draw(sf::RenderTarget& target, sf::RenderStates states)con
 
 
 
+// Update each object. This doesn't seem to work -- maybe a timing issue???
 void PlanetarySystem::update(sf::Time dt){
     for (int i = 0; i < numObjects; ++i){
         gravityBoundObjects[i]->update(dt);

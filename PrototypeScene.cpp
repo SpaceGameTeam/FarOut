@@ -29,7 +29,7 @@ void Background::draw(sf::RenderTarget& target, sf::RenderStates states)const {
 
 
 //Scene stuff
-
+// Some of the data members are dynamically allocated because constructors with arguments were written
 PrototypeScene::PrototypeScene() {
 	alien = new AlienShip(&ship);
 	sun = new Star(2000, sf::Color(28, 57, 5), 3, sf::Color(255, 154, 1), sf::Vector2f(300, -10000));
@@ -56,6 +56,8 @@ PrototypeScene::~PrototypeScene() {
 
 
 
+
+// Move anything that move gets called on
 void PrototypeScene::move(sf::Time dt){
 	ship.move(dt);
 	alien->move(dt);
@@ -64,6 +66,7 @@ void PrototypeScene::move(sf::Time dt){
 
 
 
+// Update data members that get updated
 void PrototypeScene::update(sf::Time dt) {
 	bg.update(dt);
 	ship.update(dt);
@@ -83,6 +86,7 @@ void PrototypeScene::update(sf::Time dt) {
 
 
 
+// Draw all the objects in the scene
 void PrototypeScene::draw(sf::RenderWindow& window) {
 	window.draw(bg);
 	window.draw(ship);
@@ -102,6 +106,7 @@ void PrototypeScene::draw(sf::RenderWindow& window) {
 
 
 
+// Here so the system class can call something to know where the ship is for window.setCenter()
 sf::Vector2f PrototypeScene::getCenter(){
 	return ship.getPosition();
 }

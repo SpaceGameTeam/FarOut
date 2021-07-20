@@ -134,7 +134,7 @@ void AlienShip::update(sf::Time dt){
 
 
 
-// Move the ship
+// Move the alien ship
 // Overrides Transformable move function to allow storage of movement as AlienShip class data member
 void AlienShip::move(sf::Time dt){
     sf::Transformable::move(movement * dt.asSeconds());
