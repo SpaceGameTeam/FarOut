@@ -5,6 +5,7 @@
 #include "Scene.h"
 #include "GameObject.h"
 
+const int PLANETS = 9;
 
 
 class Background : public GameObject {
@@ -31,6 +32,11 @@ public:
 
 private:
 	Background bg;
+	Ship ship;
+	AlienShip* alien;
+	Star* sun;
+	Planet* planet[PLANETS];
+	Asteroid asteroid;
 
 };
 #endif

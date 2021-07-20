@@ -71,21 +71,21 @@ void SystemClass::runWindow() {
 	sf::Time timer; //Currently not used
 
     // Move the next lines (to 87) to a prototype scene when ready 
-	Ship ship;
-	AlienShip alien(&ship);
+	// Ship ship;
+	// AlienShip alien(&ship);
 	PrototypeScene scene;
 	// Create a planetary system
-	Star sun(2000, sf::Color(28, 57, 5), 3, sf::Color(255, 154, 1), sf::Vector2f(300, -10000));
-	Planet a(50, 3000, sf::Color::Green, &sun, 0.01);
-	Planet b(80, 4000, sf::Color::Blue, &sun, 0.001);
-	Planet c(100, 5000, sf::Color::Magenta, &sun, 0.005);
-	Planet d(40, 8000, sf::Color::Yellow, &sun, 0.001);
-	Planet e(1000, 10000, sf::Color::Cyan, &sun, 0.0009);
-	Planet f(750, 15000, sf::Color::Green, &sun, 0.0008);
-	Planet g(300, 18000, sf::Color::Blue, &sun, 0.0009);
-	Planet h(300, 20000, sf::Color::Yellow, &sun, 0.002);
-	Planet i(30, 25000, sf::Color::Yellow, &sun, 0.003);
-	Asteroid asteroid;
+	// Star sun(2000, sf::Color(28, 57, 5), 3, sf::Color(255, 154, 1), sf::Vector2f(300, -10000));
+	// Planet a(50, 3000, sf::Color::Green, &sun, 0.01);
+	// Planet b(80, 4000, sf::Color::Blue, &sun, 0.001);
+	// Planet c(100, 5000, sf::Color::Magenta, &sun, 0.005);
+	// Planet d(40, 8000, sf::Color::Yellow, &sun, 0.001);
+	// Planet e(1000, 10000, sf::Color::Cyan, &sun, 0.0009);
+	// Planet f(750, 15000, sf::Color::Green, &sun, 0.0008);
+	// Planet g(300, 18000, sf::Color::Blue, &sun, 0.0009);
+	// Planet h(300, 20000, sf::Color::Yellow, &sun, 0.002);
+	// Planet i(30, 25000, sf::Color::Yellow, &sun, 0.003);
+	// Asteroid asteroid;
 	while (window.isOpen()) { //This is the game loop
 
 		//Event check

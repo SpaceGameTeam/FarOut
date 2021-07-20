@@ -30,7 +30,25 @@ void Background::draw(sf::RenderTarget& target, sf::RenderStates states)const {
 
 //Scene stuff
 
-PrototypeScene::PrototypeScene() {}
+PrototypeScene::PrototypeScene() {
+	alien = new AlienShip(&ship);
+	sun = new Star(2000, sf::Color(28, 57, 5), 3, sf::Color(255, 154, 1), sf::Vector2f(300, -10000));
+}
+
+
+PrototypeScene::~PrototypeScene() {
+	delete alien;
+	delete sun;
+	planet[0] = new Planet(50, 3000, sf::Color::Green, sun, 0.01);
+	planet[1] = new Planet(80, 4000, sf::Color::Blue, sun, 0.001);
+	planet[2] = new Planet(100, 5000, sf::Color::Magenta, sun, 0.005);
+	planet[3] = new Planet(40, 8000, sf::Color::Yellow, sun, 0.001);
+	planet[4] = new Planet(1000, 10000, sf::Color::Cyan, sun, 0.0009);
+	planet[5] = new Planet(750, 15000, sf::Color::Green, sun, 0.0008);
+	planet[6] = new Planet(300, 18000, sf::Color::Blue, sun, 0.0009);
+	planet[7] = new Planet(300, 20000, sf::Color::Yellow, sun, 0.002);
+	planet[8] = new Planet(30, 25000, sf::Color::Yellow, sun, 0.003);
+}
 
 void PrototypeScene::update(sf::Time dt) {
 	bg.update(dt);
