@@ -32,8 +32,8 @@ void Background::draw(sf::RenderTarget& target, sf::RenderStates states)const {
 // Some of the data members are dynamically allocated because constructors with arguments were written
 PrototypeScene::PrototypeScene() {
 	alien = new AlienShip(&ship);
+	/*
 	sun = new Star(30, sf::Color(219, 57, 5), 3, sf::Color(255, 154, 1), sf::Vector2f(300, -100));
-	
 	a = new Planet(5, 100, sf::Color::Green, sun, 0.01);
 	b = new Planet(8, 140, sf::Color::Blue, sun, 0.001);
 	c = new Planet(10, 180, sf::Color::Magenta, sun, 0.005);
@@ -43,7 +43,6 @@ PrototypeScene::PrototypeScene() {
 	g = new Planet(10, 500, sf::Color::Blue, sun, 0.0009);
 	h = new Planet(10, 540, sf::Color::Yellow, sun, 0.002);
 	i = new Planet(3, 600, sf::Color::Yellow, sun, 0.003);
-	/*
 	planet[0] = new Planet(50, 1000, sf::Color::Green, sun, 0.01);
 	planet[1] = new Planet(80, 2000, sf::Color::Blue, sun, 0.001);
 	planet[2] = new Planet(100, 3000, sf::Color::Magenta, sun, 0.005);
@@ -86,6 +85,7 @@ void PrototypeScene::update(sf::Time dt) {
 	ship.update(dt);
 	alien->update(dt);
 	asteroid.update(dt);
+	/*
 	sun->update(dt);
 	a->update(dt);
 	b->update(dt);
@@ -96,6 +96,7 @@ void PrototypeScene::update(sf::Time dt) {
 	g->update(dt);
 	h->update(dt);
 	i->update(dt);
+	*/
 }
 
 
@@ -105,6 +106,7 @@ void PrototypeScene::draw(sf::RenderWindow& window) {
 	window.draw(bg);
 	window.draw(ship);
 	window.draw(*alien);
+	/*
 	window.draw(*sun);
 	window.draw(*a);
 	window.draw(*b);
@@ -115,7 +117,6 @@ void PrototypeScene::draw(sf::RenderWindow& window) {
 	window.draw(*g);
 	window.draw(*h);
 	window.draw(*i);
-	/*
 	window.draw(*planet[0]);
 	window.draw(*planet[1]);
 	window.draw(*planet[2]);

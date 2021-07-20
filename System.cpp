@@ -84,25 +84,50 @@ void SystemClass::runWindow() {
 		//starts it from zero again. This is the amount of time since the last
 		//time we came through this loop
 		dt = clock.restart();
-/*
-	sun = new Star(30, sf::Color(219, 57, 5), 3, sf::Color(255, 154, 1), sf::Vector2f(300, -100));
-	
-	a = new Planet(5, 100, sf::Color::Green, sun, 0.01);
-	b = new Planet(8, 140, sf::Color::Blue, sun, 0.001);
-	c = new Planet(10, 180, sf::Color::Magenta, sun, 0.005);
-	d = new Planet(4, 200, sf::Color::Yellow, sun, 0.001);
-	e = new Planet(50, 350, sf::Color::Cyan, sun, 0.0009);
-	f = new Planet(25, 460, sf::Color::Green, sun, 0.0008);
-	g = new Planet(10, 500, sf::Color::Blue, sun, 0.0009);
-	h = new Planet(10, 540, sf::Color::Yellow, sun, 0.002);
-	i = new Planet(3, 600, sf::Color::Yellow, sun, 0.003);
-	*/
+		Star sun(30, sf::Color(219, 57, 5), 3, sf::Color(255, 154, 1), sf::Vector2f(300, -100));
+		Planet a(5, 100, sf::Color::Green, &sun, 0.01);
+		Planet b(8, 140, sf::Color::Blue, &sun, 0.001);
+		Planet c(10, 180, sf::Color::Magenta, &sun, 0.005);
+		Planet d(4, 200, sf::Color::Yellow, &sun, 0.001);
+		Planet e(50, 350, sf::Color::Cyan, &sun, 0.0009);
+		Planet f(25, 460, sf::Color::Green, &sun, 0.0008);
+		Planet g(10, 500, sf::Color::Blue, &sun, 0.0009);
+		Planet h (10, 540, sf::Color::Yellow, &sun, 0.002);
+		Planet i(3, 600, sf::Color::Yellow, &sun, 0.003);
+		Planet j(2, 15, sf::Color::White, &g, 0.01);
+		Planet k(2, 10, sf::Color::White, &d, 0.03);
 
 		window.clear();
 
 		update(dt);
 		scene.update(dt);
+		sun.update(dt);
+		a.update(dt);
+		b.update(dt);
+		c.update(dt);
+		d.update(dt);
+		e.update(dt);
+		f.update(dt);
+		g.update(dt);
+		h.update(dt);
+		i.update(dt);
+		j.update(dt);
+		k.update(dt);
 		scene.draw(window);
+		window.draw(sun);
+		window.draw(a);
+		window.draw(b);
+		window.draw(c);
+		window.draw(d);
+		window.draw(e);
+		window.draw(f);
+		window.draw(g);
+		window.draw(h);
+		window.draw(i);
+		window.draw(j);
+		window.draw(k);
+		
+
 		scene.move(dt);
 		view.setCenter(scene.getCenter());
 		window.setView(view);
