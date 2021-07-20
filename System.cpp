@@ -83,6 +83,8 @@ void SystemClass::runWindow() {
 	Planet i(3, 600, sf::Color::Yellow, &sun, 0.003);
 	Planet j(2, 15, sf::Color::White, &g, 0.01);
 	Planet k(2, 10, sf::Color::White, &d, 0.03);
+	Planet l(2, 30, sf::Color::White, &i, 0.013);
+	Planet m(1, 17, sf::Color::White, &l, 0.05);
 	int numAsteroids = 100;
 	Planet* asteroid[numAsteroids];
 	for (int i = 0; i < numAsteroids; ++i) {
@@ -125,6 +127,8 @@ void SystemClass::runWindow() {
 		i.update(dt);
 		j.update(dt);
 		k.update(dt);
+		l.update(dt);
+		m.update(dt);
 		for (int i = 0; i < numAsteroids; ++i) {
 			asteroid[i]->update(dt);
 		}
@@ -141,6 +145,8 @@ void SystemClass::runWindow() {
 		window.draw(i);
 		window.draw(j);
 		window.draw(k);
+		window.draw(l);
+		window.draw(m);
 		for (int i = 0; i < numAsteroids; ++i) {
 			window.draw(*asteroid[i]);
 		}
