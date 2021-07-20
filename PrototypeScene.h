@@ -4,6 +4,10 @@
 #define PROTO
 #include "Scene.h"
 #include "GameObject.h"
+#include "AlienShip.h"
+#include "Ship.h"
+#include "PlanetarySystem.h"
+#include "Asteroid.h"
 
 const int PLANETS = 9;
 
@@ -26,6 +30,7 @@ private:
 class PrototypeScene : public Scene {
 public:
 	PrototypeScene();
+	~PrototypeScene();
 
 	void update(sf::Time dt);
 	void draw(sf::RenderWindow& window);

@@ -70,22 +70,7 @@ void SystemClass::runWindow() {
 	sf::Time dt; //SFML time object for tracking time between updates
 	sf::Time timer; //Currently not used
 
-    // Move the next lines (to 87) to a prototype scene when ready 
-	// Ship ship;
-	// AlienShip alien(&ship);
 	PrototypeScene scene;
-	// Create a planetary system
-	// Star sun(2000, sf::Color(28, 57, 5), 3, sf::Color(255, 154, 1), sf::Vector2f(300, -10000));
-	// Planet a(50, 3000, sf::Color::Green, &sun, 0.01);
-	// Planet b(80, 4000, sf::Color::Blue, &sun, 0.001);
-	// Planet c(100, 5000, sf::Color::Magenta, &sun, 0.005);
-	// Planet d(40, 8000, sf::Color::Yellow, &sun, 0.001);
-	// Planet e(1000, 10000, sf::Color::Cyan, &sun, 0.0009);
-	// Planet f(750, 15000, sf::Color::Green, &sun, 0.0008);
-	// Planet g(300, 18000, sf::Color::Blue, &sun, 0.0009);
-	// Planet h(300, 20000, sf::Color::Yellow, &sun, 0.002);
-	// Planet i(30, 25000, sf::Color::Yellow, &sun, 0.003);
-	// Asteroid asteroid;
 	while (window.isOpen()) { //This is the game loop
 
 		//Event check
@@ -103,52 +88,14 @@ void SystemClass::runWindow() {
 		window.clear();
 
 		update(dt);
-		// Move the next 9 lines to a prototype scene when ready 
-		// Draw the ship
-		// This is just here for testing
 		scene.update(dt);
 		scene.draw(window);
 		scene.move(dt);
-		// ship.move(dt);
-		// alien.move(dt);
-		// ship.update(dt);
-		// alien.update(dt);
-		// sun.update(dt);
-		// a.update(dt);
-		// b.update(dt);
-		// c.update(dt);
-		// d.update(dt);
-		// e.update(dt);
-		// f.update(dt);
-		// g.update(dt);
-		// h.update(dt);
-		// i.update(dt);
-		// window.draw(ship);
-		// window.draw(alien);
-		// window.draw(sun);
-		// window.draw(a);
-		// window.draw(b);
-		// window.draw(c);
-		// window.draw(d);
-		// window.draw(e);
-		// window.draw(f);
-		// window.draw(g);
-		// window.draw(h);
-		// window.draw(i);
-		// asteroid.move(dt);
-		// asteroid.update(dt);
-		// window.draw(asteroid);
 		view.setCenter(scene.getCenter());
 		window.setView(view);
 
 		window.display();
 	}
-
-	/*
-	for(int i = 0; i < num; ++i){
-		delete solar[i];
-	}
-	*/
 }
 
 
