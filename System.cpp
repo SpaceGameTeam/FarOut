@@ -85,7 +85,7 @@ void SystemClass::runWindow() {
 	Planet g(300, 18000, sf::Color::Blue, &sun, 0.0009);
 	Planet h(300, 20000, sf::Color::Yellow, &sun, 0.002);
 	Planet i(30, 25000, sf::Color::Yellow, &sun, 0.003);
-	
+	Asteroid asteroid;
 	while (window.isOpen()) { //This is the game loop
 
 		//Event check
@@ -134,6 +134,9 @@ void SystemClass::runWindow() {
 		window.draw(g);
 		window.draw(h);
 		window.draw(i);
+		asteroid.move(dt);
+		asteroid.update(dt);
+		window.draw(asteroid);
 		view.setCenter(ship.getPosition());
 		window.setView(view);
 

@@ -15,6 +15,7 @@
 #include "AlienShip.h"
 #include "PrototypeScene.h"
 #include "PlanetarySystem.h"
+#include "Asteroid.h"
 
 class SystemClass {
 public:
