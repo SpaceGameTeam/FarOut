@@ -5,17 +5,10 @@
 
 #include "Scene.h"
 
-// #pragma once
 
 #ifndef SYSCLS
 #define SYSCLS
-
-// Would like to remove #include of Ship.h, just here to test the ship drawing
-// #include "Ship.h"
-// #include "AlienShip.h"
 #include "PrototypeScene.h"
-// #include "PlanetarySystem.h"
-// #include "Asteroid.h"
 
 class SystemClass {
 public:

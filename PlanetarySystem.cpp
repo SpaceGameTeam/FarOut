@@ -97,17 +97,10 @@ void Planet::draw(sf::RenderTarget& target, sf::RenderStates states)const{
 
 
 void Planet::update(sf::Time dt){
-    // sf::Vector2f u = sf::Vector2f (star->getPosition().x + orbitDistance, 0);
-    // sf::Vector2f v = getPosition();
-    // float dotProduct = u.x * v.x + u.y * v.y;
-    // orbitAngle = dotProduct / (orbitDistance * orbitDistance);
-    // float addAngle = dt.asSeconds() / 36000000000000;
-    // orbitAngle += addAngle / 10000000000;
     orbitAngle += angleChange;
     if (orbitAngle > 360){
         orbitAngle -= 360;
     }
-    // movement = sf::Vector2f (star->getPosition().x + orbitDistance * cos(orbitAngle), star->getPosition().y + orbitDistance * sin(orbitAngle)) - getPosition();
     setPosition(sf::Vector2f (star->getPosition().x + orbitDistance * cos(orbitAngle), star->getPosition().y + orbitDistance * sin(orbitAngle)));
 }
 
