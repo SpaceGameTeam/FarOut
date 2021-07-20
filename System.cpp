@@ -85,7 +85,7 @@ void SystemClass::runWindow() {
 	Planet k(2, 10, sf::Color::White, &d, 0.03);
 	Planet l(2, 30, sf::Color::White, &i, 0.013);
 	Planet m(1, 17, sf::Color::White, &l, 0.05);
-	int numAsteroids = 100;
+	const int numAsteroids = 100;
 	Planet* asteroid[numAsteroids];
 	for (int i = 0; i < numAsteroids; ++i) {
 		srand(time(NULL));
