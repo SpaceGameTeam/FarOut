@@ -74,8 +74,8 @@ void SystemClass::runWindow() {
 	sf::Time timer; //Currently not used
 
     // Remove this when done testing ship implementation
-	Ship ship;
-	
+	//Ship ship;
+	Asteroid asteroid;
 	while (window.isOpen()) { //This is the game loop
 
 		//Event check
@@ -96,10 +96,10 @@ void SystemClass::runWindow() {
 		// Remove the next 8 lines when done testing ship implementation
 		// Draw the ship
 		// This is just here for testing
-		ship.move(dt);
-		ship.update(dt);
-		window.draw(ship);
-		view.setCenter(ship.getPosition());
+		asteroid.move(dt);
+		asteroid.update(dt);
+		window.draw(asteroid);
+		view.setCenter(asteroid.getPosition());
 		window.setView(view);
 
 		window.display();
