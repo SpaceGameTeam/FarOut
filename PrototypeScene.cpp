@@ -32,16 +32,28 @@ void Background::draw(sf::RenderTarget& target, sf::RenderStates states)const {
 // Some of the data members are dynamically allocated because constructors with arguments were written
 PrototypeScene::PrototypeScene() {
 	alien = new AlienShip(&ship);
-	sun = new Star(2000, sf::Color(28, 57, 5), 3, sf::Color(255, 154, 1), sf::Vector2f(300, -10000));
-	planet[0] = new Planet(50, 3000, sf::Color::Green, sun, 0.01);
-	planet[1] = new Planet(80, 4000, sf::Color::Blue, sun, 0.001);
-	planet[2] = new Planet(100, 5000, sf::Color::Magenta, sun, 0.005);
-	planet[3] = new Planet(40, 8000, sf::Color::Yellow, sun, 0.001);
-	planet[4] = new Planet(1000, 10000, sf::Color::Cyan, sun, 0.0009);
-	planet[5] = new Planet(750, 15000, sf::Color::Green, sun, 0.0008);
-	planet[6] = new Planet(300, 18000, sf::Color::Blue, sun, 0.0009);
-	planet[7] = new Planet(300, 20000, sf::Color::Yellow, sun, 0.002);
-	planet[8] = new Planet(30, 25000, sf::Color::Yellow, sun, 0.003);
+	sun = new Star(30, sf::Color(219, 57, 5), 3, sf::Color(255, 154, 1), sf::Vector2f(300, -100));
+	
+	a = new Planet(5, 100, sf::Color::Green, sun, 0.01);
+	b = new Planet(8, 140, sf::Color::Blue, sun, 0.001);
+	c = new Planet(10, 180, sf::Color::Magenta, sun, 0.005);
+	d = new Planet(4, 200, sf::Color::Yellow, sun, 0.001);
+	e = new Planet(50, 350, sf::Color::Cyan, sun, 0.0009);
+	f = new Planet(25, 460, sf::Color::Green, sun, 0.0008);
+	g = new Planet(10, 500, sf::Color::Blue, sun, 0.0009);
+	h = new Planet(10, 540, sf::Color::Yellow, sun, 0.002);
+	i = new Planet(3, 600, sf::Color::Yellow, sun, 0.003);
+	/*
+	planet[0] = new Planet(50, 1000, sf::Color::Green, sun, 0.01);
+	planet[1] = new Planet(80, 2000, sf::Color::Blue, sun, 0.001);
+	planet[2] = new Planet(100, 3000, sf::Color::Magenta, sun, 0.005);
+	planet[3] = new Planet(40, 4000, sf::Color::Yellow, sun, 0.001);
+	planet[4] = new Planet(500, 5000, sf::Color::Cyan, sun, 0.0009);
+	planet[5] = new Planet(250, 10000, sf::Color::Green, sun, 0.0008);
+	planet[6] = new Planet(100, 12000, sf::Color::Blue, sun, 0.0009);
+	planet[7] = new Planet(100, 13000, sf::Color::Yellow, sun, 0.002);
+	planet[8] = new Planet(30, 14000, sf::Color::Yellow, sun, 0.003);
+	*/
 }
 
 
@@ -49,9 +61,11 @@ PrototypeScene::PrototypeScene() {
 PrototypeScene::~PrototypeScene() {
 	delete alien;
 	delete sun;
+	/*
 	for (int i = 0; i < PLANETS; ++i){
 		delete planet[i];
 	}
+	*/
 }
 
 
@@ -73,15 +87,15 @@ void PrototypeScene::update(sf::Time dt) {
 	alien->update(dt);
 	asteroid.update(dt);
 	sun->update(dt);
-	planet[0]->update(dt);
-	planet[1]->update(dt);
-	planet[2]->update(dt);
-	planet[3]->update(dt);
-	planet[4]->update(dt);
-	planet[5]->update(dt);
-	planet[6]->update(dt);
-	planet[7]->update(dt);
-	planet[8]->update(dt);
+	a->update(dt);
+	b->update(dt);
+	c->update(dt);
+	d->update(dt);
+	e->update(dt);
+	f->update(dt);
+	g->update(dt);
+	h->update(dt);
+	i->update(dt);
 }
 
 
@@ -92,6 +106,16 @@ void PrototypeScene::draw(sf::RenderWindow& window) {
 	window.draw(ship);
 	window.draw(*alien);
 	window.draw(*sun);
+	window.draw(*a);
+	window.draw(*b);
+	window.draw(*c);
+	window.draw(*d);
+	window.draw(*e);
+	window.draw(*f);
+	window.draw(*g);
+	window.draw(*h);
+	window.draw(*i);
+	/*
 	window.draw(*planet[0]);
 	window.draw(*planet[1]);
 	window.draw(*planet[2]);
@@ -101,6 +125,7 @@ void PrototypeScene::draw(sf::RenderWindow& window) {
 	window.draw(*planet[6]);
 	window.draw(*planet[7]);
 	window.draw(*planet[8]);
+	*/
 	window.draw(asteroid);
 }
 

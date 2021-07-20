@@ -107,6 +107,7 @@ void AlienShip::setAlienShipPoints(sf::ConvexShape * shape) {
 	shape->setPoint(4, sf::Vector2f(50.f, -30.f));
 	shape->setPoint(5, sf::Vector2f(70.f, -15.f));
 	shape->setPoint(6, sf::Vector2f(50.f, 0.f));
+	shape->scale(0.25f, 0.25f);
 }
 
 
@@ -127,7 +128,7 @@ void AlienShip::update(sf::Time dt){
 	sf::Vector2f diff = ship->getPosition() + sf::Vector2f(300, 500) - getPosition();
 	if (abs(diff.x) > 10 || abs(diff.y) > 10) {
 		float magnitude = sqrt (diff.x * diff.x + diff.y * diff.y);
-		movementSpeed += 0.01 * (magnitude - (distanceFromShip - 300));
+		movementSpeed += 0.001 * (magnitude - (distanceFromShip - 300));
 		movement += movementSpeed * dt.asSeconds() * diff / magnitude;
 	}
 }

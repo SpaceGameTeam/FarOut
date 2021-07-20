@@ -8,7 +8,7 @@ Asteroid::Asteroid() {
 	// Can be exchanged with other functions to create other ships
 	setMercuryPoints();
 
-	setPosition(0, 0);
+	setPosition(-300, -200);
 }
 
 
@@ -128,7 +128,7 @@ void Asteroid::setMercuryPoints() {
 
 	Body.setOutlineThickness(3.f);
 	Body.setFillColor(sf::Color(184,115,52,255));
-	//Body.scale(1f, 1f);
+	Body.scale(0.3f, 0.3f);
 }
 
 

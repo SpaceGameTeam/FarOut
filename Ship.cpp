@@ -10,7 +10,7 @@ Ship::Ship(){
 	body.setOutlineThickness(3.f);
 	body.setFillColor(sf::Color::Blue);
 	body.scale(0.75f, 0.75f);
-
+	
 	setBlueShipPoints(&hitbox);
 	hitbox.setOutlineThickness(3.f);
 	hitbox.setFillColor(sf::Color::Transparent);
@@ -18,6 +18,7 @@ Ship::Ship(){
 	hitbox.scale(0.75f, 0.75f);
 
     setPosition(0, 0);
+	setRotation(180);
 }
 
 

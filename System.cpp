@@ -84,6 +84,19 @@ void SystemClass::runWindow() {
 		//starts it from zero again. This is the amount of time since the last
 		//time we came through this loop
 		dt = clock.restart();
+/*
+	sun = new Star(30, sf::Color(219, 57, 5), 3, sf::Color(255, 154, 1), sf::Vector2f(300, -100));
+	
+	a = new Planet(5, 100, sf::Color::Green, sun, 0.01);
+	b = new Planet(8, 140, sf::Color::Blue, sun, 0.001);
+	c = new Planet(10, 180, sf::Color::Magenta, sun, 0.005);
+	d = new Planet(4, 200, sf::Color::Yellow, sun, 0.001);
+	e = new Planet(50, 350, sf::Color::Cyan, sun, 0.0009);
+	f = new Planet(25, 460, sf::Color::Green, sun, 0.0008);
+	g = new Planet(10, 500, sf::Color::Blue, sun, 0.0009);
+	h = new Planet(10, 540, sf::Color::Yellow, sun, 0.002);
+	i = new Planet(3, 600, sf::Color::Yellow, sun, 0.003);
+	*/
 
 		window.clear();
 

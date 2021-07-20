@@ -42,7 +42,16 @@ private:
 	Ship ship;
 	AlienShip* alien;
 	Star* sun;
-	Planet* planet[PLANETS];
+	// Planet* planet[PLANETS];
+	Planet* a;
+	Planet* b;
+	Planet* c;
+	Planet* d;
+	Planet* e;
+	Planet* f;
+	Planet* g;
+	Planet* h;
+	Planet* i;
 	Asteroid asteroid;
 	sf::Vector2f center;
 
