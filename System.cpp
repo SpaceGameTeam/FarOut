@@ -42,8 +42,13 @@ bool SystemClass::popScene()
 
 
 // Add a scene to the collection
+// Returns true for success, false if there is already a scene at that key value
 bool SystemClass::addScene(int id, std::shared_ptr<Scene> toadd)
 {
+	if(!sceneCollection[id]) {
+	  sceneCollection[id] = toadd;
+	  return true; 
+	}
 
 	return false;
 }
@@ -51,13 +56,20 @@ bool SystemClass::addScene(int id, std::shared_ptr<Scene> toadd)
 
 
 // Return a scene from the scene collection
+// Returns NULL if no scene at that id
 std::shared_ptr<Scene> SystemClass::getScene(int id)
 {
+	std::shared_ptr<Scene> temp = sceneCollection[id];
+
+	if (temp)
+	  return temp;
 
 	return NULL;
 }
 
 
+
+/*  Not sure if this is usefull now...
 
 // Remove a scene from the scene collection 
 bool SystemClass::removeScene(int id)
@@ -65,7 +77,30 @@ bool SystemClass::removeScene(int id)
 
 	return false;
 }
+*/
 
+
+
+// Add data to the collection
+// Returns true for success, false if there is already data at that key value
+bool SystemClass::addData(std::string name, float toadd)
+{
+	if(!dataCollection[name]) {
+	  dataCollection[name] = toadd;
+	  return true; 
+	}
+
+	return false;
+}
+
+
+
+// Return data from the scene collection
+// Check for NULL?
+float SystemClass::getData(std::string name)
+{
+	return dataCollection[name];
+}
 
 
 // This function starts the window and runs the game loop
