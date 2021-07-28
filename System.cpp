@@ -18,10 +18,11 @@ SystemClass::SystemClass() :
 
 
 // Push to the sceneStack to be call during update and draw
-void SystemClass::pushScene(Scene * toPush)
+void SystemClass::pushScene(std::shared_ptr<Scene> toPush)
 {
 	sceneStack.push_front(toPush);
 
+  return;
 }
 
 
@@ -30,17 +31,24 @@ void SystemClass::pushScene(Scene * toPush)
 // Return true for success, false for empty stack
 bool SystemClass::popScene()
 {
+	if (sceneStack.empty())
+	  return false;
+
 	sceneStack.pop_front();
 
-  // TODO Check for empty list
 	return true;
 }
 
 
 
 // Add a scene to the collection
-bool SystemClass::addScene(int id, Scene * toadd)
+// Returns true for success, false if there is already a scene at that key value
+bool SystemClass::addScene(int id, std::shared_ptr<Scene> toadd)
 {
+	if(!sceneCollection[id]) {
+	  sceneCollection[id] = toadd;
+	  return true; 
+	}
 
 	return false;
 }
@@ -48,13 +56,20 @@ bool SystemClass::addScene(int id, Scene * toadd)
 
 
 // Return a scene from the scene collection
-Scene * SystemClass::getScene(int id)
+// Returns NULL if no scene at that id
+std::shared_ptr<Scene> SystemClass::getScene(int id)
 {
+	std::shared_ptr<Scene> temp = sceneCollection[id];
+
+	if (temp)
+	  return temp;
 
 	return NULL;
 }
 
 
+
+/*  Not sure if this is usefull now...
 
 // Remove a scene from the scene collection 
 bool SystemClass::removeScene(int id)
@@ -62,7 +77,30 @@ bool SystemClass::removeScene(int id)
 
 	return false;
 }
+*/
 
+
+
+// Add data to the collection
+// Returns true for success, false if there is already data at that key value
+bool SystemClass::addData(std::string name, float toadd)
+{
+	if(!dataCollection[name]) {
+	  dataCollection[name] = toadd;
+	  return true; 
+	}
+
+	return false;
+}
+
+
+
+// Return data from the scene collection
+// Check for NULL?
+float SystemClass::getData(std::string name)
+{
+	return dataCollection[name];
+}
 
 
 // This function starts the window and runs the game loop
@@ -109,18 +147,20 @@ void SystemClass::runWindow() {
 // and draw functions for the active scene, and checking some key events
 void SystemClass::update(sf::Time dt) {
 
-	//Keyboard events     ---Most keyboard events will need to be passed into the active scene
+	// Keyboard events     ---Most keyboard events will need to be passed into the active scene
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
 		window.close();
 	}
 
-	//Update active scenes (dt)
-	for (currentScene = sceneStack.begin(); currentScene != sceneStack.end(); ++currentScene)
+
+  // Do these loops skip the first element?
+	// Update active scenes (dt)
+	for (currentScene = sceneStack.end(); currentScene != sceneStack.begin(); --currentScene)
 		(*currentScene)->update(dt);
 
 
-	//Draw active scene
-	for (currentScene = sceneStack.begin(); currentScene != sceneStack.end(); ++currentScene)
+	// Draw active scene
+	for (currentScene = sceneStack.end(); currentScene != sceneStack.begin(); --currentScene)
 		(*currentScene)->draw(window);
 
 }
