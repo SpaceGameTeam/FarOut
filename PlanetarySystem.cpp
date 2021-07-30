@@ -120,7 +120,7 @@ void Planet::update(sf::Time dt){
 
 
 void Planet::move(sf::Time dt) {
-    sf::Transformable::move(movement * dt.asSeconds());
+    // sf::Transformable::move(movement * dt.asSeconds());
 }
 
 
