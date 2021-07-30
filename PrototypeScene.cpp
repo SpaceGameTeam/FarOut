@@ -34,7 +34,7 @@ PrototypeScene::PrototypeScene() {
 	alien = new AlienShip(&ship);
 	sun = new Star(30, sf::Color(219, 57, 5), 3, sf::Color(255, 154, 1), sf::Vector2f(-700, 200));
 	// a = new Planet(5, 100, sf::Color::Green, sun, 0.01);
-	// b = new Planet(8, 140, sf::Color::Blue, sun, 0.001);
+	// b = new Planet(8, 140, sf::Color::Blue, 0.001);
 	c = new Planet(10, 180, sf::Color::Magenta, 0.005);
 	/*
 	d = new Planet(4, 200, sf::Color::Yellow, sun, 0.001);
