@@ -23,6 +23,7 @@ class Star : public GameObject {
 class Planet : public GameObject {
     public:
         // Could add to these parameters texture, rings, moons
+        // Planet(int radius, int orbitDistance, sf::Color color, sf::Vector2f orbitCenter, float movementFactor);
         Planet(int radius, int orbitDistance, sf::Color color, float movementFactor);
         void draw(sf::RenderTarget& target, sf::RenderStates states)const;
         void update(sf::Time dt, sf::Vector2f systemCenter);

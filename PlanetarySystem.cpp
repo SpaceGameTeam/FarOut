@@ -71,6 +71,27 @@ void Star::update(sf::Time dt){}
 ////////////////////////////////////////////////////////////////////////////
 
 
+/*
+Planet::Planet(int radius, int dist, sf::Color color, sf::Vector2f orbitCenter, float movementFactor=0.01){
+    // movementSpeed = 363.0 * movementFactor;
+    // star = systemCenter;
+    angleChange = movementFactor;
+    mass.setRadius(radius);
+    mass.setFillColor(color);
+    orbitDistance = dist;
+
+    hitbox.setRadius(radius);
+    hitbox.setOutlineColor(sf::Color::Red);
+    hitbox.setFillColor(sf::Color::Transparent);
+    hitbox.setOutlineThickness(3.f);
+
+    sf::Vector2f startPosition = sf::Vector2f (center.x, center.y + orbitDistance);
+    setPosition(orbitCenter);
+    setOrigin(sf::Vector2f (radius, radius) + sf::Vector2f(0, dist));
+}
+*/
+
+
 
 Planet::Planet(int radius, int dist, sf::Color color, float movementFactor=0.01){
     // movementSpeed = 363.0 * movementFactor;
