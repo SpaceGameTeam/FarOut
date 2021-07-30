@@ -101,14 +101,14 @@ void Planet::draw(sf::RenderTarget& target, sf::RenderStates states)const{
 
 
 void Planet::update(sf::Time dt){
-    orbitAngle += angleChange * dt.asSeconds();
+    orbitAngle += angleChange;
     if (orbitAngle > 360){
         orbitAngle -= 360;
     }
-    sf::Vector2f newPosition = sf::Vector2f (star->getPosition().x + orbitDistance * cos(orbitAngle), star->getPosition().y + orbitDistance * sin(orbitAngle));
-    sf::Vector2f currentPosition = getPosition();
-    movement = sf::Vector2f(newPosition.x - currentPosition.x, newPosition.y - currentPosition.y)
-    // setPosition(sf::Vector2f (star->getPosition().x + orbitDistance * cos(orbitAngle), star->getPosition().y + orbitDistance * sin(orbitAngle)));
+    // sf::Vector2f newPosition = sf::Vector2f (star->getPosition().x + orbitDistance * cos(orbitAngle), star->getPosition().y + orbitDistance * sin(orbitAngle));
+    // sf::Vector2f currentPosition = getPosition();
+    // movement = sf::Vector2f(newPosition.x - currentPosition.x, newPosition.y - currentPosition.y);
+    setPosition(sf::Vector2f (star->getPosition().x + orbitDistance * cos(orbitAngle), star->getPosition().y + orbitDistance * sin(orbitAngle)));
 }
 
 

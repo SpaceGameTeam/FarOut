@@ -92,6 +92,9 @@ void PrototypeScene::move(sf::Time dt){
 	ship.move(dt);
 	alien->move(dt);
 	asteroid.move(dt);
+	a->move(dt);
+	b->move(dt);
+	c->move(dt);
 }
 
 
@@ -106,6 +109,7 @@ void PrototypeScene::update(sf::Time dt) {
 	a->update(dt);
 	b->update(dt);
 	c->update(dt);
+	/*
 	d->update(dt);
 	e->update(dt);
 	f->update(dt);
@@ -116,6 +120,7 @@ void PrototypeScene::update(sf::Time dt) {
 	k->update(dt);
 	l->update(dt);
 	m->update(dt);
+	*/
 }
 
 
@@ -129,6 +134,7 @@ void PrototypeScene::draw(sf::RenderWindow& window) {
 	window.draw(*a);
 	window.draw(*b);
 	window.draw(*c);
+	/*
 	window.draw(*d);
 	window.draw(*e);
 	window.draw(*f);
@@ -139,6 +145,7 @@ void PrototypeScene::draw(sf::RenderWindow& window) {
 	window.draw(*k);
 	window.draw(*l);
 	window.draw(*m);
+	*/
 
 	/*
 	window.draw(*planet[0]);

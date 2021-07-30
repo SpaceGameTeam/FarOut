@@ -109,31 +109,7 @@ void SystemClass::runWindow() {
 	sf::Time timer; //Currently not used
 
 	PrototypeScene scene;
-	Star sun(30, sf::Color(219, 57, 5), 3, sf::Color(255, 154, 1), sf::Vector2f(300, -100));
-	Planet a(5, 100, sf::Color::Green, &sun, 0.01);
-	Planet b(8, 140, sf::Color::Blue, &sun, 0.001);
-	Planet c(10, 180, sf::Color::Magenta, &sun, 0.005);
-	Planet d(4, 200, sf::Color::Yellow, &sun, 0.001);
-	Planet e(50, 350, sf::Color::Cyan, &sun, 0.0009);
-	Planet f(25, 460, sf::Color::Green, &sun, 0.0008);
-	Planet g(10, 500, sf::Color::Blue, &sun, 0.0009);
-	Planet h (10, 540, sf::Color::Yellow, &sun, 0.002);
-	Planet i(3, 600, sf::Color::Yellow, &sun, 0.003);
-	Planet j(2, 15, sf::Color::White, &g, 0.01);
-	Planet k(2, 10, sf::Color::White, &d, 0.03);
-	Planet l(2, 30, sf::Color::White, &i, 0.013);
-	Planet m(1, 17, sf::Color::White, &l, 0.05);
-	const int numAsteroids = 100;
-	Planet* asteroid[numAsteroids];
-	for (int i = 0; i < numAsteroids; ++i) {
-		srand(time(NULL));
-		int randInt = rand();
-		int orbitDistance = randInt % 25 + 225;
-		int orbitAngle = randInt % 360; 
-		int radius = randInt % 7 + 1;
-		asteroid[i] = new Planet(radius, orbitDistance, sf::Color(202, 199, 190), &sun, 0.005);	
-		asteroid[i]->setPosition(sf::Vector2f (sun.getPosition().x + orbitDistance * cos(orbitAngle), sun.getPosition().y + orbitDistance * sin(orbitAngle)));
-	}
+
 	while (window.isOpen()) { //This is the game loop
 
 		//Event check
@@ -149,50 +125,12 @@ void SystemClass::runWindow() {
 		dt = clock.restart();
 
 		window.clear();
-
 		update(dt);
 		scene.update(dt);
-		sun.update(dt);
-		a.update(dt);
-		b.update(dt);
-		c.update(dt);
-		d.update(dt);
-		e.update(dt);
-		f.update(dt);
-		g.update(dt);
-		h.update(dt);
-		i.update(dt);
-		j.update(dt);
-		k.update(dt);
-		l.update(dt);
-		m.update(dt);
-		for (int i = 0; i < numAsteroids; ++i) {
-			asteroid[i]->update(dt);
-		}
 		scene.draw(window);
-		window.draw(sun);
-		window.draw(a);
-		window.draw(b);
-		window.draw(c);
-		window.draw(d);
-		window.draw(e);
-		window.draw(f);
-		window.draw(g);
-		window.draw(h);
-		window.draw(i);
-		window.draw(j);
-		window.draw(k);
-		window.draw(l);
-		window.draw(m);
-		for (int i = 0; i < numAsteroids; ++i) {
-			window.draw(*asteroid[i]);
-		}
-		
-
 		scene.move(dt);
 		view.setCenter(scene.getCenter());
 		window.setView(view);
-
 		window.display();
 	}
 }
