@@ -72,9 +72,9 @@ void Star::update(sf::Time dt){}
 
 
 
-Planet::Planet(int radius, int dist, sf::Color color, sf::Vector2f systemCenter, float movementFactor=0.01){
+Planet::Planet(int radius, int dist, sf::Color color, float movementFactor=0.01){
     // movementSpeed = 363.0 * movementFactor;
-    center = systemCenter;
+    // star = systemCenter;
     angleChange = movementFactor;
     mass.setRadius(radius);
     mass.setFillColor(color);
@@ -100,7 +100,7 @@ void Planet::draw(sf::RenderTarget& target, sf::RenderStates states)const{
 
 
 
-void Planet::update(sf::Time dt){
+void Planet::update(sf::Time dt, sf::Vector2f cent){
     orbitAngle += angleChange * 50 * dt.asSeconds();
     if (orbitAngle > 360){
         orbitAngle -= 360;
@@ -108,7 +108,13 @@ void Planet::update(sf::Time dt){
     // sf::Vector2f newPosition = sf::Vector2f (star->getPosition().x + orbitDistance * cos(orbitAngle), star->getPosition().y + orbitDistance * sin(orbitAngle));
     // sf::Vector2f currentPosition = getPosition();
     // movement = sf::Vector2f(newPosition.x - currentPosition.x, newPosition.y - currentPosition.y);
-    setPosition(sf::Vector2f (center.x + orbitDistance * cos(orbitAngle), center.y + orbitDistance * sin(orbitAngle)));
+    // sf::Vector2f cent = star->getPosition();
+    setPosition(sf::Vector2f (cent.x + orbitDistance * cos(orbitAngle), cent.y + orbitDistance * sin(orbitAngle)));
+}
+
+
+
+void Planet::update(sf::Time dt){
 }
 
 

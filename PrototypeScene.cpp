@@ -35,7 +35,7 @@ PrototypeScene::PrototypeScene() {
 	sun = new Star(30, sf::Color(219, 57, 5), 3, sf::Color(255, 154, 1), sf::Vector2f(-700, 200));
 	// a = new Planet(5, 100, sf::Color::Green, sun, 0.01);
 	// b = new Planet(8, 140, sf::Color::Blue, sun, 0.001);
-	c = new Planet(10, 180, sf::Color::Magenta, sun->getPosition(), 0.005);
+	c = new Planet(10, 180, sf::Color::Magenta, 0.005);
 	/*
 	d = new Planet(4, 200, sf::Color::Yellow, sun, 0.001);
 	e = new Planet(50, 350, sf::Color::Cyan, sun, 0.0009);
@@ -96,7 +96,7 @@ void PrototypeScene::update(sf::Time dt) {
 	sun->update(dt);
 	// a->update(dt);
 	// b->update(dt);
-	c->update(dt);
+	c->update(dt, sun->getPosition());
 	/*
 	d->update(dt);
 	e->update(dt);

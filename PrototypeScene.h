@@ -43,7 +43,7 @@ private:
 	AlienShip* alien;
 	Star* sun;
 	// Planet* a;
-	// Planet* b;
+	Planet* b;
 	Planet* c;
 	/*
 	Planet* d;
