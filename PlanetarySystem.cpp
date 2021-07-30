@@ -101,7 +101,7 @@ void Planet::draw(sf::RenderTarget& target, sf::RenderStates states)const{
 
 
 void Planet::update(sf::Time dt){
-    orbitAngle += angleChange;
+    orbitAngle += angleChange * 100 * dt.asSeconds();
     if (orbitAngle > 360){
         orbitAngle -= 360;
     }
