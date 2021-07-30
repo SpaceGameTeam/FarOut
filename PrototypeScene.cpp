@@ -33,9 +33,9 @@ void Background::draw(sf::RenderTarget& target, sf::RenderStates states)const {
 PrototypeScene::PrototypeScene() {
 	alien = new AlienShip(&ship);
 	sun = new Star(30, sf::Color(219, 57, 5), 3, sf::Color(255, 154, 1), sf::Vector2f(-700, 200));
-	a = new Planet(5, 100, sf::Color::Green, sun, 0.01);
-	b = new Planet(8, 140, sf::Color::Blue, sun, 0.01);
-	c = new Planet(10, 180, sf::Color::Magenta, sun, 0.005);
+	// a = new Planet(5, 100, sf::Color::Green, sun, 0.01);
+	// b = new Planet(8, 140, sf::Color::Blue, sun, 0.001);
+	c = new Planet(10, 180, sf::Color::Magenta, sun->getPosition(), 0.005);
 	/*
 	d = new Planet(4, 200, sf::Color::Yellow, sun, 0.001);
 	e = new Planet(50, 350, sf::Color::Cyan, sun, 0.0009);
@@ -55,8 +55,8 @@ PrototypeScene::PrototypeScene() {
 PrototypeScene::~PrototypeScene() {
 	delete alien;
 	delete sun;
-	delete a;
-	delete b;
+	// delete a;
+	// delete b;
 	delete c;
 	/*
 	delete d;
@@ -80,8 +80,8 @@ void PrototypeScene::move(sf::Time dt){
 	ship.move(dt);
 	alien->move(dt);
 	asteroid.move(dt);
-	a->move(dt);
-	b->move(dt);
+	// a->move(dt);
+	// b->move(dt);
 	c->move(dt);
 }
 
@@ -94,8 +94,8 @@ void PrototypeScene::update(sf::Time dt) {
 	alien->update(dt);
 	asteroid.update(dt);
 	sun->update(dt);
-	a->update(dt);
-	b->update(dt);
+	// a->update(dt);
+	// b->update(dt);
 	c->update(dt);
 	/*
 	d->update(dt);
@@ -119,8 +119,8 @@ void PrototypeScene::draw(sf::RenderWindow& window) {
 	window.draw(ship);
 	window.draw(*alien);
 	window.draw(*sun);
-	window.draw(*a);
-	window.draw(*b);
+	// window.draw(*a);
+	// window.draw(*b);
 	window.draw(*c);
 	/*
 	window.draw(*d);

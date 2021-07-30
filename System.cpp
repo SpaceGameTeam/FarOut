@@ -127,8 +127,8 @@ void SystemClass::runWindow() {
 		window.clear();
 		update(dt);
 		scene.update(dt);
-		scene.draw(window);
 		scene.move(dt);
+		scene.draw(window);
 		view.setCenter(scene.getCenter());
 		window.setView(view);
 		window.display();
