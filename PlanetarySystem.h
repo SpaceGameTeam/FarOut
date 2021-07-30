@@ -26,6 +26,7 @@ class Planet : public GameObject {
         Planet(int radius, int orbitDistance, sf::Color color, GameObject* systemCenter, float movementFactor);
         void draw(sf::RenderTarget& target, sf::RenderStates states)const;
         void update(sf::Time dt);
+        void move(sf::Time dt);
 
     private:
         sf::CircleShape mass;
@@ -33,6 +34,7 @@ class Planet : public GameObject {
         int orbitDistance;
         float orbitAngle;
         sf::Vector2f movement;
+        float movementSpeed;
         GameObject* star;
         float angleChange;
 };
