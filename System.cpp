@@ -131,7 +131,6 @@ void SystemClass::runWindow() {
 		int orbitDistance = randInt % 25 + 225;
 		int orbitAngle = randInt % 360; 
 		int radius = randInt % 7 + 1;
-		std::cout << orbitAngle;
 		asteroid[i] = new Planet(radius, orbitDistance, sf::Color(202, 199, 190), &sun, 0.005);	
 		asteroid[i]->setPosition(sf::Vector2f (sun.getPosition().x + orbitDistance * cos(orbitAngle), sun.getPosition().y + orbitDistance * sin(orbitAngle)));
 	}

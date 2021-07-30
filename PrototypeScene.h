@@ -52,6 +52,10 @@ private:
 	Planet* g;
 	Planet* h;
 	Planet* i;
+	Planet* j;
+	Planet* k;
+	Planet* l;
+	Planet* m;
 	Asteroid asteroid;
 	sf::Vector2f center;
 

@@ -32,8 +32,7 @@ void Background::draw(sf::RenderTarget& target, sf::RenderStates states)const {
 // Some of the data members are dynamically allocated because constructors with arguments were written
 PrototypeScene::PrototypeScene() {
 	alien = new AlienShip(&ship);
-	/*
-	sun = new Star(30, sf::Color(219, 57, 5), 3, sf::Color(255, 154, 1), sf::Vector2f(300, -100));
+	sun = new Star(30, sf::Color(219, 57, 5), 3, sf::Color(255, 154, 1), sf::Vector2f(-700, 200));
 	a = new Planet(5, 100, sf::Color::Green, sun, 0.01);
 	b = new Planet(8, 140, sf::Color::Blue, sun, 0.001);
 	c = new Planet(10, 180, sf::Color::Magenta, sun, 0.005);
@@ -43,6 +42,11 @@ PrototypeScene::PrototypeScene() {
 	g = new Planet(10, 500, sf::Color::Blue, sun, 0.0009);
 	h = new Planet(10, 540, sf::Color::Yellow, sun, 0.002);
 	i = new Planet(3, 600, sf::Color::Yellow, sun, 0.003);
+	j = new Planet(2, 15, sf::Color::White, g, 0.001);
+	k = new Planet(2, 10, sf::Color::Yellow, d, 0.03);
+	l = new Planet(2, 30, sf::Color::Yellow, i, 0.013);
+	m = new Planet(1, 17, sf::Color::Yellow, l, 0.05);
+	/*
 	planet[0] = new Planet(50, 1000, sf::Color::Green, sun, 0.01);
 	planet[1] = new Planet(80, 2000, sf::Color::Blue, sun, 0.001);
 	planet[2] = new Planet(100, 3000, sf::Color::Magenta, sun, 0.005);
@@ -60,6 +64,19 @@ PrototypeScene::PrototypeScene() {
 PrototypeScene::~PrototypeScene() {
 	delete alien;
 	delete sun;
+	delete a;
+	delete b;
+	delete c;
+	delete d;
+	delete e;
+	delete f;
+	delete g;
+	delete h;
+	delete i;
+	delete j;
+	delete k;
+	delete l;
+	delete m;
 	/*
 	for (int i = 0; i < PLANETS; ++i){
 		delete planet[i];
@@ -85,7 +102,6 @@ void PrototypeScene::update(sf::Time dt) {
 	ship.update(dt);
 	alien->update(dt);
 	asteroid.update(dt);
-	/*
 	sun->update(dt);
 	a->update(dt);
 	b->update(dt);
@@ -96,7 +112,10 @@ void PrototypeScene::update(sf::Time dt) {
 	g->update(dt);
 	h->update(dt);
 	i->update(dt);
-	*/
+	j->update(dt);
+	k->update(dt);
+	l->update(dt);
+	m->update(dt);
 }
 
 
@@ -106,7 +125,6 @@ void PrototypeScene::draw(sf::RenderWindow& window) {
 	window.draw(bg);
 	window.draw(ship);
 	window.draw(*alien);
-	/*
 	window.draw(*sun);
 	window.draw(*a);
 	window.draw(*b);
@@ -117,6 +135,12 @@ void PrototypeScene::draw(sf::RenderWindow& window) {
 	window.draw(*g);
 	window.draw(*h);
 	window.draw(*i);
+	window.draw(*j);
+	window.draw(*k);
+	window.draw(*l);
+	window.draw(*m);
+
+	/*
 	window.draw(*planet[0]);
 	window.draw(*planet[1]);
 	window.draw(*planet[2]);
