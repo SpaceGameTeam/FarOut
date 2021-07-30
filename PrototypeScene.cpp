@@ -34,8 +34,9 @@ PrototypeScene::PrototypeScene() {
 	alien = new AlienShip(&ship);
 	sun = new Star(30, sf::Color(219, 57, 5), 3, sf::Color(255, 154, 1), sf::Vector2f(-700, 200));
 	a = new Planet(5, 100, sf::Color::Green, sun, 0.01);
-	b = new Planet(8, 140, sf::Color::Blue, sun, 0.001);
+	b = new Planet(8, 140, sf::Color::Blue, sun, 0.01);
 	c = new Planet(10, 180, sf::Color::Magenta, sun, 0.005);
+	/*
 	d = new Planet(4, 200, sf::Color::Yellow, sun, 0.001);
 	e = new Planet(50, 350, sf::Color::Cyan, sun, 0.0009);
 	f = new Planet(25, 460, sf::Color::Green, sun, 0.0008);
@@ -46,16 +47,6 @@ PrototypeScene::PrototypeScene() {
 	k = new Planet(2, 10, sf::Color::Yellow, d, 0.03);
 	l = new Planet(2, 30, sf::Color::Yellow, i, 0.013);
 	m = new Planet(1, 17, sf::Color::Yellow, l, 0.05);
-	/*
-	planet[0] = new Planet(50, 1000, sf::Color::Green, sun, 0.01);
-	planet[1] = new Planet(80, 2000, sf::Color::Blue, sun, 0.001);
-	planet[2] = new Planet(100, 3000, sf::Color::Magenta, sun, 0.005);
-	planet[3] = new Planet(40, 4000, sf::Color::Yellow, sun, 0.001);
-	planet[4] = new Planet(500, 5000, sf::Color::Cyan, sun, 0.0009);
-	planet[5] = new Planet(250, 10000, sf::Color::Green, sun, 0.0008);
-	planet[6] = new Planet(100, 12000, sf::Color::Blue, sun, 0.0009);
-	planet[7] = new Planet(100, 13000, sf::Color::Yellow, sun, 0.002);
-	planet[8] = new Planet(30, 14000, sf::Color::Yellow, sun, 0.003);
 	*/
 }
 
@@ -67,6 +58,7 @@ PrototypeScene::~PrototypeScene() {
 	delete a;
 	delete b;
 	delete c;
+	/*
 	delete d;
 	delete e;
 	delete f;
@@ -77,10 +69,6 @@ PrototypeScene::~PrototypeScene() {
 	delete k;
 	delete l;
 	delete m;
-	/*
-	for (int i = 0; i < PLANETS; ++i){
-		delete planet[i];
-	}
 	*/
 }
 
@@ -145,18 +133,6 @@ void PrototypeScene::draw(sf::RenderWindow& window) {
 	window.draw(*k);
 	window.draw(*l);
 	window.draw(*m);
-	*/
-
-	/*
-	window.draw(*planet[0]);
-	window.draw(*planet[1]);
-	window.draw(*planet[2]);
-	window.draw(*planet[3]);
-	window.draw(*planet[4]);
-	window.draw(*planet[5]);
-	window.draw(*planet[6]);
-	window.draw(*planet[7]);
-	window.draw(*planet[8]);
 	*/
 	window.draw(asteroid);
 }
