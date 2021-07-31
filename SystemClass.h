@@ -36,6 +36,10 @@ public:
 	bool addData(std::string name, float toadd);
 	float getData(std::string name);
 
+	//Other utility functions for dev
+	void setVSync(bool);
+	void setFPSCounter(bool);
+
 
 private:
 	// Starts the window and runs the game loop
@@ -60,6 +64,7 @@ private:
 
 	//FPS Counter
 	void updateFPS();
+	bool FPSActive;
 	sf::Font FPSFont;
 	sf::Text FPSText;
 	sf::Time FPSTime;

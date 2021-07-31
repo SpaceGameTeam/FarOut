@@ -10,6 +10,7 @@ SystemClass::SystemClass() :
 	window(desktop, "FarOut")
 {
 	//FPS Stuff
+	FPSActive = true;
 	FPSFont.loadFromFile("AreaKilometer50.otf");
 	FPSText.setFont(FPSFont);
 	FPSText.setCharacterSize(desktop.height / 30);
@@ -143,8 +144,10 @@ void SystemClass::runWindow() {
 		window.draw(asteroid);
 		view.setCenter(asteroid.getPosition());
 
-		updateFPS();
-		window.draw(FPSText);
+		if (FPSActive) {
+			updateFPS();
+			window.draw(FPSText);
+		}
 
 		window.setView(view);
 
@@ -189,5 +192,22 @@ void SystemClass::updateFPS() {
 		FPSFrames = 0;
 	}
 }
+
+
+//Toggle FPS counter utility function
+void SystemClass::setFPSCounter(bool set) {
+	FPSActive = set;
+}
+
+
+
+//VSync utility function
+void SystemClass::setVSync(bool set) {
+	window.setVerticalSyncEnabled(set);
+}
+
+
+
+
 
 
