@@ -60,5 +60,7 @@ private:
 	Asteroid asteroid;
 	sf::Vector2f center;
 
+	sf::View view;
+
 };
 #endif

@@ -1,4 +1,5 @@
 #include "PrototypeScene.h"
+#include "SystemClass.h"
 #include <string>
 
 
@@ -48,6 +49,9 @@ PrototypeScene::PrototypeScene() {
 	l = new Planet(2, 30, sf::Color::Yellow, i, 0.013);
 	m = new Planet(1, 17, sf::Color::Yellow, l, 0.05);
 	*/
+	
+	extern SystemClass System;
+	view.setSize(System.getData("DesktopX"), System.getData("DesktopY"));
 }
 
 
@@ -109,12 +113,14 @@ void PrototypeScene::update(sf::Time dt) {
 	l->update(dt);
 	m->update(dt);
 	*/
+	view.setCenter(ship.getPosition());
 }
 
 
 
 // Draw all the objects in the scene
 void PrototypeScene::draw(sf::RenderWindow& window) {
+	window.setView(view);
 	window.draw(bg);
 	window.draw(ship);
 	window.draw(*alien);

@@ -9,6 +9,9 @@ SystemClass::SystemClass() :
 	desktop(sf::VideoMode::getDesktopMode()),
 	window(desktop, "FarOut")
 {
+	addData("DesktopX", desktop.width);
+	addData("DesktopY", desktop.height);
+
 	window.setVerticalSyncEnabled(true);
 	//window.setMouseCursorVisible(false); //debug
 	view = window.getDefaultView(); //again, might move into scenes
@@ -132,7 +135,7 @@ void SystemClass::runWindow() {
 		dt = clock.restart();
 
 		window.clear();
-		window.setView(view);
+		//window.setView(view);
 		update(dt);
 		/*scene.update(dt);
 		scene.move(dt);
