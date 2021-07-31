@@ -76,14 +76,14 @@ PrototypeScene::~PrototypeScene() {
 
 
 // Move anything that move gets called on
-void PrototypeScene::move(sf::Time dt){
-	//ship.move(dt);
-	//alien->move(dt);
-	//asteroid.move(dt);
-	// a->move(dt);
-	// b->move(dt);
-	//c->move(dt);
-}
+//void PrototypeScene::move(sf::Time dt){
+//	//ship.move(dt);
+//	//alien->move(dt);
+//	//asteroid.move(dt);
+//	// a->move(dt);
+//	// b->move(dt);
+//	//c->move(dt);
+//}
 
 
 

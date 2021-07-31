@@ -34,7 +34,7 @@ public:
 
 	void update(sf::Time dt);
 	void draw(sf::RenderWindow& window);
-	void move(sf::Time dt);
+	//void move(sf::Time dt);
 	sf::Vector2f getCenter();
 
 private:
