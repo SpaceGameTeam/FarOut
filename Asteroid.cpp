@@ -140,12 +140,14 @@ void Asteroid::draw(sf::RenderTarget& target, sf::RenderStates states)const {
 }
 
 
-void Asteroid::update(sf::Time dt) {}
+void Asteroid::update(sf::Time dt) {
+	sf::Transformable::move(movement * dt.asSeconds());
+}
 
 
 
 // Move the asteroid
 // Overrides Transformable move function to allow storage of movement as asteroid class data member
-void Asteroid::move(sf::Time dt) {
-	sf::Transformable::move(movement * dt.asSeconds());
-}
+//void Asteroid::move(sf::Time dt) {
+//	sf::Transformable::move(movement * dt.asSeconds());
+//}
