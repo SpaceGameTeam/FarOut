@@ -131,12 +131,13 @@ void AlienShip::update(sf::Time dt){
 		movementSpeed += 0.001 * (magnitude - (distanceFromShip - 300));
 		movement += movementSpeed * dt.asSeconds() * diff / magnitude;
 	}
+    sf::Transformable::move(movement * dt.asSeconds());
 }
 
 
 
 // Move the alien ship
 // Overrides Transformable move function to allow storage of movement as AlienShip class data member
-void AlienShip::move(sf::Time dt){
-    sf::Transformable::move(movement * dt.asSeconds());
-}
+//void AlienShip::move(sf::Time dt){
+//    sf::Transformable::move(movement * dt.asSeconds());
+//}
