@@ -9,9 +9,16 @@ SystemClass::SystemClass() :
 	desktop(sf::VideoMode::getDesktopMode()),
 	window(desktop, "FarOut")
 {
+	//FPS Stuff
+	FPSFont.loadFromFile("AreaKilometer50.otf");
+	FPSText.setFont(FPSFont);
+	FPSText.setCharacterSize(48);
+	FPSText.setPosition(-(desktop.width / 2.f) + 10, -(desktop.height / 2.f));
+
 	window.setVerticalSyncEnabled(true);
 	//window.setMouseCursorVisible(false); //debug
 	view = window.getDefaultView(); //again, might move into scenes
+
 	runWindow();
 }
 
@@ -135,6 +142,10 @@ void SystemClass::runWindow() {
 		asteroid.update(dt);
 		window.draw(asteroid);
 		view.setCenter(asteroid.getPosition());
+
+		updateFPS();
+		window.draw(FPSText);
+
 		window.setView(view);
 
 		window.display();
@@ -163,6 +174,20 @@ void SystemClass::update(sf::Time dt) {
 	for (currentScene = sceneStack.end(); currentScene != sceneStack.begin(); --currentScene)
 		(*currentScene)->draw(window);
 
+}
+
+
+
+
+//Update FPS text
+void SystemClass::updateFPS() {
+	++FPSFrames;
+	FPSTime = FPSClock.getElapsedTime();
+	if (FPSTime.asSeconds() > 1) {
+		FPSClock.restart();
+		FPSText.setString(std::to_string(FPSFrames));
+		FPSFrames = 0;
+	}
 }
 
 

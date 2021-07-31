@@ -57,5 +57,13 @@ private:
 	sf::RenderWindow window;
 	sf::View view; //not sure if this should be here or in each scene
 	sf::Clock clock;
+
+	//FPS Counter
+	void updateFPS();
+	sf::Font FPSFont;
+	sf::Text FPSText;
+	sf::Time FPSTime;
+	sf::Clock FPSClock;
+	int FPSFrames;
 };
 #endif
