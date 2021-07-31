@@ -12,7 +12,7 @@ SystemClass::SystemClass() :
 	//FPS Stuff
 	FPSFont.loadFromFile("AreaKilometer50.otf");
 	FPSText.setFont(FPSFont);
-	FPSText.setCharacterSize(48);
+	FPSText.setCharacterSize(desktop.height / 30);
 	FPSText.setPosition(-(desktop.width / 2.f) + 10, -(desktop.height / 2.f));
 
 	window.setVerticalSyncEnabled(true);
