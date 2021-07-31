@@ -108,7 +108,14 @@ void SystemClass::runWindow() {
 	sf::Time dt; //SFML time object for tracking time between updates
 	sf::Time timer; //Currently not used
 
-	PrototypeScene scene;
+	//PrototypeScene scene;
+	std::shared_ptr<Scene> ps(new PrototypeScene);
+	std::shared_ptr<Scene> ps2(new PrototypeScene);
+	System.addScene(1, ps);
+	System.addScene(2, ps2);
+	System.pushScene(ps);
+
+
 
 	while (window.isOpen()) { //This is the game loop
 
@@ -125,12 +132,13 @@ void SystemClass::runWindow() {
 		dt = clock.restart();
 
 		window.clear();
+		window.setView(view);
 		update(dt);
-		scene.update(dt);
+		/*scene.update(dt);
 		scene.move(dt);
 		scene.draw(window);
-		view.setCenter(scene.getCenter());
-		window.setView(view);
+		view.setCenter(scene.getCenter());*/
+		//window.setView(view);
 		window.display();
 	}
 }
@@ -147,14 +155,13 @@ void SystemClass::update(sf::Time dt) {
 	}
 
 
-  // Do these loops skip the first element?
 	// Update active scenes (dt)
-	for (currentScene = sceneStack.end(); currentScene != sceneStack.begin(); --currentScene)
+	for (currentScene = sceneStack.rbegin(); currentScene != sceneStack.rend(); ++currentScene)
 		(*currentScene)->update(dt);
 
 
 	// Draw active scene
-	for (currentScene = sceneStack.end(); currentScene != sceneStack.begin(); --currentScene)
+	for (currentScene = sceneStack.rbegin(); currentScene != sceneStack.rend(); ++currentScene)
 		(*currentScene)->draw(window);
 
 }

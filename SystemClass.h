@@ -44,7 +44,7 @@ private:
 	//Data module
 	//Scenes - All scenes in the hash table and active scenes in the stack
 	std::list<std::shared_ptr<Scene>> sceneStack;
-	std::list<std::shared_ptr<Scene>>::iterator currentScene;
+	std::list<std::shared_ptr<Scene>>::reverse_iterator currentScene;
 	std::unordered_map<int, std::shared_ptr<Scene>> sceneCollection;
 	std::unordered_map<std::string, float> dataCollection;
 
@@ -54,4 +54,6 @@ private:
 	sf::View view; //not sure if this should be here or in each scene
 	sf::Clock clock;
 };
+
+
 #endif
