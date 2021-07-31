@@ -130,7 +130,8 @@ void Planet::update(sf::Time dt, sf::Vector2f cent){
     // sf::Vector2f currentPosition = getPosition();
     // movement = sf::Vector2f(newPosition.x - currentPosition.x, newPosition.y - currentPosition.y);
     // sf::Vector2f cent = star->getPosition();
-    movement = sf::Vector2f (cent.x + orbitDistance * cos(orbitAngle), cent.y + orbitDistance * sin(orbitAngle));
+    //movement = sf::Vector2f (cent.x + orbitDistance * cos(orbitAngle), cent.y + orbitDistance * sin(orbitAngle));
+    setPosition(sf::Vector2f(cent.x + orbitDistance * cos(orbitAngle), cent.y + orbitDistance * sin(orbitAngle)));
 }
 
 
@@ -140,9 +141,9 @@ void Planet::update(sf::Time dt){
 
 
 
-void Planet::move(sf::Time dt) {
-    sf::Transformable::move(movement);
-}
+//void Planet::move(sf::Time dt) {
+//    sf::Transformable::move(movement);
+//}
 
 
 
