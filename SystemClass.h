@@ -7,18 +7,17 @@
 
 #include "Scene.h"
 
-// #pragma once
 
 #ifndef SYSCLS
 #define SYSCLS
-
-// Would like to remove #include of Ship.h, just here to test the ship drawing
-#include "Ship.h"
-#include "Asteroid.h"
+#include "PrototypeScene.h"
 
 class SystemClass {
 public:
 	SystemClass();
+	
+	// Starts the window and runs the game loop
+	void runWindow();
 
 	// Function to request a scene change (takes name/ID of new scene)
 
@@ -42,8 +41,6 @@ public:
 
 
 private:
-	// Starts the window and runs the game loop
-	void runWindow();
 
 	// Basic actions to be taken each loop, including calling update
 	// and draw functions for the active scene, and checking some key events
@@ -52,14 +49,14 @@ private:
 	//Data module
 	//Scenes - All scenes in the hash table and active scenes in the stack
 	std::list<std::shared_ptr<Scene>> sceneStack;
-	std::list<std::shared_ptr<Scene>>::iterator currentScene;
+	std::list<std::shared_ptr<Scene>>::reverse_iterator currentScene;
 	std::unordered_map<int, std::shared_ptr<Scene>> sceneCollection;
 	std::unordered_map<std::string, float> dataCollection;
 
 	//Window stuff
 	sf::VideoMode desktop;
 	sf::RenderWindow window;
-	sf::View view; //not sure if this should be here or in each scene
+	//sf::View view; //not sure if this should be here or in each scene
 	sf::Clock clock;
 
 	//FPS Counter
@@ -71,4 +68,6 @@ private:
 	sf::Clock FPSClock;
 	int FPSFrames;
 };
+
+
 #endif
