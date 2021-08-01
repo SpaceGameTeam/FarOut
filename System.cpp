@@ -14,8 +14,8 @@ SystemClass::SystemClass() :
 
 	window.setVerticalSyncEnabled(true);
 	//window.setMouseCursorVisible(false); //debug
-	view = window.getDefaultView(); //again, might move into scenes
-	runWindow();
+	//view = window.getDefaultView(); //again, might move into scenes
+	//runWindow();
 }
 
 
@@ -112,11 +112,11 @@ void SystemClass::runWindow() {
 	sf::Time timer; //Currently not used
 
 	//PrototypeScene scene;
-	std::shared_ptr<Scene> ps(new PrototypeScene);
+	/*std::shared_ptr<Scene> ps(new PrototypeScene);
 	std::shared_ptr<Scene> ps2(new PrototypeScene);
 	System.addScene(1, ps);
 	System.addScene(2, ps2);
-	System.pushScene(ps);
+	System.pushScene(ps);*/
 
 
 
