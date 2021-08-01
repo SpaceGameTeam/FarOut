@@ -9,13 +9,19 @@ SystemClass::SystemClass() :
 	desktop(sf::VideoMode::getDesktopMode()),
 	window(desktop, "FarOut")
 {
+
 	addData("DesktopX", desktop.width);
 	addData("DesktopY", desktop.height);
 
+	//FPS Stuff
+	FPSActive = true;
+	FPSFont.loadFromFile("AreaKilometer50.otf");
+	FPSText.setFont(FPSFont);
+	FPSText.setCharacterSize(desktop.height / 30);
+	FPSText.setPosition(-(desktop.width / 2.f) + 10, -(desktop.height / 2.f));
+
 	window.setVerticalSyncEnabled(true);
 	//window.setMouseCursorVisible(false); //debug
-	//view = window.getDefaultView(); //again, might move into scenes
-	//runWindow();
 }
 
 
@@ -137,11 +143,20 @@ void SystemClass::runWindow() {
 		window.clear();
 		//window.setView(view);
 		update(dt);
-		/*scene.update(dt);
-		scene.move(dt);
-		scene.draw(window);
-		view.setCenter(scene.getCenter());*/
-		//window.setView(view);
+
+		// Remove the next 8 lines when done testing ship implementation
+		// Draw the ship
+		// This is just here for testing
+		//asteroid.move(dt);
+		//asteroid.update(dt);
+		//window.draw(asteroid);
+		//view.setCenter(asteroid.getPosition());
+
+		if (FPSActive) {
+			updateFPS();
+			window.draw(FPSText);
+		}
+
 		window.display();
 	}
 }
@@ -168,5 +183,36 @@ void SystemClass::update(sf::Time dt) {
 		(*currentScene)->draw(window);
 
 }
+
+
+
+
+//Update FPS text
+void SystemClass::updateFPS() {
+	++FPSFrames;
+	FPSTime = FPSClock.getElapsedTime();
+	if (FPSTime.asSeconds() > 1) {
+		FPSClock.restart();
+		FPSText.setString(std::to_string(FPSFrames));
+		FPSFrames = 0;
+	}
+}
+
+
+//Toggle FPS counter utility function
+void SystemClass::setFPSCounter(bool set) {
+	FPSActive = set;
+}
+
+
+
+//VSync utility function
+void SystemClass::setVSync(bool set) {
+	window.setVerticalSyncEnabled(set);
+}
+
+
+
+
 
 
