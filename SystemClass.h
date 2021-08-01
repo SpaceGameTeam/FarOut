@@ -58,6 +58,7 @@ private:
 	sf::RenderWindow window;
 	sf::View view; 
 	sf::Clock clock;
+	bool VSyncEnabled;
 
 	//FPS Counter
 	void updateFPS();
