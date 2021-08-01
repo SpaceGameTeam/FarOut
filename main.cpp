@@ -10,7 +10,6 @@
 int main()
 {
 
-    extern SystemClass System;
 	std::shared_ptr<Scene> ps(new PrototypeScene);
 	std::shared_ptr<Scene> ps2(new PrototypeScene);
 	System.addScene(1, ps);

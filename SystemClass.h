@@ -70,5 +70,5 @@ private:
 	int FPSFrames;
 };
 
-
+extern SystemClass System;
 #endif
