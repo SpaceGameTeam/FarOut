@@ -13,12 +13,14 @@ SystemClass::SystemClass() :
 	addData("DesktopX", desktop.width);
 	addData("DesktopY", desktop.height);
 
+	view = window.getDefaultView();
+
 	//FPS Stuff
 	FPSActive = true;
 	FPSFont.loadFromFile("AreaKilometer50.otf");
 	FPSText.setFont(FPSFont);
 	FPSText.setCharacterSize(desktop.height / 30);
-	FPSText.setPosition(-(desktop.width / 2.f) + 10, -(desktop.height / 2.f));
+	FPSText.setPosition(10, 0);
 
 	window.setVerticalSyncEnabled(true);
 	//window.setMouseCursorVisible(false); //debug
@@ -154,6 +156,7 @@ void SystemClass::runWindow() {
 
 		if (FPSActive) {
 			updateFPS();
+			window.setView(view);
 			window.draw(FPSText);
 		}
 
