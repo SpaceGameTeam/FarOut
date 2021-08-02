@@ -96,22 +96,6 @@ void PrototypeScene::update(sf::Time dt) {
 	planetarySystemObjects[10]->update(dt, planetarySystemObjects[3]->getPosition());
 	planetarySystemObjects[11]->update(dt, planetarySystemObjects[8]->getPosition());
 	planetarySystemObjects[12]->update(dt, planetarySystemObjects[11]->getPosition());
-	/*
-	sun->update(dt);
-	a->update(dt, sun->getPosition());
-	b->update(dt, sun->getPosition());
-	c->update(dt, sun->getPosition());
-	d->update(dt, sun->getPosition());
-	e->update(dt, sun->getPosition());
-	f->update(dt, sun->getPosition());
-	g->update(dt, sun->getPosition());
-	h->update(dt, sun->getPosition());
-	i->update(dt, sun->getPosition());
-	j->update(dt, g->getPosition());
-	k->update(dt, d->getPosition());
-	l->update(dt, i->getPosition());
-	m->update(dt, l->getPosition());
-	*/
 	view.setCenter(ship.getPosition());
 }
 
@@ -127,22 +111,6 @@ void PrototypeScene::draw(sf::RenderWindow& window) {
 	for (int i = 0; i < SYSTEMOBJECTS; ++i) {
 		window.draw(*planetarySystemObjects[i]);
 	}
-	/*
-	window.draw(*sun);
-	window.draw(*a);
-	window.draw(*b);
-	window.draw(*c);
-	window.draw(*d);
-	window.draw(*e);
-	window.draw(*f);
-	window.draw(*g);
-	window.draw(*h);
-	window.draw(*i);
-	window.draw(*j);
-	window.draw(*k);
-	window.draw(*l);
-	window.draw(*m);
-	*/
 	window.draw(asteroid);
 }
 

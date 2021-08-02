@@ -41,22 +41,6 @@ private:
 	AlienShip* alien;
 	Star* sun;
 	Planet** planetarySystemObjects;
-	/*
-	Star* sun;
-	Planet* a;
-	Planet* b;
-	Planet* c;
-	Planet* d;
-	Planet* e;
-	Planet* f;
-	Planet* g;
-	Planet* h;
-	Planet* i;
-	Planet* j;
-	Planet* k;
-	Planet* l;
-	Planet* m;
-	*/
 	Asteroid asteroid;
 	sf::Vector2f center;
 
