@@ -12,7 +12,7 @@ Ship::Ship(){
 
 	// Create the ship
 	body.setPrimitiveType(sf::TriangleStrip);
-	body.resize(14);
+	body.resize(15);
 
 
 	
@@ -21,22 +21,56 @@ Ship::Ship(){
 	// hitbox.setFillColor(sf::Color::Transparent);
 	// hitbox.setOutlineColor(sf::Color::Red);
 	// hitbox.scale(0.75f, 0.75f);
-    
-	body[3].position = sf::Vector2f(-19.f, 4.f);
-	body[4].position = sf::Vector2f(-19.f, 12.f);
-	body[0].position = sf::Vector2f(10.f, 0.f);
-	body[5].position = sf::Vector2f(-13.f, 17.f);
-	body[4].position = sf::Vector2f(10.f, 38.f);
-	body[6].position = sf::Vector2f(-13.f, 38.f);
-	body[7].position = sf::Vector2f(0.f, 62.f);
-	body[4].position = sf::Vector2f(10.f, 38.f);
-	body[8].position = sf::Vector2f(13.f, 38.f);
-	body[5].position = sf::Vector2f(-13.f, 17.f);
-	body[9].position = sf::Vector2f(13.f, 17.f);
-	body[0].position = sf::Vector2f(10.f, 0.f);
-	body[10].position = sf::Vector2f(19.f, 12.f);
-	body[11].position = sf::Vector2f(19.f, 4.f);
+    	
+	body[0].position = sf::Vector2f(0.f, 0.f);
+	body[1].position = sf::Vector2f(-13.f, 0.f);
+	body[2].position = sf::Vector2f(-13.f, 38.f);
+	body[3].position = sf::Vector2f(0.f, 0.f);
+	body[4].position = sf::Vector2f(0.f, 62.f);
+	body[5].position = sf::Vector2f(13.f, 0.f);
+	body[6].position = sf::Vector2f(13.f, 38.f);
 
+
+	body[0].color = sf::Color::White;
+	body[1].color = sf::Color(22, 69, 149, 255);
+	body[2].color = sf::Color(22, 69, 149, 255);
+	body[3].color = sf::Color::White;
+	body[4].color = sf::Color::White;
+	body[5].color = sf::Color(22, 69, 149, 255);
+	body[6].color = sf::Color(22, 69, 149, 255);
+
+/*
+	body[0].position = sf::Vector2f(-19.f, 4.f);
+	body[1].position = sf::Vector2f(-19.f, 12.f);
+	body[2].position = sf::Vector2f(0.f, 0.f);
+	body[3].position = sf::Vector2f(-13.f, 17.f);
+	body[4].position = sf::Vector2f(0.f, 38.f);
+	body[5].position = sf::Vector2f(-13.f, 38.f);
+	body[6].position = sf::Vector2f(0.f, 62.f);
+	body[8].position = sf::Vector2f(13.f, 38.f);
+	body[9].position = sf::Vector2f(0.f, 38.f);
+	body[10].position = sf::Vector2f(13.f, 17.f);
+	body[11].position = sf::Vector2f(0.f, 0.f);
+	body[12].position = sf::Vector2f(19.f, 12.f);
+	body[13].position = sf::Vector2f(19.f, 4.f);
+	body[14].position = sf::Vector2f(0.f, 0.f);
+
+	body[0].color = sf::Color(22, 69, 149, 255);
+	body[1].color = sf::Color(22, 69, 149, 255);
+	body[2].color = sf::Color::White;
+	body[3].color = sf::Color(22, 69, 149, 255);
+	body[4].color = sf::Color::White;
+	body[5].color = sf::Color(22, 69, 149, 255);
+	// body[6].color = sf::Color::White;
+	body[7].color = sf::Color(22, 69, 149, 255);
+	body[8].color = sf::Color(22, 69, 149, 255);
+	// body[9].color = sf::Color::White;
+	body[10].color = sf::Color(22, 69, 149, 255);
+	// body[11].color = sf::Color::White;
+	body[12].color = sf::Color(22, 69, 149, 255);
+	body[13].color = sf::Color(22, 69, 149, 255);
+	// body[14].color = sf::Color::White;
+*/
 	// body[1].position = sf::Vector2f(-7.f, 0.f);
 	// body[2].position = sf::Vector2f(-13.f, -8.f);
 	// body[12].position = sf::Vector2f(13.f, -8.f);
@@ -57,9 +91,9 @@ Ship::Ship(){
 	body[12].position = sf::Vector2f(13.f, -8.f);
 	body[13].position = sf::Vector2f(7.f, 0.f);
 	*/
-
+    setScale(sf::Vector2f(4.f, 4.f));
     setPosition(0, 0);
-	setRotation(180);
+	// setRotation(180);
 	setOrigin(sf::Vector2f(0, 23));
 }
 
