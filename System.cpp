@@ -142,6 +142,10 @@ void SystemClass::runWindow() {
 
 			if (event.type == sf::Event::KeyPressed) {
 
+				//ESC
+				if (event.key.code == sf::Keyboard::Escape)
+					window.close();
+
 				//VSync toggle
 				if (event.key.code == sf::Keyboard::V) {
 					if (VSyncEnabled) VSyncEnabled = false;
@@ -185,13 +189,7 @@ void SystemClass::runWindow() {
 // Basic actions to be taken each loop, including calling update
 // and draw functions for the active scene, and checking some key events
 void SystemClass::update(sf::Time dt) {
-
-	// Keyboard events     ---Most keyboard events will need to be passed into the active scene
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-		window.close();
-	}
-
-
+	
 	// Update active scenes (dt)
 	for (currentScene = sceneStack.rbegin(); currentScene != sceneStack.rend(); ++currentScene)
 		(*currentScene)->update(dt);
