@@ -133,7 +133,7 @@ void Asteroid::setMercuryPoints() {
 
 	Body.setOutlineThickness(3.f);
 	Body.setFillColor(sf::Color(184,115,52,255));
-	//Body.scale(1f, 1f);
+	Body.scale(0.3f, 0.3f);
 }
 
 void Asteroid::setHitboxPoints() {
@@ -161,12 +161,14 @@ void Asteroid::draw(sf::RenderTarget& target, sf::RenderStates states)const {
 }
 
 
-void Asteroid::update(sf::Time dt) {}
+void Asteroid::update(sf::Time dt) {
+	sf::Transformable::move(movement * dt.asSeconds());
+}
 
 
 
 // Move the asteroid
 // Overrides Transformable move function to allow storage of movement as asteroid class data member
-void Asteroid::move(sf::Time dt) {
-	sf::Transformable::move(movement * dt.asSeconds());
-}
+//void Asteroid::move(sf::Time dt) {
+//	sf::Transformable::move(movement * dt.asSeconds());
+//}
