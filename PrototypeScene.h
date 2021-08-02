@@ -34,7 +34,7 @@ public:
 
 	void update(sf::Time dt);
 	void draw(sf::RenderWindow& window);
-	void move(sf::Time dt);
+	//void move(sf::Time dt);
 	sf::Vector2f getCenter();
 
 private:
@@ -57,6 +57,8 @@ private:
 	Planet* m;
 	Asteroid asteroid;
 	sf::Vector2f center;
+
+	sf::View view;
 
 };
 #endif

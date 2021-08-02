@@ -15,6 +15,9 @@
 class SystemClass {
 public:
 	SystemClass();
+	
+	// Starts the window and runs the game loop
+	void runWindow();
 
 	// Function to request a scene change (takes name/ID of new scene)
 
@@ -32,10 +35,12 @@ public:
 	bool addData(std::string name, float toadd);
 	float getData(std::string name);
 
+	//Other utility functions for dev
+	void setVSync(bool);
+	void setFPSCounter(bool);
+
 
 private:
-	// Starts the window and runs the game loop
-	void runWindow();
 
 	// Basic actions to be taken each loop, including calling update
 	// and draw functions for the active scene, and checking some key events
@@ -44,14 +49,25 @@ private:
 	//Data module
 	//Scenes - All scenes in the hash table and active scenes in the stack
 	std::list<std::shared_ptr<Scene>> sceneStack;
-	std::list<std::shared_ptr<Scene>>::iterator currentScene;
+	std::list<std::shared_ptr<Scene>>::reverse_iterator currentScene;
 	std::unordered_map<int, std::shared_ptr<Scene>> sceneCollection;
 	std::unordered_map<std::string, float> dataCollection;
 
 	//Window stuff
 	sf::VideoMode desktop;
 	sf::RenderWindow window;
-	sf::View view; //not sure if this should be here or in each scene
+	//sf::View view; //not sure if this should be here or in each scene
 	sf::Clock clock;
+
+	//FPS Counter
+	void updateFPS();
+	bool FPSActive;
+	sf::Font FPSFont;
+	sf::Text FPSText;
+	sf::Time FPSTime;
+	sf::Clock FPSClock;
+	int FPSFrames;
 };
+
+
 #endif

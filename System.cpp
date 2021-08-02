@@ -9,10 +9,19 @@ SystemClass::SystemClass() :
 	desktop(sf::VideoMode::getDesktopMode()),
 	window(desktop, "FarOut")
 {
+
+	addData("DesktopX", desktop.width);
+	addData("DesktopY", desktop.height);
+
+	//FPS Stuff
+	FPSActive = true;
+	FPSFont.loadFromFile("AreaKilometer50.otf");
+	FPSText.setFont(FPSFont);
+	FPSText.setCharacterSize(desktop.height / 30);
+	FPSText.setPosition(-(desktop.width / 2.f) + 10, -(desktop.height / 2.f));
+
 	window.setVerticalSyncEnabled(true);
 	//window.setMouseCursorVisible(false); //debug
-	view = window.getDefaultView(); //again, might move into scenes
-	runWindow();
 }
 
 
@@ -108,7 +117,14 @@ void SystemClass::runWindow() {
 	sf::Time dt; //SFML time object for tracking time between updates
 	sf::Time timer; //Currently not used
 
-	PrototypeScene scene;
+	//PrototypeScene scene;
+	/*std::shared_ptr<Scene> ps(new PrototypeScene);
+	std::shared_ptr<Scene> ps2(new PrototypeScene);
+	System.addScene(1, ps);
+	System.addScene(2, ps2);
+	System.pushScene(ps);*/
+
+
 
 	while (window.isOpen()) { //This is the game loop
 
@@ -125,12 +141,22 @@ void SystemClass::runWindow() {
 		dt = clock.restart();
 
 		window.clear();
+		//window.setView(view);
 		update(dt);
-		scene.update(dt);
-		scene.move(dt);
-		scene.draw(window);
-		view.setCenter(scene.getCenter());
-		window.setView(view);
+
+		// Remove the next 8 lines when done testing ship implementation
+		// Draw the ship
+		// This is just here for testing
+		//asteroid.move(dt);
+		//asteroid.update(dt);
+		//window.draw(asteroid);
+		//view.setCenter(asteroid.getPosition());
+
+		if (FPSActive) {
+			updateFPS();
+			window.draw(FPSText);
+		}
+
 		window.display();
 	}
 }
@@ -147,16 +173,46 @@ void SystemClass::update(sf::Time dt) {
 	}
 
 
-  // Do these loops skip the first element?
 	// Update active scenes (dt)
-	for (currentScene = sceneStack.end(); currentScene != sceneStack.begin(); --currentScene)
+	for (currentScene = sceneStack.rbegin(); currentScene != sceneStack.rend(); ++currentScene)
 		(*currentScene)->update(dt);
 
 
 	// Draw active scene
-	for (currentScene = sceneStack.end(); currentScene != sceneStack.begin(); --currentScene)
+	for (currentScene = sceneStack.rbegin(); currentScene != sceneStack.rend(); ++currentScene)
 		(*currentScene)->draw(window);
 
 }
+
+
+
+
+//Update FPS text
+void SystemClass::updateFPS() {
+	++FPSFrames;
+	FPSTime = FPSClock.getElapsedTime();
+	if (FPSTime.asSeconds() > 1) {
+		FPSClock.restart();
+		FPSText.setString(std::to_string(FPSFrames));
+		FPSFrames = 0;
+	}
+}
+
+
+//Toggle FPS counter utility function
+void SystemClass::setFPSCounter(bool set) {
+	FPSActive = set;
+}
+
+
+
+//VSync utility function
+void SystemClass::setVSync(bool set) {
+	window.setVerticalSyncEnabled(set);
+}
+
+
+
+
 
 

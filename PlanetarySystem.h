@@ -28,14 +28,14 @@ class Planet : public GameObject {
         void draw(sf::RenderTarget& target, sf::RenderStates states)const;
         void update(sf::Time dt, sf::Vector2f systemCenter);
         void update(sf::Time dt);
-        void move(sf::Time dt);
+        //void move(sf::Time dt);
 
     private:
         sf::CircleShape mass;
         sf::CircleShape hitbox;
         int orbitDistance;
         float orbitAngle;
-        sf::Vector2f movement;
+        //sf::Vector2f movement;
         float movementSpeed;
         GameObject* star;
         sf::Vector2f center;

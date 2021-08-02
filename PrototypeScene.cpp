@@ -1,4 +1,5 @@
 #include "PrototypeScene.h"
+#include "SystemClass.h"
 #include <string>
 
 
@@ -46,6 +47,9 @@ PrototypeScene::PrototypeScene() {
 	k = new Planet(2, 10, sf::Color::Yellow, 0.03);
 	l = new Planet(2, 30, sf::Color::Yellow, 0.013);
 	m = new Planet(1, 17, sf::Color::Yellow, 0.05);
+	
+	extern SystemClass System;
+	view.setSize(System.getData("DesktopX"), System.getData("DesktopY"));
 }
 
 
@@ -72,14 +76,14 @@ PrototypeScene::~PrototypeScene() {
 
 
 // Move anything that move gets called on
-void PrototypeScene::move(sf::Time dt){
-	ship.move(dt);
-	alien->move(dt);
-	asteroid.move(dt);
-	a->move(dt);
-	b->move(dt);
-	c->move(dt);
-}
+//void PrototypeScene::move(sf::Time dt){
+//	//ship.move(dt);
+//	//alien->move(dt);
+//	//asteroid.move(dt);
+//	// a->move(dt);
+//	// b->move(dt);
+//	//c->move(dt);
+//}
 
 
 
@@ -103,12 +107,14 @@ void PrototypeScene::update(sf::Time dt) {
 	k->update(dt, d->getPosition());
 	l->update(dt, i->getPosition());
 	m->update(dt, l->getPosition());
+	view.setCenter(ship.getPosition());
 }
 
 
 
 // Draw all the objects in the scene
 void PrototypeScene::draw(sf::RenderWindow& window) {
+	window.setView(view);
 	window.draw(bg);
 	window.draw(ship);
 	window.draw(*alien);

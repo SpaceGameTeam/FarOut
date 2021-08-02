@@ -122,6 +122,7 @@ void Ship::update(sf::Time dt){
 			cos(getRotation() * (3.1415 / 180)));
 	}
 
+    sf::Transformable::move(movement * dt.asSeconds());
 
 }
 
@@ -129,6 +130,6 @@ void Ship::update(sf::Time dt){
 
 // Move the ship
 // Overrides Transformable move function to allow storage of movement as Ship class data member
-void Ship::move(sf::Time dt){
-    sf::Transformable::move(movement * dt.asSeconds());
-}
+//void Ship::move(sf::Time dt){
+//    sf::Transformable::move(movement * dt.asSeconds());
+//}
