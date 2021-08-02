@@ -13,8 +13,6 @@ Ship::Ship(){
 	// Create the ship
 	body.setPrimitiveType(sf::TriangleStrip);
 	body.resize(15);
-
-
 	
 	// setBlueShipPoints(&hitbox);
 	// hitbox.setOutlineThickness(3.f);
@@ -38,6 +36,17 @@ Ship::Ship(){
 	body[4].color = sf::Color::White;
 	body[5].color = sf::Color(22, 69, 149, 255);
 	body[6].color = sf::Color(22, 69, 149, 255);
+
+
+    thruster1.setPrimitiveType(sf::TriangleStrip);
+    thruster1.resize(6);
+	thruster1[0].position = sf::Vector2f(-19.f, 4.f);
+	thruster1[1].position = sf::Vector2f(-19.f, 12.f);
+	thruster1[2].position = sf::Vector2f(-13.f, -8.f);
+	thruster1[3].position = sf::Vector2f(-13.f, 17.f);
+	thruster1[4].position = sf::Vector2f(-7.f, 4.f);
+	thruster1[5].position = sf::Vector2f(-7.f, 12.f);
+
 
 /*
 	body[0].position = sf::Vector2f(-19.f, 4.f);
@@ -168,6 +177,8 @@ void Ship::setBlueShipPoints(sf::ConvexShape * shape) {
 void Ship::draw(sf::RenderTarget& target, sf::RenderStates states)const{
     states.transform *= getTransform();
     target.draw(body, states); 
+    target.draw(thruster1, states); 
+    // target.draw(thruster2, states); 
 }
 
 
