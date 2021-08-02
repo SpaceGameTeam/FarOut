@@ -83,6 +83,7 @@ void Ship::setBlueShipPoints(sf::ConvexShape * shape) {
 	shape->setPoint(11, sf::Vector2f(19.f, 4.f));
 	shape->setPoint(12, sf::Vector2f(13.f, -8.f));
 	shape->setPoint(13, sf::Vector2f(7.f, 0.f));
+	shape->setOrigin(sf::Vector2f(0, 23));
 }
 
 
@@ -91,7 +92,6 @@ void Ship::setBlueShipPoints(sf::ConvexShape * shape) {
 void Ship::draw(sf::RenderTarget& target, sf::RenderStates states)const{
     states.transform *= getTransform();
     target.draw(body, states); 
-    // target.draw(hitbox, states); 
 }
 
 
