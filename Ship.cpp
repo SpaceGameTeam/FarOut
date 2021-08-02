@@ -5,20 +5,62 @@ Ship::Ship(){
     movementSpeed = 363.0;
 
     // Create the ship
-    // Can be exchanged with other functions to create other ships
-	setBlueShipPoints(&body);
-	body.setOutlineThickness(3.f);
-	body.setFillColor(sf::Color::Blue);
-	body.scale(0.75f, 0.75f);
+	// setBlueShipPoints(&body);
+	// body.setOutlineThickness(3.f);
+	// body.setFillColor(sf::Color(22, 69, 149));
+	// body.scale(0.75f, 0.75f);
+
+	// Create the ship
+	body.setPrimitiveType(sf::TriangleStrip);
+	body.resize(14);
+
+
 	
-	setBlueShipPoints(&hitbox);
-	hitbox.setOutlineThickness(3.f);
-	hitbox.setFillColor(sf::Color::Transparent);
-	hitbox.setOutlineColor(sf::Color::Red);
-	hitbox.scale(0.75f, 0.75f);
+	// setBlueShipPoints(&hitbox);
+	// hitbox.setOutlineThickness(3.f);
+	// hitbox.setFillColor(sf::Color::Transparent);
+	// hitbox.setOutlineColor(sf::Color::Red);
+	// hitbox.scale(0.75f, 0.75f);
+    
+	body[3].position = sf::Vector2f(-19.f, 4.f);
+	body[4].position = sf::Vector2f(-19.f, 12.f);
+	body[0].position = sf::Vector2f(10.f, 0.f);
+	body[5].position = sf::Vector2f(-13.f, 17.f);
+	body[4].position = sf::Vector2f(10.f, 38.f);
+	body[6].position = sf::Vector2f(-13.f, 38.f);
+	body[7].position = sf::Vector2f(0.f, 62.f);
+	body[4].position = sf::Vector2f(10.f, 38.f);
+	body[8].position = sf::Vector2f(13.f, 38.f);
+	body[5].position = sf::Vector2f(-13.f, 17.f);
+	body[9].position = sf::Vector2f(13.f, 17.f);
+	body[0].position = sf::Vector2f(10.f, 0.f);
+	body[10].position = sf::Vector2f(19.f, 12.f);
+	body[11].position = sf::Vector2f(19.f, 4.f);
+
+	// body[1].position = sf::Vector2f(-7.f, 0.f);
+	// body[2].position = sf::Vector2f(-13.f, -8.f);
+	// body[12].position = sf::Vector2f(13.f, -8.f);
+	// body[13].position = sf::Vector2f(7.f, 0.f);
+	/*
+	body[0].position = sf::Vector2f(0.f, 0.f);
+	body[1].position = sf::Vector2f(-7.f, 0.f);
+	body[2].position = sf::Vector2f(-13.f, -8.f);
+	body[3].position = sf::Vector2f(-19.f, 4.f);
+	body[4].position = sf::Vector2f(-19.f, 12.f);
+	body[5].position = sf::Vector2f(-13.f, 17.f);
+	body[6].position = sf::Vector2f(-13.f, 38.f);
+	body[7].position = sf::Vector2f(0.f, 62.f);
+	body[8].position = sf::Vector2f(13.f, 38.f);
+	body[9].position = sf::Vector2f(13.f, 17.f);
+	body[10].position = sf::Vector2f(19.f, 12.f);
+	body[11].position = sf::Vector2f(19.f, 4.f);
+	body[12].position = sf::Vector2f(13.f, -8.f);
+	body[13].position = sf::Vector2f(7.f, 0.f);
+	*/
 
     setPosition(0, 0);
 	setRotation(180);
+	setOrigin(sf::Vector2f(0, 23));
 }
 
 
