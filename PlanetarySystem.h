@@ -34,19 +34,4 @@ class Planet : public GameObject {
         float orbitAngle;
         float angleChange;
 };
-
-/*
-class PlanetarySystem : public GameObject {
-    public: 
-        PlanetarySystem(sf::Vector2f position, GameObject** systemObjects, int numObj);
-        void draw(sf::RenderTarget& target, sf::RenderStates states)const;
-        void update(sf::Time dt);
-    
-    private:
-        GameObject** gravityBoundObjects;
-        int numObjects;
-};
-*/
-
-
 #endif
