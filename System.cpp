@@ -9,6 +9,7 @@ SystemClass::SystemClass() :
 	desktop(sf::VideoMode::getDesktopMode()),
 	window(desktop, "FarOut")
 {
+	paused = false;
 
 	addData("DesktopX", desktop.width);
 	addData("DesktopY", desktop.height);
@@ -22,6 +23,7 @@ SystemClass::SystemClass() :
 	FPSText.setCharacterSize(desktop.height / 30);
 	FPSText.setPosition(10, 0);
 
+	//VSync
 	VSyncEnabled = false;
 	window.setVerticalSyncEnabled(VSyncEnabled);
 	//window.setMouseCursorVisible(false); //debug
@@ -154,25 +156,27 @@ void SystemClass::runWindow() {
 		//time we came through this loop
 		dt = clock.restart();
 
-		window.clear();
-		//window.setView(view);
-		update(dt);
+		if (!paused) {
+			window.clear();
+			//window.setView(view);
+			update(dt);
 
-		// Remove the next 8 lines when done testing ship implementation
-		// Draw the ship
-		// This is just here for testing
-		//asteroid.move(dt);
-		//asteroid.update(dt);
-		//window.draw(asteroid);
-		//view.setCenter(asteroid.getPosition());
+			// Remove the next 8 lines when done testing ship implementation
+			// Draw the ship
+			// This is just here for testing
+			//asteroid.move(dt);
+			//asteroid.update(dt);
+			//window.draw(asteroid);
+			//view.setCenter(asteroid.getPosition());
 
-		if (FPSActive) {
-			updateFPS();
-			window.setView(view);
-			window.draw(FPSText);
+			if (FPSActive) {
+				updateFPS();
+				window.setView(view);
+				window.draw(FPSText);
+			}
+
+			window.display();
 		}
-
-		window.display();
 	}
 }
 
@@ -224,6 +228,11 @@ void SystemClass::setFPSCounter(bool set) {
 //VSync utility function
 void SystemClass::setVSync(bool set) {
 	window.setVerticalSyncEnabled(set);
+}
+
+//Pause util
+void SystemClass::setPause(bool set) {
+	paused = set;
 }
 
 

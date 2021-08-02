@@ -38,6 +38,7 @@ public:
 	//Other utility functions for dev
 	void setVSync(bool);
 	void setFPSCounter(bool);
+	void setPause(bool);
 
 
 private:
@@ -68,6 +69,9 @@ private:
 	sf::Time FPSTime;
 	sf::Clock FPSClock;
 	int FPSFrames;
+
+	//Misc
+	bool paused;
 };
 
 extern SystemClass System;
