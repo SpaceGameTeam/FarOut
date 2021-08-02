@@ -42,9 +42,9 @@ PrototypeScene::PrototypeScene() {
 	planetarySystemObjects[2] = new Planet(10, 180, sf::Color::Magenta, 0.25);
 	planetarySystemObjects[3] = new Planet(4, 200, sf::Color::Yellow, 0.04);
 	planetarySystemObjects[4] = new Planet(50, 350, sf::Color::Cyan, 0.045);
-	planetarySystemObjects[5] = new Planet(25, 460, sf::Color::Green, 0.06);
+	planetarySystemObjects[5] = new Planet(25, 460, sf::Color::Green, 0.09);
 	planetarySystemObjects[6] = new Planet(10, 500, sf::Color::Blue, 0.03);
-	planetarySystemObjects[7] = new Planet(10, 540, sf::Color::Yellow, 0.1);
+	planetarySystemObjects[7] = new Planet(10, 540, sf::Color::Yellow, 0.2);
 	planetarySystemObjects[8] = new Planet(3, 600, sf::Color::Yellow, 0.15);
 	planetarySystemObjects[9] = new Planet(2, 15, sf::Color::White, 0.5);
 	planetarySystemObjects[10] = new Planet(2, 10, sf::Color::White, 0.15);
@@ -89,9 +89,13 @@ void PrototypeScene::update(sf::Time dt) {
 	sun->update(dt);
 	sf::Vector2f center = sun->getPosition();
 	
-	for (int i = 0; i < SYSTEMOBJECTS; ++i) {
+	for (int i = 0; i < 9; ++i) {
 		planetarySystemObjects[i]->update(dt, center);
 	}
+	planetarySystemObjects[9]->update(dt, planetarySystemObjects[6]->getPosition());
+	planetarySystemObjects[10]->update(dt, planetarySystemObjects[3]->getPosition());
+	planetarySystemObjects[11]->update(dt, planetarySystemObjects[8]->getPosition());
+	planetarySystemObjects[12]->update(dt, planetarySystemObjects[11]->getPosition());
 	/*
 	sun->update(dt);
 	a->update(dt, sun->getPosition());

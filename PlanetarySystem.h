@@ -35,7 +35,7 @@ class Planet : public GameObject {
         float angleChange;
 };
 
-
+/*
 class PlanetarySystem : public GameObject {
     public: 
         PlanetarySystem(sf::Vector2f position, GameObject** systemObjects, int numObj);
@@ -46,6 +46,7 @@ class PlanetarySystem : public GameObject {
         GameObject** gravityBoundObjects;
         int numObjects;
 };
+*/
 
 
 #endif
