@@ -7,8 +7,17 @@ Asteroid::Asteroid() {
 	// Create the asteroid
 	// Can be exchanged with other functions to create other ships
 	setMercuryPoints();
+	setHitboxPoints();
+	setPosition(200, 200);
 
-	setPosition(0, 0);
+	//circle anchor is at pi rads on circumference (instead of center)
+	// origin is thus offset by radius and height of gameobject to center around the object
+	hitradius.setPosition(getPosition().x - radius, getPosition().y-100);
+	hitradius.setRadius(radius);
+	hitradius.setFillColor(sf::Color::Transparent);
+	hitradius.setOutlineColor(sf::Color::Green);
+	hitradius.setOutlineThickness(3.f);
+	
 }
 
 
@@ -122,13 +131,23 @@ void Asteroid::setMercuryPoints() {
 	Body.setPoint(102, sf::Vector2f(0.f, 58.f));
 
 
-
-
-
-
 	Body.setOutlineThickness(3.f);
 	Body.setFillColor(sf::Color(184,115,52,255));
 	//Body.scale(1f, 1f);
+}
+
+void Asteroid::setHitboxPoints() {
+	hitbox.setPointCount(6);
+	hitbox.setPoint(0, sf::Vector2f(-60.f, 0.f));
+	hitbox.setPoint(1, sf::Vector2f(-30.f, 50.f));
+	hitbox.setPoint(2, sf::Vector2f(30.f, 50.f));
+	hitbox.setPoint(3, sf::Vector2f(60.f, 0.f));
+	hitbox.setPoint(4, sf::Vector2f(30.f, -50.f));
+	hitbox.setPoint(5, sf::Vector2f(-30.f, -50.f));
+
+	hitbox.setOutlineThickness(3.f);
+	hitbox.setFillColor(sf::Color::Transparent);
+	hitbox.setOutlineColor(sf::Color::Red);
 }
 
 
@@ -137,6 +156,8 @@ void Asteroid::setMercuryPoints() {
 void Asteroid::draw(sf::RenderTarget& target, sf::RenderStates states)const {
 	states.transform *= getTransform();
 	target.draw(Body, states);
+	target.draw(hitbox, states);
+	target.draw(hitradius);
 }
 
 

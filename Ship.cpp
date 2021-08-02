@@ -18,6 +18,17 @@ Ship::Ship(){
 	hitbox.scale(0.75f, 0.75f);
 
     setPosition(0, 0);
+
+	//circle anchor is at pi rads on circumference (instead of center)
+	// origin is thus offset by radius and height of gameobject to center around the object
+	hitradius.setOrigin(radius, origin[1]+62);
+	hitradius.setRadius(radius);
+	hitradius.setFillColor(sf::Color::Transparent);
+	hitradius.setOutlineColor(sf::Color::Green);
+	hitradius.setOutlineThickness(3.f);
+	hitradius.scale(0.75, 0.75);
+
+	setOrigin(origin[0], origin[1]);
 }
 
 
@@ -90,7 +101,8 @@ void Ship::setBlueShipPoints(sf::ConvexShape * shape) {
 void Ship::draw(sf::RenderTarget& target, sf::RenderStates states)const{
     states.transform *= getTransform();
     target.draw(body, states); 
-    target.draw(hitbox, states); 
+    target.draw(hitbox, states);
+	target.draw(hitradius, states);
 }
 
 

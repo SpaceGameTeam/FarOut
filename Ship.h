@@ -20,6 +20,14 @@ private:
     float movementSpeed;
     sf::Vector2f movement;
     sf::ConvexShape hitbox;
+    
+    // if two gameObjects are within thier radii it should trigger hitbox checking
+    // minimizes hitbox checking
+    float radius = 100.0;
+    sf::CircleShape hitradius;
 
+    //Anchor point of the object
+    // used in tandum with hitradius
+    int origin[2] = { 0, 16 };
 };
 #endif

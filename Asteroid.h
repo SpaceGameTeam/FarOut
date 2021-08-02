@@ -13,14 +13,19 @@ public:
     void draw(sf::RenderTarget& target, sf::RenderStates states)const;
     void update(sf::Time dt);
     void move(sf::Time dt);
+    void setHitboxPoints();
 
 private:
 
     //in future: add argument to load different shape asteroids
     void setMercuryPoints();
     sf::ConvexShape Body;
+    sf::ConvexShape hitbox;
     float movementSpeed;
     sf::Vector2f movement;
+
+    float radius = 100;
+    sf::CircleShape hitradius;
     
 };
 #endif
