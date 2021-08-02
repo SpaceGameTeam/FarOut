@@ -1,8 +1,6 @@
 #include "Ship.h"
 
-Ship::Ship(){
-    // Check movementSpeed setting when star background is working
-    movementSpeed = 363.0;
+Ship::Ship(): movementSpeed(SPEED), accelerating(false) {
 
     // Create the ship
 	// setBlueShipPoints(&body);
@@ -72,6 +70,28 @@ Ship::Ship(){
 	thruster2[3].color = sf::Color::White;
 	thruster2[4].color = sf::Color(22, 69, 149, 255);
 	thruster2[5].color = sf::Color(22, 69, 149, 255);
+
+	// Make first flame
+	flame1.setPrimitiveType(sf::TriangleStrip);
+	flame1.resize(3);
+	flame1[0].position = sf::Vector2f(-13.f, -12.f);
+	flame1[1].position = sf::Vector2f(-17.f, -25.f);
+	flame1[2].position = sf::Vector2f(-9.f, -25.f);
+	
+	flame1[0].color = sf::Color(255, 197, 36, 255);
+	flame1[1].color = sf::Color(232, 48, 3, 255);
+	flame1[2].color = sf::Color(232, 48, 3, 255);
+
+	// Make second flame
+	flame2.setPrimitiveType(sf::TriangleStrip);
+	flame2.resize(3);
+	flame2[0].position = sf::Vector2f(13.f, -12.f);
+	flame2[1].position = sf::Vector2f(17.f, -25.f);
+	flame2[2].position = sf::Vector2f(9.f, -25.f);
+	
+	flame2[0].color = sf::Color(255, 197, 36, 255);
+	flame2[1].color = sf::Color(232, 48, 3, 255);
+	flame2[2].color = sf::Color(232, 48, 3, 255);
 
     // setScale(sf::Vector2f(4.f, 4.f));
     setPosition(0, 0);
@@ -152,12 +172,17 @@ void Ship::draw(sf::RenderTarget& target, sf::RenderStates states)const{
     target.draw(body, states); 
     target.draw(thruster1, states); 
     target.draw(thruster2, states); 
+	if (accelerating) {
+		target.draw(flame1, states);
+		target.draw(flame2, states);
+	}
 }
 
 
 
 // Move or rotate the ship when keys are pressed
 void Ship::update(sf::Time dt){
+	accelerating = false;
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::H)) {
 		rotate(-230.f * dt.asSeconds());
@@ -175,6 +200,7 @@ void Ship::update(sf::Time dt){
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::K)) {
 		movement += movementSpeed * dt.asSeconds() * sf::Vector2f(-sin(getRotation() * (3.1415 / 180)), 
 			cos(getRotation() * (3.1415 / 180))); 
+		accelerating = true;
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::J)) {

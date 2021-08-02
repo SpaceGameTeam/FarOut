@@ -6,6 +6,9 @@
 #include "GameObject.h"
 #include <math.h>
 
+
+const float SPEED = 363.0;
+
 class Ship : public GameObject {
 public:
 	Ship();
@@ -25,6 +28,7 @@ private:
     float movementSpeed;
     sf::Vector2f movement;
     sf::ConvexShape hitbox;
+    bool accelerating;
 
 };
 #endif
