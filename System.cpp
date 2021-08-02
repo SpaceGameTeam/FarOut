@@ -153,6 +153,12 @@ void SystemClass::runWindow() {
 					window.setVerticalSyncEnabled(VSyncEnabled);
 				}
 			}
+
+			//Pauses when out of focus
+			if (event.type == sf::Event::LostFocus)
+				paused = true;
+			if (event.type == sf::Event::GainedFocus)
+				paused = false;
 		}
 
 		//Restart returns the amount of time on the clock (aka stopwatch) and
@@ -228,10 +234,6 @@ void SystemClass::setVSync(bool set) {
 	window.setVerticalSyncEnabled(set);
 }
 
-//Pause util
-void SystemClass::setPause(bool set) {
-	paused = set;
-}
 
 
 
