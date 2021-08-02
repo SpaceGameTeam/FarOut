@@ -100,7 +100,7 @@ void Planet::draw(sf::RenderTarget& target, sf::RenderStates states)const {
 
 // Move the planet 
 void Planet::update(sf::Time dt, sf::Vector2f center) {
-    orbitAngle += angleChange * 50 * dt.asSeconds();
+    orbitAngle += angleChange * dt.asSeconds();
     while (orbitAngle > 360){
         orbitAngle -= 360;
     }

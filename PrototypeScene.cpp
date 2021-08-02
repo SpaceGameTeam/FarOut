@@ -34,19 +34,19 @@ void Background::draw(sf::RenderTarget& target, sf::RenderStates states)const {
 PrototypeScene::PrototypeScene() {
 	alien = new AlienShip(&ship);
 	sun = new Star(30, sf::Color(219, 57, 5), 3, sf::Color(255, 154, 1), sf::Vector2f(-700, 200));
-	a = new Planet(5, 100, sf::Color::Green, 0.01);
-	b = new Planet(8, 140, sf::Color::Blue, 0.001);
-	c = new Planet(10, 180, sf::Color::Magenta, 0.005);
-	d = new Planet(4, 200, sf::Color::Yellow, 0.001);
-	e = new Planet(50, 350, sf::Color::Cyan, 0.0009);
-	f = new Planet(25, 460, sf::Color::Green, 0.0008);
-	g = new Planet(10, 500, sf::Color::Blue, 0.0009);
-	h = new Planet(10, 540, sf::Color::Yellow, 0.002);
-	i = new Planet(3, 600, sf::Color::Yellow, 0.003);
-	j = new Planet(2, 15, sf::Color::White, 0.001);
-	k = new Planet(2, 10, sf::Color::Yellow, 0.03);
-	l = new Planet(2, 30, sf::Color::Yellow, 0.013);
-	m = new Planet(1, 17, sf::Color::Yellow, 0.05);
+	a = new Planet(5, 100, sf::Color::Green, 0.5);
+	b = new Planet(8, 140, sf::Color::Blue, 0.05);
+	c = new Planet(10, 180, sf::Color::Magenta, 0.25);
+	d = new Planet(4, 200, sf::Color::Yellow, 0.04);
+	e = new Planet(50, 350, sf::Color::Cyan, 0.045);
+	f = new Planet(25, 460, sf::Color::Green, 0.06);
+	g = new Planet(10, 500, sf::Color::Blue, 0.03);
+	h = new Planet(10, 540, sf::Color::Yellow, 0.1);
+	i = new Planet(3, 600, sf::Color::Yellow, 0.15);
+	j = new Planet(2, 15, sf::Color::White, 0.5);
+	k = new Planet(2, 10, sf::Color::Yellow, 0.15);
+	l = new Planet(2, 30, sf::Color::Yellow, 0.6);
+	m = new Planet(1, 17, sf::Color::Yellow, 0.9);
 	
 	extern SystemClass System;
 	view.setSize(System.getData("DesktopX"), System.getData("DesktopY"));
