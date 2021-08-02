@@ -71,113 +71,44 @@ void Star::update(sf::Time dt){}
 ////////////////////////////////////////////////////////////////////////////
 
 
-/*
-Planet::Planet(int radius, int dist, sf::Color color, sf::Vector2f orbitCenter, float movementFactor=0.01){
-    // movementSpeed = 363.0 * movementFactor;
-    // star = systemCenter;
-    angleChange = movementFactor;
+
+// Create a planet by passing in its size, distance from the center of the system, color, and speed or orbit
+Planet::Planet(int radius, int dist, sf::Color color, float movementFactor=0.01): orbitDistance(dist), orbitAngle(0), angleChange(movementFactor) {
+    // Make the planet with its size and color
     mass.setRadius(radius);
     mass.setFillColor(color);
-    orbitDistance = dist;
 
+    // Make the hitbox
     hitbox.setRadius(radius);
     hitbox.setOutlineColor(sf::Color::Red);
     hitbox.setFillColor(sf::Color::Transparent);
     hitbox.setOutlineThickness(3.f);
 
-    sf::Vector2f startPosition = sf::Vector2f (center.x, center.y + orbitDistance);
-    setPosition(orbitCenter);
-    setOrigin(sf::Vector2f (radius, radius) + sf::Vector2f(0, dist));
-}
-*/
-
-
-
-Planet::Planet(int radius, int dist, sf::Color color, float movementFactor=0.01){
-    // movementSpeed = 363.0 * movementFactor;
-    // star = systemCenter;
-    angleChange = movementFactor;
-    mass.setRadius(radius);
-    mass.setFillColor(color);
-    orbitDistance = dist;
-
-    hitbox.setRadius(radius);
-    hitbox.setOutlineColor(sf::Color::Red);
-    hitbox.setFillColor(sf::Color::Transparent);
-    hitbox.setOutlineThickness(3.f);
-
-    sf::Vector2f startPosition = sf::Vector2f (center.x, center.y + orbitDistance);
-    setPosition(startPosition);
+    // Set the origin of the planet to its center instead of the upper lefthand corner as is default
     setOrigin(radius, radius);
 }
 
 
 
-void Planet::draw(sf::RenderTarget& target, sf::RenderStates states)const{
+// Draw just the planet
+void Planet::draw(sf::RenderTarget& target, sf::RenderStates states)const {
     states.transform *= getTransform();
     target.draw(mass, states); 
-    // target.draw(hitbox, states); 
 }
 
 
 
-void Planet::update(sf::Time dt, sf::Vector2f cent){
-    orbitAngle += angleChange * 50 * dt.asSeconds();
-    if (orbitAngle > 360){
+// Move the planet 
+void Planet::update(sf::Time dt, sf::Vector2f center) {
+    orbitAngle += angleChange * dt.asSeconds();
+    while (orbitAngle > 360){
         orbitAngle -= 360;
     }
-    // sf::Vector2f newPosition = sf::Vector2f (star->getPosition().x + orbitDistance * cos(orbitAngle), star->getPosition().y + orbitDistance * sin(orbitAngle));
-    // sf::Vector2f currentPosition = getPosition();
-    // movement = sf::Vector2f(newPosition.x - currentPosition.x, newPosition.y - currentPosition.y);
-    // sf::Vector2f cent = star->getPosition();
-    //movement = sf::Vector2f (cent.x + orbitDistance * cos(orbitAngle), cent.y + orbitDistance * sin(orbitAngle));
-    setPosition(sf::Vector2f(cent.x + orbitDistance * cos(orbitAngle), cent.y + orbitDistance * sin(orbitAngle)));
+    setPosition(sf::Vector2f(center.x + orbitDistance * cos(orbitAngle), center.y + orbitDistance * sin(orbitAngle)));
 }
 
 
 
-void Planet::update(sf::Time dt){
-}
-
-
-
-//void Planet::move(sf::Time dt) {
-//    sf::Transformable::move(movement);
-//}
-
-
-
-////////////////////////////////////////////////////////////////////////////
-///  PlanetarySystem Class 
-////////////////////////////////////////////////////////////////////////////
-
-
-
-// Creates a system that's just an array, where systemObjects[0] is the star everything else orbits
-// The array is created by the client and passed in as an argument
-// The constructor also takes the position and number of objects total in the system as arguments
-// (counting the star)
-PlanetarySystem::PlanetarySystem(sf::Vector2f position, GameObject** systemObjects, int numObj){
-    gravityBoundObjects = systemObjects; 
-    numObjects = numObj;
-    systemObjects[0]->setPosition(position);
-}
-
-
-
-// Draw each object in the planetary system 
-void PlanetarySystem::draw(sf::RenderTarget& target, sf::RenderStates states)const{
-    for (int i = 0; i < numObjects; ++i){
-        gravityBoundObjects[i]->draw(target, states);
-    }
-}
-
-
-
-// Update each object. This doesn't seem to work -- maybe a timing issue???
-void PlanetarySystem::update(sf::Time dt){
-    for (int i = 0; i < numObjects; ++i){
-        gravityBoundObjects[i]->update(dt);
-    }
-
+// Overload the update function from the abstract base class
+void Planet::update(sf::Time dt) {
 }

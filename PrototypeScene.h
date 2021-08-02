@@ -9,7 +9,7 @@
 #include "PlanetarySystem.h"
 #include "Asteroid.h"
 
-const int PLANETS = 9;
+const int SYSTEMOBJECTS = 13;
 
 
 class Background : public GameObject {
@@ -26,7 +26,6 @@ private:
 
 
 
-
 class PrototypeScene : public Scene {
 public:
 	PrototypeScene();
@@ -34,7 +33,6 @@ public:
 
 	void update(sf::Time dt);
 	void draw(sf::RenderWindow& window);
-	//void move(sf::Time dt);
 	sf::Vector2f getCenter();
 
 private:
@@ -42,21 +40,7 @@ private:
 	Ship ship;
 	AlienShip* alien;
 	Star* sun;
-	// Planet* a;
-	Planet* b;
-	Planet* c;
-	/*
-	Planet* d;
-	Planet* e;
-	Planet* f;
-	Planet* g;
-	Planet* h;
-	Planet* i;
-	Planet* j;
-	Planet* k;
-	Planet* l;
-	Planet* m;
-	*/
+	Planet** planetarySystemObjects;
 	Asteroid asteroid;
 	sf::Vector2f center;
 
