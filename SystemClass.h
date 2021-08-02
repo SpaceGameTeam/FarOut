@@ -56,8 +56,9 @@ private:
 	//Window stuff
 	sf::VideoMode desktop;
 	sf::RenderWindow window;
-	//sf::View view; //not sure if this should be here or in each scene
+	sf::View view; 
 	sf::Clock clock;
+	bool VSyncEnabled;
 
 	//FPS Counter
 	void updateFPS();
@@ -69,5 +70,5 @@ private:
 	int FPSFrames;
 };
 
-
+extern SystemClass System;
 #endif

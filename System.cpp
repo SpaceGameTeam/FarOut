@@ -13,14 +13,17 @@ SystemClass::SystemClass() :
 	addData("DesktopX", desktop.width);
 	addData("DesktopY", desktop.height);
 
+	view = window.getDefaultView();
+
 	//FPS Stuff
 	FPSActive = true;
 	FPSFont.loadFromFile("AreaKilometer50.otf");
 	FPSText.setFont(FPSFont);
 	FPSText.setCharacterSize(desktop.height / 30);
-	FPSText.setPosition(-(desktop.width / 2.f) + 10, -(desktop.height / 2.f));
+	FPSText.setPosition(10, 0);
 
-	window.setVerticalSyncEnabled(true);
+	VSyncEnabled = false;
+	window.setVerticalSyncEnabled(VSyncEnabled);
 	//window.setMouseCursorVisible(false); //debug
 }
 
@@ -131,8 +134,19 @@ void SystemClass::runWindow() {
 		//Event check
 		sf::Event event;
 		while (window.pollEvent(event)) {
+
 			if (event.type == sf::Event::Closed)
 				window.close();
+
+			if (event.type == sf::Event::KeyPressed) {
+
+				//VSync toggle
+				if (event.key.code == sf::Keyboard::V) {
+					if (VSyncEnabled) VSyncEnabled = false;
+					else VSyncEnabled = true;
+					window.setVerticalSyncEnabled(VSyncEnabled);
+				}
+			}
 		}
 
 		//Restart returns the amount of time on the clock (aka stopwatch) and
@@ -154,6 +168,7 @@ void SystemClass::runWindow() {
 
 		if (FPSActive) {
 			updateFPS();
+			window.setView(view);
 			window.draw(FPSText);
 		}
 

@@ -48,7 +48,7 @@ PrototypeScene::PrototypeScene() {
 	l = new Planet(2, 30, sf::Color::Yellow, 0.6);
 	m = new Planet(1, 17, sf::Color::Yellow, 0.9);
 	
-	extern SystemClass System;
+	//extern SystemClass System;
 	view.setSize(System.getData("DesktopX"), System.getData("DesktopY"));
 }
 
