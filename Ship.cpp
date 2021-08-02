@@ -12,7 +12,7 @@ Ship::Ship(){
 
 	// Create the ship
 	body.setPrimitiveType(sf::TriangleStrip);
-	body.resize(15);
+	body.resize(7);
 	
 	// setBlueShipPoints(&hitbox);
 	// hitbox.setOutlineThickness(3.f);
@@ -20,6 +20,7 @@ Ship::Ship(){
 	// hitbox.setOutlineColor(sf::Color::Red);
 	// hitbox.scale(0.75f, 0.75f);
     	
+    // Make main body of ship
 	body[0].position = sf::Vector2f(0.f, 0.f);
 	body[1].position = sf::Vector2f(-13.f, 0.f);
 	body[2].position = sf::Vector2f(-13.f, 38.f);
@@ -38,6 +39,7 @@ Ship::Ship(){
 	body[6].color = sf::Color(22, 69, 149, 255);
 
 
+    // Make first thruster of ship
     thruster1.setPrimitiveType(sf::TriangleStrip);
     thruster1.resize(6);
 	thruster1[0].position = sf::Vector2f(-19.f, 4.f);
@@ -47,62 +49,33 @@ Ship::Ship(){
 	thruster1[4].position = sf::Vector2f(-7.f, 4.f);
 	thruster1[5].position = sf::Vector2f(-7.f, 12.f);
 
+	thruster1[0].color = sf::Color(22, 69, 149, 255);
+	thruster1[1].color = sf::Color(22, 69, 149, 255);
+	thruster1[2].color = sf::Color::White;
+	thruster1[3].color = sf::Color::White;
+	thruster1[4].color = sf::Color(22, 69, 149, 255);
+	thruster1[5].color = sf::Color(22, 69, 149, 255);
 
-/*
-	body[0].position = sf::Vector2f(-19.f, 4.f);
-	body[1].position = sf::Vector2f(-19.f, 12.f);
-	body[2].position = sf::Vector2f(0.f, 0.f);
-	body[3].position = sf::Vector2f(-13.f, 17.f);
-	body[4].position = sf::Vector2f(0.f, 38.f);
-	body[5].position = sf::Vector2f(-13.f, 38.f);
-	body[6].position = sf::Vector2f(0.f, 62.f);
-	body[8].position = sf::Vector2f(13.f, 38.f);
-	body[9].position = sf::Vector2f(0.f, 38.f);
-	body[10].position = sf::Vector2f(13.f, 17.f);
-	body[11].position = sf::Vector2f(0.f, 0.f);
-	body[12].position = sf::Vector2f(19.f, 12.f);
-	body[13].position = sf::Vector2f(19.f, 4.f);
-	body[14].position = sf::Vector2f(0.f, 0.f);
+    // Make second thruster of ship
+    thruster2.setPrimitiveType(sf::TriangleStrip);
+    thruster2.resize(6);
+	thruster2[0].position = sf::Vector2f(19.f, 4.f);
+	thruster2[1].position = sf::Vector2f(19.f, 12.f);
+	thruster2[2].position = sf::Vector2f(13.f, -8.f);
+	thruster2[3].position = sf::Vector2f(13.f, 17.f);
+	thruster2[4].position = sf::Vector2f(7.f, 4.f);
+	thruster2[5].position = sf::Vector2f(7.f, 12.f);
 
-	body[0].color = sf::Color(22, 69, 149, 255);
-	body[1].color = sf::Color(22, 69, 149, 255);
-	body[2].color = sf::Color::White;
-	body[3].color = sf::Color(22, 69, 149, 255);
-	body[4].color = sf::Color::White;
-	body[5].color = sf::Color(22, 69, 149, 255);
-	// body[6].color = sf::Color::White;
-	body[7].color = sf::Color(22, 69, 149, 255);
-	body[8].color = sf::Color(22, 69, 149, 255);
-	// body[9].color = sf::Color::White;
-	body[10].color = sf::Color(22, 69, 149, 255);
-	// body[11].color = sf::Color::White;
-	body[12].color = sf::Color(22, 69, 149, 255);
-	body[13].color = sf::Color(22, 69, 149, 255);
-	// body[14].color = sf::Color::White;
-*/
-	// body[1].position = sf::Vector2f(-7.f, 0.f);
-	// body[2].position = sf::Vector2f(-13.f, -8.f);
-	// body[12].position = sf::Vector2f(13.f, -8.f);
-	// body[13].position = sf::Vector2f(7.f, 0.f);
-	/*
-	body[0].position = sf::Vector2f(0.f, 0.f);
-	body[1].position = sf::Vector2f(-7.f, 0.f);
-	body[2].position = sf::Vector2f(-13.f, -8.f);
-	body[3].position = sf::Vector2f(-19.f, 4.f);
-	body[4].position = sf::Vector2f(-19.f, 12.f);
-	body[5].position = sf::Vector2f(-13.f, 17.f);
-	body[6].position = sf::Vector2f(-13.f, 38.f);
-	body[7].position = sf::Vector2f(0.f, 62.f);
-	body[8].position = sf::Vector2f(13.f, 38.f);
-	body[9].position = sf::Vector2f(13.f, 17.f);
-	body[10].position = sf::Vector2f(19.f, 12.f);
-	body[11].position = sf::Vector2f(19.f, 4.f);
-	body[12].position = sf::Vector2f(13.f, -8.f);
-	body[13].position = sf::Vector2f(7.f, 0.f);
-	*/
-    setScale(sf::Vector2f(4.f, 4.f));
+	thruster2[0].color = sf::Color(22, 69, 149, 255);
+	thruster2[1].color = sf::Color(22, 69, 149, 255);
+	thruster2[2].color = sf::Color::White;
+	thruster2[3].color = sf::Color::White;
+	thruster2[4].color = sf::Color(22, 69, 149, 255);
+	thruster2[5].color = sf::Color(22, 69, 149, 255);
+
+    // setScale(sf::Vector2f(4.f, 4.f));
     setPosition(0, 0);
-	// setRotation(180);
+	setRotation(180);
 	setOrigin(sf::Vector2f(0, 23));
 }
 
@@ -178,7 +151,7 @@ void Ship::draw(sf::RenderTarget& target, sf::RenderStates states)const{
     states.transform *= getTransform();
     target.draw(body, states); 
     target.draw(thruster1, states); 
-    // target.draw(thruster2, states); 
+    target.draw(thruster2, states); 
 }
 
 
