@@ -32,10 +32,11 @@ public:
 	AlienShip(GameObject* commObject);
     void draw(sf::RenderTarget& target, sf::RenderStates states)const;
 	void update(sf::Time dt);
-    void move(sf::Time dt);
+    //void move(sf::Time dt);
 
 private:
     float movementSpeed;
+    float distanceFromShip;
     sf::Vector2f movement;
     EllipseShape dome;
 	sf::VertexArray saucer; 

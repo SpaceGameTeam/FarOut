@@ -4,10 +4,20 @@
 // GameObject.h contains the above includes, left for posterity
 // #include "GameObject.h"
 
-    
+#include "SystemClass.h"
+#include "PrototypeScene.h"
 
 int main()
 {
+
+	std::shared_ptr<Scene> ps(new PrototypeScene);
+	std::shared_ptr<Scene> ps2(new PrototypeScene);
+	System.addScene(1, ps);
+	System.addScene(2, ps2);
+	System.pushScene(ps);
+
+    System.runWindow();
+
 
 
     // Here for posterity

@@ -1,6 +1,11 @@
-#pragma once
+// Scene base class for client derivation
 
+
+
+#ifndef SCENE
+#define SCENE
 #include <SFML/Graphics.hpp>
+
 //#include "SystemClass.h"
 
 
@@ -14,3 +19,4 @@ public:
 private:
 	// Some sort of collection of objects? Maybe these should be in the derived class?
 };
+#endif

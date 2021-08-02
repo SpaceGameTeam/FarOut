@@ -9,19 +9,32 @@ SystemClass::SystemClass() :
 	desktop(sf::VideoMode::getDesktopMode()),
 	window(desktop, "FarOut")
 {
-	window.setVerticalSyncEnabled(true);
+
+	addData("DesktopX", desktop.width);
+	addData("DesktopY", desktop.height);
+
+	view = window.getDefaultView();
+
+	//FPS Stuff
+	FPSActive = true;
+	FPSFont.loadFromFile("AreaKilometer50.otf");
+	FPSText.setFont(FPSFont);
+	FPSText.setCharacterSize(desktop.height / 30);
+	FPSText.setPosition(10, 0);
+
+	VSyncEnabled = false;
+	window.setVerticalSyncEnabled(VSyncEnabled);
 	//window.setMouseCursorVisible(false); //debug
-	view = window.getDefaultView(); //again, might move into scenes
-	runWindow();
 }
 
 
 
 // Push to the sceneStack to be call during update and draw
-void SystemClass::pushScene(Scene * toPush)
+void SystemClass::pushScene(std::shared_ptr<Scene> toPush)
 {
 	sceneStack.push_front(toPush);
 
+  return;
 }
 
 
@@ -30,17 +43,24 @@ void SystemClass::pushScene(Scene * toPush)
 // Return true for success, false for empty stack
 bool SystemClass::popScene()
 {
+	if (sceneStack.empty())
+	  return false;
+
 	sceneStack.pop_front();
 
-  // TODO Check for empty list
 	return true;
 }
 
 
 
 // Add a scene to the collection
-bool SystemClass::addScene(int id, Scene * toadd)
+// Returns true for success, false if there is already a scene at that key value
+bool SystemClass::addScene(int id, std::shared_ptr<Scene> toadd)
 {
+	if(!sceneCollection[id]) {
+	  sceneCollection[id] = toadd;
+	  return true; 
+	}
 
 	return false;
 }
@@ -48,13 +68,20 @@ bool SystemClass::addScene(int id, Scene * toadd)
 
 
 // Return a scene from the scene collection
-Scene * SystemClass::getScene(int id)
+// Returns NULL if no scene at that id
+std::shared_ptr<Scene> SystemClass::getScene(int id)
 {
+	std::shared_ptr<Scene> temp = sceneCollection[id];
+
+	if (temp)
+	  return temp;
 
 	return NULL;
 }
 
 
+
+/*  Not sure if this is usefull now...
 
 // Remove a scene from the scene collection 
 bool SystemClass::removeScene(int id)
@@ -62,7 +89,30 @@ bool SystemClass::removeScene(int id)
 
 	return false;
 }
+*/
 
+
+
+// Add data to the collection
+// Returns true for success, false if there is already data at that key value
+bool SystemClass::addData(std::string name, float toadd)
+{
+	if(!dataCollection[name]) {
+	  dataCollection[name] = toadd;
+	  return true; 
+	}
+
+	return false;
+}
+
+
+
+// Return data from the scene collection
+// Check for NULL?
+float SystemClass::getData(std::string name)
+{
+	return dataCollection[name];
+}
 
 
 // This function starts the window and runs the game loop
@@ -70,18 +120,33 @@ void SystemClass::runWindow() {
 	sf::Time dt; //SFML time object for tracking time between updates
 	sf::Time timer; //Currently not used
 
-    // Move the next three lines to a prototype scene when ready 
-	Ship ship;
-	AlienShip alien(&ship);
-	Asteroid asteroid;
+	//PrototypeScene scene;
+	/*std::shared_ptr<Scene> ps(new PrototypeScene);
+	std::shared_ptr<Scene> ps2(new PrototypeScene);
+	System.addScene(1, ps);
+	System.addScene(2, ps2);
+	System.pushScene(ps);*/
+
+
 
 	while (window.isOpen()) { //This is the game loop
 
 		//Event check
 		sf::Event event;
 		while (window.pollEvent(event)) {
+
 			if (event.type == sf::Event::Closed)
 				window.close();
+
+			if (event.type == sf::Event::KeyPressed) {
+
+				//VSync toggle
+				if (event.key.code == sf::Keyboard::V) {
+					if (VSyncEnabled) VSyncEnabled = false;
+					else VSyncEnabled = true;
+					window.setVerticalSyncEnabled(VSyncEnabled);
+				}
+			}
 		}
 
 		//Restart returns the amount of time on the clock (aka stopwatch) and
@@ -90,21 +155,22 @@ void SystemClass::runWindow() {
 		dt = clock.restart();
 
 		window.clear();
-
+		//window.setView(view);
 		update(dt);
-		// Move the next 9 lines to a prototype scene when ready 
+
+		// Remove the next 8 lines when done testing ship implementation
 		// Draw the ship
-		ship.move(dt);
-		alien.move(dt);
-		asteroid.move(dt);
-		ship.update(dt);
-		alien.update(dt);
-		asteroid.update(dt);
-		window.draw(ship);
-		window.draw(alien);
-		window.draw(asteroid);
-		view.setCenter(ship.getPosition());
-		window.setView(view);
+		// This is just here for testing
+		//asteroid.move(dt);
+		//asteroid.update(dt);
+		//window.draw(asteroid);
+		//view.setCenter(asteroid.getPosition());
+
+		if (FPSActive) {
+			updateFPS();
+			window.setView(view);
+			window.draw(FPSText);
+		}
 
 		window.display();
 	}
@@ -116,20 +182,52 @@ void SystemClass::runWindow() {
 // and draw functions for the active scene, and checking some key events
 void SystemClass::update(sf::Time dt) {
 
-	//Keyboard events     ---Most keyboard events will need to be passed into the active scene
+	// Keyboard events     ---Most keyboard events will need to be passed into the active scene
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
 		window.close();
 	}
 
-	//Update active scenes (dt)
-	for (currentScene = sceneStack.begin(); currentScene != sceneStack.end(); ++currentScene)
+
+	// Update active scenes (dt)
+	for (currentScene = sceneStack.rbegin(); currentScene != sceneStack.rend(); ++currentScene)
 		(*currentScene)->update(dt);
 
 
-	//Draw active scene
-	for (currentScene = sceneStack.begin(); currentScene != sceneStack.end(); ++currentScene)
+	// Draw active scene
+	for (currentScene = sceneStack.rbegin(); currentScene != sceneStack.rend(); ++currentScene)
 		(*currentScene)->draw(window);
 
 }
+
+
+
+
+//Update FPS text
+void SystemClass::updateFPS() {
+	++FPSFrames;
+	FPSTime = FPSClock.getElapsedTime();
+	if (FPSTime.asSeconds() > 1) {
+		FPSClock.restart();
+		FPSText.setString(std::to_string(FPSFrames));
+		FPSFrames = 0;
+	}
+}
+
+
+//Toggle FPS counter utility function
+void SystemClass::setFPSCounter(bool set) {
+	FPSActive = set;
+}
+
+
+
+//VSync utility function
+void SystemClass::setVSync(bool set) {
+	window.setVerticalSyncEnabled(set);
+}
+
+
+
+
 
 

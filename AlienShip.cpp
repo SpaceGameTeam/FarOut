@@ -57,7 +57,8 @@ sf::Vector2f EllipseShape::getPoint(std::size_t index) const {
 // data structure of GameObjects to facilitate communication
 AlienShip::AlienShip(GameObject * commObject){
 	ship = commObject;
-    movementSpeed = 363.0;
+    movementSpeed = 0.0;
+	distanceFromShip = 500;
 
     // Create the ship
 	saucer.setPrimitiveType(sf::TriangleStrip);
@@ -91,7 +92,7 @@ AlienShip::AlienShip(GameObject * commObject){
 	hitbox.setFillColor(sf::Color::Transparent);
 	hitbox.setOutlineColor(sf::Color::Red);
 
-    setPosition(0, 300);
+    setPosition(300, distanceFromShip);
 }
 
 
@@ -106,6 +107,7 @@ void AlienShip::setAlienShipPoints(sf::ConvexShape * shape) {
 	shape->setPoint(4, sf::Vector2f(50.f, -30.f));
 	shape->setPoint(5, sf::Vector2f(70.f, -15.f));
 	shape->setPoint(6, sf::Vector2f(50.f, 0.f));
+	shape->scale(0.25f, 0.25f);
 }
 
 
@@ -123,17 +125,19 @@ void AlienShip::draw(sf::RenderTarget& target, sf::RenderStates states)const{
 
 // Chase the ship! A momentum term would help here
 void AlienShip::update(sf::Time dt){
-	sf::Vector2f diff = ship->getPosition() + sf::Vector2f(0, 300) - getPosition();
+	sf::Vector2f diff = ship->getPosition() + sf::Vector2f(300, 500) - getPosition();
 	if (abs(diff.x) > 10 || abs(diff.y) > 10) {
 		float magnitude = sqrt (diff.x * diff.x + diff.y * diff.y);
+		movementSpeed += 0.001 * (magnitude - (distanceFromShip - 300));
 		movement += movementSpeed * dt.asSeconds() * diff / magnitude;
 	}
-}
-
-
-
-// Move the ship
-// Overrides Transformable move function to allow storage of movement as AlienShip class data member
-void AlienShip::move(sf::Time dt){
     sf::Transformable::move(movement * dt.asSeconds());
 }
+
+
+
+// Move the alien ship
+// Overrides Transformable move function to allow storage of movement as AlienShip class data member
+//void AlienShip::move(sf::Time dt){
+//    sf::Transformable::move(movement * dt.asSeconds());
+//}

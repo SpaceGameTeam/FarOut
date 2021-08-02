@@ -10,7 +10,7 @@ Ship::Ship(){
 	body.setOutlineThickness(3.f);
 	body.setFillColor(sf::Color::Blue);
 	body.scale(0.75f, 0.75f);
-
+	
 	setBlueShipPoints(&hitbox);
 	hitbox.setOutlineThickness(3.f);
 	hitbox.setFillColor(sf::Color::Transparent);
@@ -18,6 +18,7 @@ Ship::Ship(){
 	hitbox.scale(0.75f, 0.75f);
 
     setPosition(0, 0);
+	setRotation(180);
 }
 
 
@@ -121,6 +122,7 @@ void Ship::update(sf::Time dt){
 			cos(getRotation() * (3.1415 / 180)));
 	}
 
+    sf::Transformable::move(movement * dt.asSeconds());
 
 }
 
@@ -128,6 +130,6 @@ void Ship::update(sf::Time dt){
 
 // Move the ship
 // Overrides Transformable move function to allow storage of movement as Ship class data member
-void Ship::move(sf::Time dt){
-    sf::Transformable::move(movement * dt.asSeconds());
-}
+//void Ship::move(sf::Time dt){
+//    sf::Transformable::move(movement * dt.asSeconds());
+//}
