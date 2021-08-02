@@ -26,7 +26,6 @@ private:
 
 
 
-
 class PrototypeScene : public Scene {
 public:
 	PrototypeScene();
