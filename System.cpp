@@ -139,26 +139,29 @@ void SystemClass::runWindow() {
 
 			if (event.type == sf::Event::Closed)
 				window.close();
-
-			if (event.type == sf::Event::KeyPressed) {
-
-				//ESC
-				if (event.key.code == sf::Keyboard::Escape)
-					window.close();
-
-				//VSync toggle
-				if (event.key.code == sf::Keyboard::V) {
-					if (VSyncEnabled) VSyncEnabled = false;
-					else VSyncEnabled = true;
-					window.setVerticalSyncEnabled(VSyncEnabled);
-				}
-			}
-
+			
 			//Pauses when out of focus
 			if (event.type == sf::Event::LostFocus)
 				paused = true;
 			if (event.type == sf::Event::GainedFocus)
 				paused = false;
+
+			//Most events should only be checked when in focus
+			if (!paused) {
+				if (event.type == sf::Event::KeyPressed) {
+
+					//ESC
+					if (event.key.code == sf::Keyboard::Escape)
+						window.close();
+
+					//VSync toggle
+					if (event.key.code == sf::Keyboard::V) {
+						if (VSyncEnabled) VSyncEnabled = false;
+						else VSyncEnabled = true;
+						window.setVerticalSyncEnabled(VSyncEnabled);
+					}
+				}
+			}
 		}
 
 		//Restart returns the amount of time on the clock (aka stopwatch) and
