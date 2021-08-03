@@ -7,7 +7,6 @@
 class MenuBox : public GameObject {
     public:
         MenuBox(); 
-        ~MenuBox(); 
 
         void update(sf::Time dt);
         void draw(sf::RenderTarget& target, sf::RenderStates states) const;
@@ -17,12 +16,24 @@ class MenuBox : public GameObject {
 
 };
 
+class Option {
+    public:
+        Option();
+    
+        virtual bool onSelection() = 0;
+
+    private:
+
+        sf::Vector2f lablePos;
+        sf::Vector2f curPos;
+        sf::Text lable;
+};
+
 
 
 class PrototypeMenu : public Scene {
     public:
         PrototypeMenu();
-        ~PrototypeMenu();
 
         void update(sf::Time dt);
         void draw(sf::RenderWindow& window);
@@ -31,4 +42,31 @@ class PrototypeMenu : public Scene {
         MenuBox mb;
         std::vector<std::string> options;
 
+};
+
+
+
+class OptStart : public Option {
+    public:
+        OptStart();
+
+        bool onSelection();
+};
+
+
+
+class OptQuit : public Option {
+    public:
+        OptQuit();
+
+        bool onSelection();
+};
+
+
+
+class OptCont : public Option {
+    public:
+        OptCont();
+
+        bool onSelection();
 };
