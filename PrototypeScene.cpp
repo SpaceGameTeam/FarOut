@@ -134,7 +134,7 @@ void PrototypeScene::collision_check() {
 	sf::Vector2f ast_pos = asteroid.getPosition();
 
 	// Step2: determine if objs are within eachothers hit radius
-	//  if r1 + r2 <= ||ab||, where r1, r2 are objA and objB radius, and ||ab|| is the distance from pos_A to pos_B
+	//  if r1 + r2 >= ||ab||, where r1, r2 are objA and objB radius, and ||ab|| is the distance from pos_A to pos_B
 
 	float rad_total = ship.getRadius() + asteroid.getRadius();
 
@@ -144,7 +144,7 @@ void PrototypeScene::collision_check() {
 	ab_length += ab.y * ab.y;
 	ab_length = sqrt(ab_length);
 
-	if (rad_total <= ab_length) {
+	if (ab_length <= rad_total) {
 		// send signal to objects
 		ship.setPossibleCollision(true);
 		asteroid.setPossibleCollision(true);
