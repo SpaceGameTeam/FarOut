@@ -6,15 +6,19 @@
 
 #include "SystemClass.h"
 #include "PrototypeScene.h"
+#include "PrototypeMenu.h"
 
 int main()
 {
 
 	std::shared_ptr<Scene> ps(new PrototypeScene);
-	std::shared_ptr<Scene> ps2(new PrototypeScene);
+    std::shared_ptr<Scene> menu(new PrototypeMenu);
+
 	System.addScene(1, ps);
-	System.addScene(2, ps2);
+	System.addScene(2, menu);
+
 	System.pushScene(ps);
+    System.pushScene(menu);
 
     System.runWindow();
 
