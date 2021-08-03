@@ -14,6 +14,11 @@ public:
     void update(sf::Time dt);
     void move(sf::Time dt);
     void setHitboxPoints();
+   
+    // prototype collision methods
+    float getRadius();
+    void setPossibleCollision(bool possible);
+    void setCollision(bool was_collision);
 
 private:
 
@@ -24,8 +29,10 @@ private:
     float movementSpeed;
     sf::Vector2f movement;
 
-    float radius = 100;
+    float radius = 30;
     sf::CircleShape hitradius;
+    bool possible_collision;
+    bool collision;
     
 };
 #endif

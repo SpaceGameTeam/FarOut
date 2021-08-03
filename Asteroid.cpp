@@ -1,6 +1,11 @@
 #include "Asteroid.h"
 
 Asteroid::Asteroid() {
+
+	//set collision status
+	possible_collision = false;
+	collision = false;
+
 	// Check movementSpeed setting when star background is working
 	movementSpeed = 363.0;
 
@@ -12,7 +17,7 @@ Asteroid::Asteroid() {
 
 	//circle anchor is at pi rads on circumference (instead of center)
 	// origin is thus offset by radius and height of gameobject to center around the object
-	hitradius.setPosition(getPosition().x - radius, getPosition().y-100);
+	hitradius.setPosition(getPosition().x - radius, getPosition().y-30);
 	hitradius.setRadius(radius);
 	hitradius.setFillColor(sf::Color::Transparent);
 	hitradius.setOutlineColor(sf::Color::Green);
@@ -148,6 +153,7 @@ void Asteroid::setHitboxPoints() {
 	hitbox.setOutlineThickness(3.f);
 	hitbox.setFillColor(sf::Color::Transparent);
 	hitbox.setOutlineColor(sf::Color::Red);
+	hitbox.scale(0.35f, 0.35f);
 }
 
 
@@ -172,3 +178,34 @@ void Asteroid::update(sf::Time dt) {
 //void Asteroid::move(sf::Time dt) {
 //	sf::Transformable::move(movement * dt.asSeconds());
 //}
+
+
+// getter function for Radius. There is no setter and this function returns a copy.
+float Asteroid::getRadius() {
+	return radius;
+}
+
+// sets the class boolean 'possible_collision'
+void Asteroid::setPossibleCollision(bool possible) {
+
+	if (possible) {
+		possible_collision = true;
+	}
+
+	else {
+		possible_collision = false;
+		collision = false;
+	}
+}
+
+// sets the class boolean 'collision'
+void Asteroid::setCollision(bool was_collision) {
+
+	if (was_collision) {
+		collision = true;
+	}
+
+	else {
+		collision = false;
+	}
+}

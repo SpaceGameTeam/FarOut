@@ -2,6 +2,10 @@
 
 Ship::Ship(): movementSpeed(SPEED), accelerating(false) {
 
+	// init collisions to false
+	possible_collision = false;
+	collision = false;
+
     // Create the ship
 	// setBlueShipPoints(&body);
 	// body.setOutlineThickness(3.f);
@@ -13,10 +17,21 @@ Ship::Ship(): movementSpeed(SPEED), accelerating(false) {
 	body.resize(7);
 	
 	// setBlueShipPoints(&hitbox);
-	// hitbox.setOutlineThickness(3.f);
-	// hitbox.setFillColor(sf::Color::Transparent);
-	// hitbox.setOutlineColor(sf::Color::Red);
-	// hitbox.scale(0.75f, 0.75f);
+	hitbox.setOutlineThickness(1.f);
+	hitbox.setFillColor(sf::Color::Transparent);
+	hitbox.setOutlineColor(sf::Color::Red);
+	hitbox.scale(2.0f, 2.0f);
+	hitbox.setOrigin(0, 23);
+
+	// Make Ship hitbox
+	hitbox.setPointCount(4);
+	hitbox.setPoint(0, sf::Vector2f(-5.f, 22.f));
+	hitbox.setPoint(1, sf::Vector2f(5.f, 22.f));
+	hitbox.setPoint(2, sf::Vector2f(5.f, 50.f));
+	hitbox.setPoint(3, sf::Vector2f(-5.f, 50.f));
+
+
+	
     	
     // Make main body of ship
 	body[0].position = sf::Vector2f(0.f, 0.f);
@@ -98,14 +113,16 @@ Ship::Ship(): movementSpeed(SPEED), accelerating(false) {
 
 	//circle anchor is at pi rads on circumference (instead of center)
 	// origin is thus offset by radius and height of gameobject to center around the object
-	hitradius.setOrigin(radius, origin[1]+62);
+	hitradius.setOrigin(radius, 23+47);
 	hitradius.setRadius(radius);
 	hitradius.setFillColor(sf::Color::Transparent);
 	hitradius.setOutlineColor(sf::Color::Green);
 	hitradius.setOutlineThickness(3.f);
 	hitradius.scale(0.75, 0.75);
 
-	setOrigin(origin[0], origin[1]);
+	setRotation(180);
+
+	setOrigin(0, 23);
 }
 
 
@@ -178,13 +195,25 @@ void Ship::setBlueShipPoints(sf::ConvexShape * shape) {
 // Overridden draw function
 void Ship::draw(sf::RenderTarget& target, sf::RenderStates states)const{
     states.transform *= getTransform();
+
+	// for debug use
+	target.draw(hitradius, states);
+	// for debug use
+	//	if possible collision show hitbox
+
+	if(possible_collision) target.draw(hitbox, states);
+
     target.draw(body, states); 
+	
+	
     target.draw(thruster1, states); 
     target.draw(thruster2, states); 
 	if (accelerating) {
 		target.draw(flame1, states);
 		target.draw(flame2, states);
 	}
+
+	
 }
 
 
@@ -228,3 +257,35 @@ void Ship::update(sf::Time dt){
 //void Ship::move(sf::Time dt){
 //    sf::Transformable::move(movement * dt.asSeconds());
 //}
+
+
+// getter function for Radius. There is no setter and this function returns a copy.
+float Ship::getRadius() {
+	return radius;
+}
+
+
+// sets the class boolean 'possible_collision'
+void Ship::setPossibleCollision(bool possible) {
+
+	if (possible) {
+		possible_collision = true;
+	}
+
+	else {
+		possible_collision = false;
+		collision = false;
+	}
+}
+
+// sets the class boolean 'collision'
+void Ship::setCollision(bool was_collision) {
+
+	if (was_collision) {
+		collision = true;
+	}
+
+	else {
+		collision = false;
+	}
+}

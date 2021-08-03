@@ -16,6 +16,11 @@ public:
 	void update(sf::Time dt);
     //void move(sf::Time dt);
 
+    // prototype collision methods
+    float getRadius();
+    void setPossibleCollision(bool possible);
+    void setCollision(bool was_collision);
+
 private:
     void setMercuryPoints(sf::ConvexShape * shape);
     void setBlueShipPoints(sf::ConvexShape * shape);
@@ -26,8 +31,12 @@ private:
     sf::VertexArray flame1;
     sf::VertexArray flame2;
     float movementSpeed;
+    bool accelerating;
     sf::Vector2f movement;
+
     sf::ConvexShape hitbox;
+    bool possible_collision;
+    bool collision;
     
     // if two gameObjects are within thier radii it should trigger hitbox checking
     // minimizes hitbox checking
@@ -36,6 +45,6 @@ private:
 
     //Anchor point of the object
     // used in tandum with hitradius
-    int origin[2] = { 0, 16 };
+    //int origin[2] = { 0, 16 };
 };
 #endif
