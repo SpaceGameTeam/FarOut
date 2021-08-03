@@ -1,4 +1,5 @@
 // Prototype Menu
+#include "SystemClass.h"
 #include "Scene.h"
 #include "GameObject.h"
 #include <string>
