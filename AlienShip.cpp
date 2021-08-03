@@ -124,9 +124,6 @@ void AlienShip::draw(sf::RenderTarget& target, sf::RenderStates states)const{
 void AlienShip::update(sf::Time dt, sf::Vector2f shipPosition){
 	sf::Vector2f diff = shipPosition + sf::Vector2f(300, 500) - getPosition();
 	if (abs(diff.x) > 10 || abs(diff.y) > 10) {
-		// float magnitude = sqrt (diff.x * diff.x + diff.y * diff.y);
-		// movementSpeed += 0.001 * (magnitude - (distanceFromShip - 300));
-		// movement += movementSpeed * dt.asSeconds() * diff / magnitude;
 		movement = diff;
 	}
     sf::Transformable::move(movement * dt.asSeconds());
