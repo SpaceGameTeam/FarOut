@@ -23,6 +23,7 @@ public:
 
 	// Active Scene Stack Functions
 	void pushScene(std::shared_ptr<Scene> toPush);
+	void pushScene(int toPush);
 	bool popScene();
 
   // Scene Collection Functions
