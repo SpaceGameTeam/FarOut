@@ -32,7 +32,7 @@ void Background::draw(sf::RenderTarget& target, sf::RenderStates states)const {
 //Scene stuff
 // Some of the data members are dynamically allocated because constructors with arguments were written
 PrototypeScene::PrototypeScene() {
-	alien = new AlienShip(&ship);
+	alien = new AlienShip();
 	sun = new Star(30, sf::Color(219, 57, 5), 3, sf::Color(255, 154, 1), sf::Vector2f(-700, 200)); 
 
 	planetarySystemObjects = new Planet*[SYSTEMOBJECTS];
@@ -84,7 +84,7 @@ PrototypeScene::~PrototypeScene() {
 void PrototypeScene::update(sf::Time dt) {
 	bg.update(dt);
 	ship.update(dt);
-	alien->update(dt);
+	alien->update(dt, ship.getPosition());
 	asteroid.update(dt);
 	sun->update(dt);
 	sf::Vector2f center = sun->getPosition();
