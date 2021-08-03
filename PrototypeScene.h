@@ -33,17 +33,20 @@ public:
 
 	void update(sf::Time dt);
 	void draw(sf::RenderWindow& window);
+	void collision_check();
 	sf::Vector2f getCenter();
 
 private:
 	Background bg;
-	Ship ship;
 	AlienShip* alien;
 	Star* sun;
 	Planet** planetarySystemObjects;
-	Asteroid asteroid;
-	sf::Vector2f center;
 
+	// collision type objects
+	Ship ship;
+	Asteroid asteroid;
+
+	sf::Vector2f center;
 	sf::View view;
 
 };
