@@ -70,7 +70,7 @@ private:
 	int FPSFrames;
 
 	//Misc
-	bool paused;
+	bool inFocus;
 };
 
 extern SystemClass System;

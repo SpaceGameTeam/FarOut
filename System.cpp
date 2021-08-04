@@ -9,7 +9,7 @@ SystemClass::SystemClass() :
 	desktop(sf::VideoMode::getDesktopMode()),
 	window(desktop, "FarOut")
 {
-	paused = false;
+	inFocus = true;
 
 	addData("DesktopX", desktop.width);
 	addData("DesktopY", desktop.height);
@@ -142,12 +142,12 @@ void SystemClass::runWindow() {
 			
 			//Pauses when out of focus
 			if (event.type == sf::Event::LostFocus)
-				paused = true;
+				inFocus = false;
 			if (event.type == sf::Event::GainedFocus)
-				paused = false;
+				inFocus = true;
 
 			//Most events should only be checked when in focus
-			if (!paused) {
+			if (inFocus) {
 				if (event.type == sf::Event::KeyPressed) {
 
 					//ESC
@@ -169,7 +169,7 @@ void SystemClass::runWindow() {
 		//time we came through this loop
 		dt = clock.restart();
 
-		if (!paused) {
+		if (inFocus) {
 			window.clear();
 			//window.setView(view);
 			update(dt);
