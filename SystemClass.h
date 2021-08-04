@@ -38,6 +38,7 @@ public:
 	//Other utility functions for dev
 	void setVSync(bool);
 	void setFPSCounter(bool);
+	void quit();
 
 
 private:

@@ -239,6 +239,15 @@ void SystemClass::setVSync(bool set) {
 
 
 
+//Quit function
+void SystemClass::quit() {
+	//save data system to file
+
+	window.close();
+}
+
+
+
 
 
 
