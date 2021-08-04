@@ -9,6 +9,7 @@ SystemClass::SystemClass() :
 	desktop(sf::VideoMode::getDesktopMode()),
 	window(desktop, "FarOut")
 {
+	inFocus = true;
 
 	addData("DesktopX", desktop.width);
 	addData("DesktopY", desktop.height);
@@ -22,6 +23,7 @@ SystemClass::SystemClass() :
 	FPSText.setCharacterSize(desktop.height / 30);
 	FPSText.setPosition(10, 0);
 
+	//VSync
 	VSyncEnabled = false;
 	window.setVerticalSyncEnabled(VSyncEnabled);
 	//window.setMouseCursorVisible(false); //debug
@@ -137,14 +139,27 @@ void SystemClass::runWindow() {
 
 			if (event.type == sf::Event::Closed)
 				window.close();
+			
+			//Pauses when out of focus
+			if (event.type == sf::Event::LostFocus)
+				inFocus = false;
+			if (event.type == sf::Event::GainedFocus)
+				inFocus = true;
 
-			if (event.type == sf::Event::KeyPressed) {
+			//Most events should only be checked when in focus
+			if (inFocus) {
+				if (event.type == sf::Event::KeyPressed) {
 
-				//VSync toggle
-				if (event.key.code == sf::Keyboard::V) {
-					if (VSyncEnabled) VSyncEnabled = false;
-					else VSyncEnabled = true;
-					window.setVerticalSyncEnabled(VSyncEnabled);
+					//ESC
+					if (event.key.code == sf::Keyboard::Escape)
+						window.close();
+
+					//VSync toggle
+					if (event.key.code == sf::Keyboard::V) {
+						if (VSyncEnabled) VSyncEnabled = false;
+						else VSyncEnabled = true;
+						window.setVerticalSyncEnabled(VSyncEnabled);
+					}
 				}
 			}
 		}
@@ -154,25 +169,27 @@ void SystemClass::runWindow() {
 		//time we came through this loop
 		dt = clock.restart();
 
-		window.clear();
-		//window.setView(view);
-		update(dt);
+		if (inFocus) {
+			window.clear();
+			//window.setView(view);
+			update(dt);
 
-		// Remove the next 8 lines when done testing ship implementation
-		// Draw the ship
-		// This is just here for testing
-		//asteroid.move(dt);
-		//asteroid.update(dt);
-		//window.draw(asteroid);
-		//view.setCenter(asteroid.getPosition());
+			// Remove the next 8 lines when done testing ship implementation
+			// Draw the ship
+			// This is just here for testing
+			//asteroid.move(dt);
+			//asteroid.update(dt);
+			//window.draw(asteroid);
+			//view.setCenter(asteroid.getPosition());
 
-		if (FPSActive) {
-			updateFPS();
-			window.setView(view);
-			window.draw(FPSText);
+			if (FPSActive) {
+				updateFPS();
+				window.setView(view);
+				window.draw(FPSText);
+			}
+
+			window.display();
 		}
-
-		window.display();
 	}
 }
 
@@ -181,13 +198,7 @@ void SystemClass::runWindow() {
 // Basic actions to be taken each loop, including calling update
 // and draw functions for the active scene, and checking some key events
 void SystemClass::update(sf::Time dt) {
-
-	// Keyboard events     ---Most keyboard events will need to be passed into the active scene
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-		window.close();
-	}
-
-
+	
 	// Update active scenes (dt)
 	for (currentScene = sceneStack.rbegin(); currentScene != sceneStack.rend(); ++currentScene)
 		(*currentScene)->update(dt);
@@ -225,6 +236,16 @@ void SystemClass::setFPSCounter(bool set) {
 void SystemClass::setVSync(bool set) {
 	window.setVerticalSyncEnabled(set);
 }
+
+
+
+//Quit function
+void SystemClass::quit() {
+	//save data system to file
+
+	window.close();
+}
+
 
 
 
