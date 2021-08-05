@@ -1,5 +1,8 @@
 #include "PrototypeMenu.h"
 
+
+
+/*
 MenuBox::MenuBox()
 {
     // Set Dimentions 
@@ -23,6 +26,8 @@ void MenuBox::draw(sf::RenderTarget& target, sf::RenderStates state) const
 {
 
 }
+*/
+
 
 
 Option::Option()
@@ -32,7 +37,7 @@ Option::Option()
 
 
 
-PrototypeMenu::PrototypeMenu()
+Menu::Menu()
 {
 	// Change to reletive coordinants when available
 	int x = 0;
@@ -59,13 +64,14 @@ PrototypeMenu::PrototypeMenu()
 
 
 
-void PrototypeMenu::update(sf::Time dt)
+void Menu::update(sf::Time dt)
 {
 
 }
 
 
-void PrototypeMenu::draw(sf::RenderWindow& window)
+
+void Menu::draw(sf::RenderWindow& window)
 {
 	window.draw(menuBox);	
 
@@ -121,8 +127,10 @@ OptQuit::OptQuit()
 
 bool OptQuit::onSelection()
 {
+  // Pop all of the scenes off of the stack
   while (System.popScene()) ;
 
+  // Quit the program
   System.quit();
 
   return true;
