@@ -41,6 +41,7 @@ class PrototypeMenu : public Scene {
 
     private:
         MenuBox mb;
+	sf::RectangleShape menuBox;
         std::vector<std::string> options;
 
 };
