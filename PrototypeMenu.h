@@ -7,6 +7,7 @@
 #include "GameObject.h"
 #include <string>
 #include <vector>
+#include <memory>
 
 
 
@@ -54,15 +55,15 @@ class Menu : public Scene {
         void update(sf::Time dt);
         void draw(sf::RenderWindow& window);
 
-    private:
+    protected:
         // Menu box drawn behind the options 
         // I'm thinking of just integrating this into the menu
         // MenuBox mb;
 
         // Menu box drawn behind the options
 	    sf::RectangleShape menuBox;
-        // List of options availible in the menu
-        std::vector<std::string> options;
+        // List of opti>ons availible in the menu
+        std::vector<std::unique_ptr<Option>> options;
         // Position of the curser in the menu relitive to the window
         sf::Vector2f curPos;
 
@@ -71,7 +72,22 @@ class Menu : public Scene {
 
 
 // Add class Start Menu
+class StartMenu : public Menu {
+    public:
+        StartMenu();
+
+    private:
+};
+
+
+
 // Add class Pause Menu
+class PauseMenu : public Menu {
+    public:
+        PauseMenu();
+
+    private:
+};
 
 
 

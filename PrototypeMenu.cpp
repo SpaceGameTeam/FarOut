@@ -2,41 +2,6 @@
 
 
 
-/*
-MenuBox::MenuBox()
-{
-    // Set Dimentions 
-    // Set Transparentcy 
-    // Set Wallpaper
-    // Set Font
-    // Set Sound
-
-}
-
-
-
-void MenuBox::update(sf::Time dt)
-{
-
-}
-
-
-
-void MenuBox::draw(sf::RenderTarget& target, sf::RenderStates state) const
-{
-
-}
-*/
-
-
-
-Option::Option()
-{
-
-}
-
-
-
 Menu::Menu()
 {
 	// Change to reletive coordinants when available
@@ -57,16 +22,15 @@ Menu::Menu()
 	menuBox.setFillColor(sf::Color(0, 0, 0, 220));
 	menuBox.setOutlineThickness(3.f);
 	menuBox.setOutlineColor(sf::Color(100, 149, 237));
-
-	// Draw the text options
-
 }
 
 
 
 void Menu::update(sf::Time dt)
 {
-
+  // Check for input to:
+  // 1. Change cursor position
+  // 2. Select and option
 }
 
 
@@ -74,6 +38,35 @@ void Menu::update(sf::Time dt)
 void Menu::draw(sf::RenderWindow& window)
 {
 	window.draw(menuBox);	
+  // draw options
+  // draw cursor position
+}
+
+
+
+StartMenu::StartMenu()
+{
+  //Option * start = new OptStart(); 
+  //Option * quit = new OptQuit(); 
+  options.push_back(std::unique_ptr<Option>(new OptStart));
+  options.push_back(std::unique_ptr<Option>(new OptQuit));
+}
+
+
+
+PauseMenu::PauseMenu()
+{
+  //Option * cont = new OptCont(); 
+  //Option * quit = new OptQuit(); 
+  options.push_back(std::unique_ptr<Option>(new OptCont));
+  options.push_back(std::unique_ptr<Option>(new OptQuit));
+}
+
+
+
+// Does this need to be here?
+Option::Option()
+{
 
 }
 
@@ -81,6 +74,7 @@ void Menu::draw(sf::RenderWindow& window)
 
 OptStart::OptStart()
 {
+  // Set the text object
 
 }
 
@@ -100,6 +94,7 @@ bool OptStart::onSelection()
 
 OptCont::OptCont()
 {
+  // Set the text object
 
 }
 
@@ -120,6 +115,7 @@ bool OptCont::onSelection()
 
 OptQuit::OptQuit()
 {
+  // Set the text object
 
 }
 
