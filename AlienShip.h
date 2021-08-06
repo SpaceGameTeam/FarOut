@@ -3,7 +3,8 @@
 
 #ifndef ALIENSHIP
 #define ALIENSHIP
-#include "GameObject.h"
+// #include "GameObject.h"
+#include "FarOut.h"
 #include <math.h>
 
 

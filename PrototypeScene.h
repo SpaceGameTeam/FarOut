@@ -2,8 +2,9 @@
 
 #ifndef PROTO
 #define PROTO
-#include "Scene.h"
-#include "GameObject.h"
+// #include "Scene.h"
+// #include "GameObject.h"
+// #include "FarOut.h"
 #include "AlienShip.h"
 #include "Ship.h"
 #include "PlanetarySystem.h"

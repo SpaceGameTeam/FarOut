@@ -4,7 +4,8 @@
 // GameObject.h contains the above includes, left for posterity
 // #include "GameObject.h"
 
-#include "SystemClass.h"
+// #include "SystemClass.h"
+// #include "FarOut.h"
 #include "PrototypeScene.h"
 
 int main()
