@@ -10,7 +10,7 @@
 
 #ifndef SYSCLS
 #define SYSCLS
-#include "PrototypeScene.h"
+// #include "PrototypeScene.h"
 
 class SystemClass {
 public:
@@ -39,6 +39,7 @@ public:
 	//Other utility functions for dev
 	void setVSync(bool);
 	void setFPSCounter(bool);
+	void quit();
 
 
 private:
@@ -69,6 +70,9 @@ private:
 	sf::Time FPSTime;
 	sf::Clock FPSClock;
 	int FPSFrames;
+
+	//Misc
+	bool inFocus;
 };
 
 extern SystemClass System;
