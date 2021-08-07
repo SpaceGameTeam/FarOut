@@ -112,6 +112,13 @@ OptCont::OptCont()
 
 
 
+void OptCont::draw(sf::RenderWindow& window)
+{
+  window.draw(lable);
+}
+
+
+
 bool OptCont::onSelection()
 {  
   bool success = false;
@@ -130,6 +137,14 @@ OptQuit::OptQuit()
   // Set the text object
 
 }
+
+
+
+void OptQuit::draw(sf::RenderWindow& window)
+{
+  window.draw(lable);
+}
+
 
 
 
