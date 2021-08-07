@@ -4,22 +4,27 @@
 // GameObject.h contains the above includes, left for posterity
 // #include "GameObject.h"
 
-// #include "SystemClass.h"
-// #include "FarOut.h"
+#include "SystemClass.h"
 #include "PrototypeScene.h"
 #include "PrototypeMenu.h"
 
 int main()
 {
 
-	std::shared_ptr<Scene> ps(new PrototypeScene);
-    std::shared_ptr<Scene> menu(new PrototypeMenu);
+    std::shared_ptr<Scene> startmenu(new StartMenu);
+    std::shared_ptr<Scene> pausemenu(new PauseMenu);
+    std::shared_ptr<Scene> ps(new PrototypeScene);
 
-	System.addScene(1, ps);
-	System.addScene(2, menu);
+    System.addScene(1, startmenu);
+    System.addScene(2, pausemenu);
+    System.addScene(3, ps);    	
 
-	System.pushScene(ps);
-    System.pushScene(menu);
+    // Start the game
+    // System.pushScene(startmenu);
+
+    // Testing
+    //System.pushScene(ps);
+    System.pushScene(startmenu);
 
     System.runWindow();
 

@@ -10,7 +10,7 @@
 
 #ifndef SYSCLS
 #define SYSCLS
-// #include "PrototypeScene.h"
+#include "PrototypeScene.h"
 
 class SystemClass {
 public:
@@ -28,7 +28,7 @@ public:
 
   // Scene Collection Functions
 	bool addScene(int id, std::shared_ptr<Scene> toadd);
-	// Tech this is returning an object. Should it return a ref to a shared_ptr instead?
+	// This is returning an object. Should it return a ref to a shared_ptr instead?
 	std::shared_ptr<Scene> getScene(int id);
 	bool removeScene(int id);
 
