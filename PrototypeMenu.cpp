@@ -10,19 +10,11 @@ Menu::Menu()
 
 	int xSize = 200;
 	int ySize = 400;
-<<<<<<< HEAD
 
 	int xPos = (x / 2) - (xSize / 2);
 	int yPos = (y / 2) - (ySize / 2);
 
 
-=======
-
-	int xPos = (x / 2) - (xSize / 2);
-	int yPos = (y / 2) - (ySize / 2);
-
-
->>>>>>> b2771aa848b67a6fdb727147715620143750e7ba
 	// Create a menu box
 	// Position is set centered in the view
 	menuBox.setPosition(xPos, yPos);
@@ -82,7 +74,6 @@ Option::Option()
 
 OptStart::OptStart()
 {
-<<<<<<< HEAD
   if (!menuFont.loadFromFile("AreaKilometer50.otf")) {
     // error
   }
@@ -92,9 +83,6 @@ OptStart::OptStart()
   lable.setFillColor(sf::Color::White);
 }
 
-=======
-  // Set the text object
->>>>>>> b2771aa848b67a6fdb727147715620143750e7ba
 
 
 void OptStart::draw(sf::RenderWindow& window)
