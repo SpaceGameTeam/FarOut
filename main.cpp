@@ -11,6 +11,7 @@
 int main()
 {
 
+<<<<<<< HEAD
     std::shared_ptr<Scene> startmenu(new StartMenu);
     std::shared_ptr<Scene> pausemenu(new PauseMenu);
     std::shared_ptr<Scene> ps(new PrototypeScene);
@@ -25,6 +26,16 @@ int main()
     // Testing
     //System.pushScene(ps);
     System.pushScene(startmenu);
+=======
+    std::shared_ptr<Scene> ps(new PrototypeScene);
+    // std::shared_ptr<Scene> menu(new StartMenu);
+
+    System.addScene(1, ps);    	
+    // System.addScene(2, menu);
+
+    System.pushScene(ps);
+    // System.pushScene(menu);
+>>>>>>> b2771aa848b67a6fdb727147715620143750e7ba
 
     System.runWindow();
 

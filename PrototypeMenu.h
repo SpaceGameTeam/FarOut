@@ -8,29 +8,56 @@
 #include <string>
 #include <vector>
 #include <memory>
+<<<<<<< HEAD
+
+=======
 
 
 
+/*
+class MenuBox : public GameObject {
+    public:
+        MenuBox(); 
+>>>>>>> b2771aa848b67a6fdb727147715620143750e7ba
 
+
+
+<<<<<<< HEAD
+=======
+};
+*/
+
+
+>>>>>>> b2771aa848b67a6fdb727147715620143750e7ba
 
 class Option {
     public:
         // Constructor building the option
         Option();
     
+<<<<<<< HEAD
         virtual void draw(sf::RenderWindow& window) = 0;
         
         // Actions taken when the option is selected (to be overloaded by dev)
         virtual bool onSelection() = 0;
 
     protected:
+=======
+        // Actions taken when the option is selected (to be overloaded by dev)
+        virtual bool onSelection() = 0;
+
+    private:
+>>>>>>> b2771aa848b67a6fdb727147715620143750e7ba
         // Position of the Lable reletive to the window
         sf::Vector2f lablePos;  
         // Position of the Curser when the option is selected reletive to
         // to the window box                     
         sf::Vector2f curPos;
         // Text representation of the option
+<<<<<<< HEAD
         sf::Font menuFont;
+=======
+>>>>>>> b2771aa848b67a6fdb727147715620143750e7ba
         sf::Text lable;
         // Add any other representations of the object
 };
@@ -55,6 +82,10 @@ class Menu : public Scene {
         std::vector<std::unique_ptr<Option>> options;
         // Position of the curser in the menu relitive to the window
         sf::Vector2f curPos;
+<<<<<<< HEAD
+=======
+
+>>>>>>> b2771aa848b67a6fdb727147715620143750e7ba
 };
 
 
@@ -63,11 +94,20 @@ class Menu : public Scene {
 class StartMenu : public Menu {
     public:
         StartMenu();
+<<<<<<< HEAD
     private:
 };
 
 
 
+=======
+
+    private:
+};
+
+
+
+>>>>>>> b2771aa848b67a6fdb727147715620143750e7ba
 // Add class Pause Menu
 class PauseMenu : public Menu {
     public:
@@ -83,8 +123,11 @@ class OptStart : public Option {
     public:
         OptStart();
 
+<<<<<<< HEAD
         void draw(sf::RenderWindow& window);
 
+=======
+>>>>>>> b2771aa848b67a6fdb727147715620143750e7ba
         // Pops the menu and pushes the main scene
         bool onSelection();
 };
@@ -96,8 +139,11 @@ class OptQuit : public Option {
     public:
         OptQuit();
 
+<<<<<<< HEAD
         void draw(sf::RenderWindow& window);
 
+=======
+>>>>>>> b2771aa848b67a6fdb727147715620143750e7ba
         // Pops all scenes from the stack and quits the menu
         bool onSelection();
 };
@@ -109,8 +155,11 @@ class OptCont : public Option {
     public:
         OptCont();
 
+<<<<<<< HEAD
         void draw(sf::RenderWindow& window);
 
+=======
+>>>>>>> b2771aa848b67a6fdb727147715620143750e7ba
         // Pops the menu, pushes the main scene and unpauses the game
         bool onSelection();
 };
