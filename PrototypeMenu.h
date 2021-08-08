@@ -55,6 +55,7 @@ class Menu : public Scene {
 	    sf::RectangleShape menuBox;
         // List of opti>ons availible in the menu
         std::vector<std::unique_ptr<Option>> options;
+        std::vector<std::unique_ptr<Option>>::iterator currentOption;
         // Position of the curser in the menu relitive to the window
         sf::Vector2f curPos;
 };

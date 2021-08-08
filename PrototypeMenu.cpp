@@ -39,15 +39,16 @@ void Menu::draw(sf::RenderWindow& window)
 {
 	window.draw(menuBox);	
   // draw options
+  for(currentOption = options.begin(); currentOption != options.end(); ++currentOption)
+      (*currentOption)->draw(window);
   // draw cursor position
+
 }
 
 
 
 StartMenu::StartMenu()
 {
-  //Option * start = new OptStart(); 
-  //Option * quit = new OptQuit(); 
   options.push_back(std::unique_ptr<Option>(new OptStart));
   options.push_back(std::unique_ptr<Option>(new OptQuit));
 }
@@ -56,8 +57,6 @@ StartMenu::StartMenu()
 
 PauseMenu::PauseMenu()
 {
-  //Option * cont = new OptCont(); 
-  //Option * quit = new OptQuit(); 
   options.push_back(std::unique_ptr<Option>(new OptCont));
   options.push_back(std::unique_ptr<Option>(new OptQuit));
 }
@@ -81,6 +80,7 @@ OptStart::OptStart()
   lable.setString("Start");
   lable.setCharacterSize(24);
   lable.setFillColor(sf::Color::White);
+  lable.setPosition(50, 100);
 }
 
 
@@ -106,8 +106,14 @@ bool OptStart::onSelection()
 
 OptCont::OptCont()
 {
-  // Set the text object
-
+  if (!menuFont.loadFromFile("AreaKilometer50.otf")) {
+    // error
+  }
+  lable.setFont(menuFont);
+  lable.setString("Continue");
+  lable.setCharacterSize(24);
+  lable.setFillColor(sf::Color::White);
+  lable.setPosition(50, 150);
 }
 
 
@@ -134,7 +140,15 @@ bool OptCont::onSelection()
 
 OptQuit::OptQuit()
 {
-  // Set the text object
+  if (!menuFont.loadFromFile("AreaKilometer50.otf")) {
+    // error
+  }
+  lable.setFont(menuFont);
+  lable.setString("Continue");
+  lable.setCharacterSize(24);
+  lable.setFillColor(sf::Color::White);
+  lable.setPosition(100, 100);
+
 
 }
 
