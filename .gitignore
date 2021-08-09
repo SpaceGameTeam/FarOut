@@ -34,7 +34,6 @@ systemtest
 ################################################################################
 
 *.o
-farout
 googletest
 testPlanet
 /sfml-graphics-d-2.dll
