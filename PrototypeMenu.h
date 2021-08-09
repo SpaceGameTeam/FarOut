@@ -2,12 +2,7 @@
 // This is a simple demonstration of the menu system in its most basic form
 // using two variations: a start menu and a pause menu.
 
-/*
-#include "SystemClass.h"
-#include "Scene.h"
-#include "GameObject.h"
-*/
-#include "FarOut.h"
+#include "FarOut/FarOut.h"
 #include <string>
 #include <vector>
 #include <memory>
