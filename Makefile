@@ -20,7 +20,7 @@ install: obj lib
 	cp FarOut/libfarout.a /usr/lib/libfarout.a
 	mkdir /usr/include/FarOut
 	cp FarOut/FarOut.h /usr/include/FarOut/
-	cp FarOut/SystemClass.h /usr/include/FarOut/
+	cp FarOut/SystemClass.h /usr/include/FarOut
 	cp FarOut/Scene.h /usr/include/FarOut/
 	cp FarOut/GameObject.h /usr/include/FarOut/
 	rm FarOut/libfarout.a
@@ -30,7 +30,7 @@ uninstall:
 	rm -r /usr/include/FarOut
 
 test:
-	g++ *.cpp -o test $(GTEST_FLAGS) $(SFML_FLAGS) $(CFLAGS)
+	g++ *.cpp -o systemtest $(GTEST_FLAGS) $(SFML_FLAGS) $(CFLAGS)
 
 clean:
 	rm -f demo *.o test *.a
