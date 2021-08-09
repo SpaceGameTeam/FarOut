@@ -5,18 +5,16 @@
 Menu::Menu()
 {
 	// Change to reletive coordinants when available
-	int x = 0;
-	int y = 0;
+	int viewXpos = 0;
+	int viewYpos = 0;
 
-	int xSize = 200;
-	int ySize = 400;
+	xSize = 200;
+	ySize = 400;
 
-	int xPos = (x / 2) - (xSize / 2);
-	int yPos = (y / 2) - (ySize / 2);
-
+	xPos = (viewXpos / 2) - (xSize / 2);
+	yPos = (viewYpos / 2) - (ySize / 2);
 
 	// Create a menu box
-	// Position is set centered in the view
 	menuBox.setPosition(xPos, yPos);
 	menuBox.setSize(sf::Vector2f(xSize, ySize));
 	menuBox.setFillColor(sf::Color(0, 0, 0, 220));
@@ -51,6 +49,14 @@ StartMenu::StartMenu()
 {
   options.push_back(std::unique_ptr<Option>(new OptStart));
   options.push_back(std::unique_ptr<Option>(new OptQuit));
+
+  // Position all of the options
+  for(currentOption = options.begin(); currentOption != options.end(); ++currentOption) {
+      // Replace 0 with cursor size
+      float optXpos = ((xPos + xSize) / 2) - (((*currentOption)->getXSize() + 0) / 2);
+      float optYpos = (((yPos - ySize) / options.size()) * (currentOption - options.begin()));
+      (*currentOption)->setPos(optXpos, optYpos);
+  }
 }
 
 
@@ -63,10 +69,23 @@ PauseMenu::PauseMenu()
 
 
 
-// Does this need to be here?
-Option::Option()
+void Option::setPos(float xPos, float yPos)
 {
+  this->xPos = xPos;
+  this->yPos = yPos;
+}
 
+
+float Option::getXSize() 
+{
+  return xSize;
+}
+
+
+
+float Option::getYSize() 
+{
+  return ySize;
 }
 
 
@@ -80,7 +99,7 @@ OptStart::OptStart()
   lable.setString("Start");
   lable.setCharacterSize(24);
   lable.setFillColor(sf::Color::White);
-  lable.setPosition(50, 100);
+  lable.setPosition(xPos, 100);
 }
 
 
@@ -158,7 +177,6 @@ void OptQuit::draw(sf::RenderWindow& window)
 {
   window.draw(lable);
 }
-
 
 
 
