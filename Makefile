@@ -29,8 +29,11 @@ uninstall:
 	rm /usr/lib/libfarout.a
 	rm -r /usr/include/FarOut
 
-test:
-	g++ *.cpp -o systemtest $(GTEST_FLAGS) $(SFML_FLAGS) $(CFLAGS)
+systemtest:
+	g++ FarOut/*.cpp -o systemtest $(GTEST_FLAGS) $(SFML_FLAGS) $(CFLAGS)
+
+runtest: clean systemtest
+	./systemtest
 
 clean:
-	rm -f demo *.o test *.a
+	rm -f demo *.o systemtest *.a
