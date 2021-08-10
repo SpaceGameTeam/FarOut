@@ -91,3 +91,5 @@ We found a few other projects scattered about, but they are incomplete and inact
 ## Acknowledgments 
 
 [SFML](https://github.com/SFML/SFML) is a simple, fast, cross-platform and object-oriented multimedia API. It provides access to windowing, graphics, audio and network. It is written in C++, and has bindings for various languages such as C, .Net, Ruby, and Python.
+
+[OneLoneCoder](https://github.com/OneLoneCoder) has created many useful YouTube tutorials on 2D shape collision detection. OneLoneCoder makes other very useful and well presented tutorials on a myriad of programming topics.
