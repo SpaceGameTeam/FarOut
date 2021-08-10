@@ -13,7 +13,16 @@ public:
     Asteroid();
     void draw(sf::RenderTarget& target, sf::RenderStates states)const;
     void update(sf::Time dt);
-    //void move(sf::Time dt);
+    void move(sf::Time dt);
+    void setHitboxPoints();
+    
+   
+    // prototype collision methods
+    float getRadius();
+    void setPossibleCollision(bool possible);
+   
+
+    
 
 private:
 
@@ -22,6 +31,15 @@ private:
     sf::ConvexShape Body;
     float movementSpeed;
     sf::Vector2f movement;
-    
+
+
+    // protoype collision data
+    float radius = 30;
+    sf::CircleShape hitradius;
+    bool possible_collision;
+    sf::ConvexShape hitbox;
+    int num_hitbox_points;
+    sf::Vector2f* hitbox_points;
+   
 };
 #endif

@@ -1,7 +1,12 @@
 #include "Ship.h"
+#include <cmath>
+#include<iostream>
 
 Ship::Ship(): movementSpeed(SPEED), accelerating(false) {
 
+	
+	
+	
     // Create the ship
 	// setBlueShipPoints(&body);
 	// body.setOutlineThickness(3.f);
@@ -13,11 +18,10 @@ Ship::Ship(): movementSpeed(SPEED), accelerating(false) {
 	body.resize(7);
 	
 	// setBlueShipPoints(&hitbox);
-	// hitbox.setOutlineThickness(3.f);
-	// hitbox.setFillColor(sf::Color::Transparent);
-	// hitbox.setOutlineColor(sf::Color::Red);
-	// hitbox.scale(0.75f, 0.75f);
-    	
+	
+	
+	
+
     // Make main body of ship
 	body[0].position = sf::Vector2f(0.f, 0.f);
 	body[1].position = sf::Vector2f(-13.f, 0.f);
@@ -93,10 +97,48 @@ Ship::Ship(): movementSpeed(SPEED), accelerating(false) {
 	flame2[1].color = sf::Color(232, 48, 3, 255);
 	flame2[2].color = sf::Color(232, 48, 3, 255);
 
-    // setScale(sf::Vector2f(4.f, 4.f));
-    setPosition(0, 0);
+    // setScale(sf::Vector2f(4.f, 4.f))
+	// note: position is relative to screen, origin is relative to object
 	setRotation(180);
-	setOrigin(sf::Vector2f(0, 23));
+	setOrigin(0,23); // 0 23
+	setPosition(0, 0);
+
+	
+
+	// init collisions data
+	possible_collision = false;
+
+	//circle anchor is at pi rads on circumference (instead of center)
+	// origin is thus offset by radius and height of gameobject to center around the object
+	hitradius.setRadius(radius);
+	hitradius.setOrigin(radius, radius);
+	hitradius.setPosition(0, 23);
+	hitradius.setFillColor(sf::Color::Transparent);
+	hitradius.setOutlineColor(sf::Color::Green);
+	hitradius.setOutlineThickness(3.f);
+
+	num_hitbox_points = 4;
+	hitbox_points = new sf::Vector2f[num_hitbox_points];
+
+	hitbox_points[0] = { -10.f, -23.f };
+	hitbox_points[1] = { 10.f, -23.f };
+	hitbox_points[2] = { 10.f, 23.f };
+	hitbox_points[3] = { -10.f, 23.f };
+
+	hitbox.setOrigin(0, 33); // 0 33
+	hitbox.setPosition(0, 62); //0 62
+	//hitbox.setRotation(180);
+
+	// Make Ship hitbox
+	hitbox.setPointCount(num_hitbox_points);
+	hitbox.setPoint(0, hitbox_points[0]);
+	hitbox.setPoint(1, hitbox_points[1]);
+	hitbox.setPoint(2, hitbox_points[2]);
+	hitbox.setPoint(3, hitbox_points[3]);
+
+	hitbox.setOutlineThickness(1.f);
+	hitbox.setFillColor(sf::Color::Transparent);
+	hitbox.setOutlineColor(sf::Color::Red);
 }
 
 
@@ -169,22 +211,30 @@ void Ship::setBlueShipPoints(sf::ConvexShape * shape) {
 // Overridden draw function
 void Ship::draw(sf::RenderTarget& target, sf::RenderStates states)const{
     states.transform *= getTransform();
-    target.draw(body, states); 
+	
+	target.draw(hitradius, states);
+    
+
+	if (possible_collision) {
+		target.draw(hitbox, states);
+	}
+
+	target.draw(body, states);
+
     target.draw(thruster1, states); 
     target.draw(thruster2, states); 
 	if (accelerating) {
 		target.draw(flame1, states);
 		target.draw(flame2, states);
-	}
+	}	
 }
 
 
-
 // Move or rotate the ship when keys are pressed
-void Ship::update(sf::Time dt){
+void Ship::update(sf::Time dt) {
 	accelerating = false;
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::H)) {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::H)) {
 		rotate(-230.f * dt.asSeconds());
 	}
 
@@ -198,17 +248,17 @@ void Ship::update(sf::Time dt){
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::K)) {
-		movement += movementSpeed * dt.asSeconds() * sf::Vector2f(-sin(getRotation() * (3.1415 / 180)), 
-			cos(getRotation() * (3.1415 / 180))); 
+		movement += movementSpeed * dt.asSeconds() * sf::Vector2f(-sin(getRotation() * (3.1415 / 180)),
+			cos(getRotation() * (3.1415 / 180)));
 		accelerating = true;
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::J)) {
-		movement -= movementSpeed * dt.asSeconds() * sf::Vector2f(-sin(getRotation() * (3.1415 / 180)), 
+		movement -= movementSpeed * dt.asSeconds() * sf::Vector2f(-sin(getRotation() * (3.1415 / 180)),
 			cos(getRotation() * (3.1415 / 180)));
 	}
 
-    sf::Transformable::move(movement * dt.asSeconds());
+	sf::Transformable::move(movement * dt.asSeconds());
 
 }
 
@@ -219,3 +269,22 @@ void Ship::update(sf::Time dt){
 //void Ship::move(sf::Time dt){
 //    sf::Transformable::move(movement * dt.asSeconds());
 //}
+
+
+// getter function for Radius. There is no setter and this function returns a copy.
+float Ship::getRadius() {
+	return radius;
+}
+
+
+// sets the class boolean 'possible_collision'
+void Ship::setPossibleCollision(bool possible) {
+
+	if (possible) {
+		possible_collision = true;
+	}
+
+	else {
+		possible_collision = false;
+	}
+}

@@ -17,6 +17,12 @@ public:
 	void update(sf::Time dt);
     //void move(sf::Time dt);
 
+    // prototype collision methods
+    float getRadius();
+    void setPossibleCollision(bool possible);
+    
+
+
 private:
     void setMercuryPoints(sf::ConvexShape * shape);
     void setBlueShipPoints(sf::ConvexShape * shape);
@@ -27,9 +33,17 @@ private:
     sf::VertexArray flame1;
     sf::VertexArray flame2;
     float movementSpeed;
-    sf::Vector2f movement;
-    sf::ConvexShape hitbox;
     bool accelerating;
+    sf::Vector2f movement;
+
+    // prototype collision data   
+    float radius = 100.0;
+    sf::CircleShape hitradius;
+    bool possible_collision;
+    int num_hitbox_points;
+    sf::Vector2f* hitbox_points;
+    sf::ConvexShape hitbox;
+   
 
 };
 #endif

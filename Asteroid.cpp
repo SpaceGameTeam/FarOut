@@ -1,14 +1,50 @@
 #include "Asteroid.h"
 
 Asteroid::Asteroid() {
+
+	//set collision status
+	possible_collision = false;
+
 	// Check movementSpeed setting when star background is working
 	movementSpeed = 363.0;
 
 	// Create the asteroid
 	// Can be exchanged with other functions to create other ships
 	setMercuryPoints();
+	setPosition(200, 200);
 
-	setPosition(-300, -200);
+	hitbox.setOrigin(0, 0);
+	num_hitbox_points = 6;
+	hitbox_points = new sf::Vector2f[num_hitbox_points];
+	hitbox_points[0] = { -60.f, 0.f };
+	hitbox_points[1] = { -30.f, 50.f };
+	hitbox_points[2] = { 30.f, 50.f };
+	hitbox_points[3] = { 60.f, 0.f };
+	hitbox_points[4] = { 30.f, -50.f };
+	hitbox_points[5] = { -30.f, -50.f };
+
+	hitbox.setPointCount(num_hitbox_points);
+	for (int i = 0; i < num_hitbox_points; ++i)
+		hitbox.setPoint(i, hitbox_points[i]);
+
+	
+	hitbox.setPosition(getPosition().x, getPosition().y);
+	hitbox.setOutlineThickness(3.f);
+	hitbox.setFillColor(sf::Color::Transparent);
+	hitbox.setOutlineColor(sf::Color::Red);
+	hitbox.scale(0.35f, 0.35f);
+
+	
+
+	//circle anchor is at pi rads on circumference (instead of center)
+	// origin is thus offset by radius and height of gameobject to center around the object
+	hitradius.setOrigin(radius, radius);
+	hitradius.setPosition(getPosition().x, getPosition().y);
+	hitradius.setRadius(radius);
+	hitradius.setFillColor(sf::Color::Transparent);
+	hitradius.setOutlineColor(sf::Color::Green);
+	hitradius.setOutlineThickness(3.f);
+	
 }
 
 
@@ -16,6 +52,12 @@ Asteroid::Asteroid() {
 
 // Sets points for the asteroid
 void Asteroid::setMercuryPoints() {
+
+	Body.setOutlineThickness(3.f);
+	Body.setFillColor(sf::Color(184, 115, 52, 255));
+	Body.setOrigin(0, 0);
+	Body.setPosition(0, 0);
+
 	Body.setPointCount(103);
 	Body.setPoint(0, sf::Vector2f(0.f, 60.f));
 	Body.setPoint(1, sf::Vector2f(0.f, 60.f));
@@ -121,14 +163,27 @@ void Asteroid::setMercuryPoints() {
 	Body.setPoint(101, sf::Vector2f(-6.f, 58.f));
 	Body.setPoint(102, sf::Vector2f(0.f, 58.f));
 
+	
+
+	Body.setScale(0.35f, 0.35f);
 
 
+	
+}
 
+void Asteroid::setHitboxPoints() {
+	hitbox.setPointCount(num_hitbox_points);
+	hitbox.setPoint(0, sf::Vector2f(-60.f, 0.f));
+	hitbox.setPoint(1, sf::Vector2f(-30.f, 50.f));
+	hitbox.setPoint(2, sf::Vector2f(30.f, 50.f));
+	hitbox.setPoint(3, sf::Vector2f(60.f, 0.f));
+	hitbox.setPoint(4, sf::Vector2f(30.f, -50.f));
+	hitbox.setPoint(5, sf::Vector2f(-30.f, -50.f));
 
-
-	Body.setOutlineThickness(3.f);
-	Body.setFillColor(sf::Color(184,115,52,255));
-	Body.scale(0.3f, 0.3f);
+	hitbox.setOutlineThickness(3.f);
+	hitbox.setFillColor(sf::Color::Transparent);
+	hitbox.setOutlineColor(sf::Color::Red);
+	hitbox.scale(0.35f, 0.35f);
 }
 
 
@@ -136,7 +191,14 @@ void Asteroid::setMercuryPoints() {
 // Overridden draw function
 void Asteroid::draw(sf::RenderTarget& target, sf::RenderStates states)const {
 	states.transform *= getTransform();
+
+	target.draw(hitradius);
+	if (possible_collision) {
+		target.draw(hitbox);
+	}
+
 	target.draw(Body, states);
+	
 }
 
 
@@ -151,3 +213,21 @@ void Asteroid::update(sf::Time dt) {
 //void Asteroid::move(sf::Time dt) {
 //	sf::Transformable::move(movement * dt.asSeconds());
 //}
+
+
+// getter function for Radius. There is no setter and this function returns a copy.
+float Asteroid::getRadius() {
+	return radius;
+}
+
+// sets the class boolean 'possible_collision'
+void Asteroid::setPossibleCollision(bool possible) {
+
+	if (possible) {
+		possible_collision = true;
+	}
+
+	else {
+		possible_collision = false;
+	}
+}
