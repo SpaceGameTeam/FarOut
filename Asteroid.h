@@ -14,25 +14,31 @@ public:
     void update(sf::Time dt);
     void move(sf::Time dt);
     void setHitboxPoints();
+    
    
     // prototype collision methods
     float getRadius();
     void setPossibleCollision(bool possible);
-    void setCollision(bool was_collision);
+   
+
+    
 
 private:
 
     //in future: add argument to load different shape asteroids
     void setMercuryPoints();
     sf::ConvexShape Body;
-    sf::ConvexShape hitbox;
     float movementSpeed;
     sf::Vector2f movement;
 
+
+    // protoype collision data
     float radius = 30;
     sf::CircleShape hitradius;
     bool possible_collision;
-    bool collision;
-    
+    sf::ConvexShape hitbox;
+    int num_hitbox_points;
+    sf::Vector2f* hitbox_points;
+   
 };
 #endif

@@ -12,6 +12,9 @@
 const int SYSTEMOBJECTS = 13;
 
 
+
+
+
 class Background : public GameObject {
 public:
 	Background();
@@ -33,8 +36,13 @@ public:
 
 	void update(sf::Time dt);
 	void draw(sf::RenderWindow& window);
-	void collision_check();
 	sf::Vector2f getCenter();
+
+	// prototype collision methods
+	void collision_check();
+	bool hitbox_detection(Ship sh, Asteroid ast);
+	bool hitbox_detection_2(Ship sh, Asteroid ast);
+	bool hitbox_detection_3(Ship sh, Asteroid ast);
 
 private:
 	Background bg;
@@ -48,6 +56,8 @@ private:
 
 	sf::Vector2f center;
 	sf::View view;
+
+	bool debug = true;
 
 };
 #endif
