@@ -4,8 +4,7 @@
 
 #ifndef ASTD
 #define ASTD
-// #include "GameObject.h"
-#include "FarOut.h"
+#include "FarOut/FarOut.h"
 #include <math.h>
 
 class Asteroid : public GameObject {
