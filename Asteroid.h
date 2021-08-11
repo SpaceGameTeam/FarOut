@@ -1,7 +1,3 @@
-#pragma once
-// Change this #include to FarOut.h eventually
-// #include "FarOut.h"
-
 #ifndef ASTD
 #define ASTD
 #include "FarOut/FarOut.h"

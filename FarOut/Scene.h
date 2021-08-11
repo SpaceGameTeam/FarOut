@@ -6,7 +6,6 @@
 #define SCENE
 #include <SFML/Graphics.hpp>
 
-//#include "SystemClass.h"
 
 
 class Scene {

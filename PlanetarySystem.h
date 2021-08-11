@@ -1,10 +1,11 @@
 // Planetary System class
 
-
 #ifndef PLSYS 
 #define PLSYS
 #include "FarOut/FarOut.h"
 #include <math.h>
+
+
 
 class Star : public GameObject {
     public:

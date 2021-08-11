@@ -1,6 +1,3 @@
-// Change this #include to FarOut.h eventually
-// #include "FarOut.h"
-
 #ifndef ALIENSHIP
 #define ALIENSHIP
 #include "FarOut/FarOut.h"
