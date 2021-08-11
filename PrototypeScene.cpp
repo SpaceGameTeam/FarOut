@@ -1,5 +1,4 @@
 #include "PrototypeScene.h"
-#include "SystemClass.h"
 #include <string>
 
 

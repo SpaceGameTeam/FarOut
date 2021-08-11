@@ -6,7 +6,6 @@
 #define SCENE
 #include <SFML/Graphics.hpp>
 
-//#include "SystemClass.h"
 
 
 class Scene {
@@ -18,5 +17,6 @@ public:
 
 private:
 	// Some sort of collection of objects? Maybe these should be in the derived class?
+	int ID;
 };
 #endif

@@ -1,10 +1,6 @@
-// Change this #include to FarOut.h eventually
-// #include "FarOut.h"
-
 #ifndef SHIP
 #define SHIP
-// #include "GameObject.h"
-#include "FarOut.h"
+#include "FarOut/FarOut.h"
 #include <math.h>
 
 
