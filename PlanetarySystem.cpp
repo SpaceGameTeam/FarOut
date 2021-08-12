@@ -1,10 +1,6 @@
-// Star class implementation
+// Star and planet class implementation
 
 #include "PlanetarySystem.h"
-
-
-
-
 
 
 
@@ -52,14 +48,16 @@ Star::Star(int size, sf::Color outline, int outlineWidth, sf::Color fill, sf::Ve
 
 
 
+// Pretty standard draw function
 void Star::draw(sf::RenderTarget& target, sf::RenderStates states)const{
     states.transform *= getTransform();
     target.draw(mass, states); 
-    // target.draw(hitbox, states); 
 }
 
 
 
+// Just cause overloading update makes this class not abstract 
+// Could include movement sometime. Wouldn't that be fun?
 void Star::update(sf::Time dt){}
 
 

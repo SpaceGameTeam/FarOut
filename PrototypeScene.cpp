@@ -1,5 +1,6 @@
+// Implements the demo scene
+
 #include "PrototypeScene.h"
-#include "SystemClass.h"
 #include <string>
 
 
@@ -8,7 +9,7 @@
 
 Background::Background() {
 
-	// These should be adjusted to use system wide constants when those are implemented
+	// These should be adjusted to use system-wide constants when those are implemented
 	int x = 1920;
 	int y = 1080;
 	int universeSize = 1000;
@@ -25,7 +26,6 @@ void Background::draw(sf::RenderTarget& target, sf::RenderStates states)const {
 	states.transform *= getTransform();
 	target.draw(sprite, states);
 }
-
 
 
 
@@ -51,12 +51,12 @@ PrototypeScene::PrototypeScene() {
 	planetarySystemObjects[11] = new Planet(2, 30, sf::Color::White, 0.6);
 	planetarySystemObjects[12] = new Planet(1, 17, sf::Color::White, 0.9);
 
-	//extern SystemClass System;
 	view.setSize(System.getData("DesktopX"), System.getData("DesktopY"));
 }
 
 
 
+// Destruct the alien, sun, and planets
 PrototypeScene::~PrototypeScene() {
 	delete alien;
 	delete sun;
@@ -64,19 +64,6 @@ PrototypeScene::~PrototypeScene() {
 		delete planetarySystemObjects[i];
 	}
 }
-
-
-
-
-// Move anything that move gets called on
-//void PrototypeScene::move(sf::Time dt){
-//	//ship.move(dt);
-//	//alien->move(dt);
-//	//asteroid.move(dt);
-//	// a->move(dt);
-//	// b->move(dt);
-//	//c->move(dt);
-//}
 
 
 

@@ -1,11 +1,6 @@
-#pragma once
-// Change this #include to FarOut.h eventually
-// #include "FarOut.h"
-
 #ifndef ASTD
 #define ASTD
-// #include "GameObject.h"
-#include "FarOut.h"
+#include "FarOut/FarOut.h"
 #include <math.h>
 
 class Asteroid : public GameObject {
@@ -13,7 +8,6 @@ public:
     Asteroid();
     void draw(sf::RenderTarget& target, sf::RenderStates states)const;
     void update(sf::Time dt);
-    //void move(sf::Time dt);
 
 private:
 

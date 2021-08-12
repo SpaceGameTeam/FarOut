@@ -1,10 +1,8 @@
-// Change this #include to FarOut.h eventually
-// #include "FarOut.h"
+// The ship class
 
 #ifndef SHIP
 #define SHIP
-// #include "GameObject.h"
-#include "FarOut.h"
+#include "FarOut/FarOut.h"
 #include <math.h>
 
 
@@ -24,6 +22,7 @@ private:
 	sf::VertexArray thruster2; 
     sf::VertexArray flame1;
     sf::VertexArray flame2;
+    sf::VertexArray flame;
     float movementSpeed;
     sf::Vector2f movement;
     sf::ConvexShape hitbox;

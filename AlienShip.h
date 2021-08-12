@@ -1,10 +1,8 @@
-// Change this #include to FarOut.h eventually
-// #include "FarOut.h"
+// Alien ship class
 
 #ifndef ALIENSHIP
 #define ALIENSHIP
-// #include "GameObject.h"
-#include "FarOut.h"
+#include "FarOut/FarOut.h"
 #include <math.h>
 
 
@@ -13,6 +11,7 @@ const sf::Vector2f DOMERADIUS(50.f, 20.f);
 
 
 // Ellipse class modeled after https://www.sfml-dev.org/tutorials/2.0/graphics-shape.php
+// For the dome of the Alien ship
 class EllipseShape : public sf:: Shape {
     public :
         explicit EllipseShape(const sf::Vector2f& radius);

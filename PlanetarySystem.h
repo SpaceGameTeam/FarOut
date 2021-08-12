@@ -1,11 +1,11 @@
-// Planetary System class
-
+// Planet and Star classes
 
 #ifndef PLSYS 
 #define PLSYS
-// #include "GameObject.h"
-#include "FarOut.h"
+#include "FarOut/FarOut.h"
 #include <math.h>
+
+
 
 class Star : public GameObject {
     public:
