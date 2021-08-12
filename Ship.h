@@ -1,3 +1,5 @@
+// The ship class
+
 #ifndef SHIP
 #define SHIP
 #include "FarOut/FarOut.h"
@@ -11,12 +13,10 @@ public:
 	Ship();
     void draw(sf::RenderTarget& target, sf::RenderStates states)const;
 	void update(sf::Time dt);
-    //void move(sf::Time dt);
 
 private:
     void setMercuryPoints(sf::ConvexShape * shape);
     void setBlueShipPoints(sf::ConvexShape * shape);
-    // sf::ConvexShape body;
 	sf::VertexArray body; 
 	sf::VertexArray thruster1; 
 	sf::VertexArray thruster2; 

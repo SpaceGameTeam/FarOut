@@ -1,8 +1,10 @@
-// Game Object class
 
 #ifndef GAMEOBJ
 #define GAMEOBJ
 #include <SFML/Graphics.hpp>
+
+
+
 class GameObject : public sf::Drawable, public sf::Transformable {
 public:
 	GameObject();

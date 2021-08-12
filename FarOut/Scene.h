@@ -1,7 +1,5 @@
 // Scene base class for client derivation
 
-
-
 #ifndef SCENE
 #define SCENE
 #include <SFML/Graphics.hpp>

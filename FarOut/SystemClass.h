@@ -10,7 +10,6 @@
 
 #ifndef SYSCLS
 #define SYSCLS
-//#include "PrototypeScene.h"
 
 class SystemClass {
 public:
