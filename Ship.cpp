@@ -31,11 +31,11 @@ Ship::Ship(): movementSpeed(SPEED), accelerating(false) {
     // Make first thruster of ship
     thruster1.setPrimitiveType(sf::TriangleStrip);
     thruster1.resize(6);
-	thruster1[0].position = sf::Vector2f(-19.f, 4.f);
+	thruster1[0].position = sf::Vector2f(-19.f, 0.f);
 	thruster1[1].position = sf::Vector2f(-19.f, 12.f);
-	thruster1[2].position = sf::Vector2f(-13.f, -8.f);
+	thruster1[2].position = sf::Vector2f(-19.f, -8.f);
 	thruster1[3].position = sf::Vector2f(-13.f, 17.f);
-	thruster1[4].position = sf::Vector2f(-7.f, 4.f);
+	thruster1[4].position = sf::Vector2f(-7.f, 0.f);
 	thruster1[5].position = sf::Vector2f(-7.f, 12.f);
     
 	// Set the color gradient for the thruster
@@ -49,11 +49,11 @@ Ship::Ship(): movementSpeed(SPEED), accelerating(false) {
     // Make second thruster of ship
     thruster2.setPrimitiveType(sf::TriangleStrip);
     thruster2.resize(6);
-	thruster2[0].position = sf::Vector2f(19.f, 4.f);
+	thruster2[0].position = sf::Vector2f(19.f, 0.f);
 	thruster2[1].position = sf::Vector2f(19.f, 12.f);
-	thruster2[2].position = sf::Vector2f(13.f, -8.f);
+	thruster2[2].position = sf::Vector2f(19.f, -8.f);
 	thruster2[3].position = sf::Vector2f(13.f, 17.f);
-	thruster2[4].position = sf::Vector2f(7.f, 4.f);
+	thruster2[4].position = sf::Vector2f(7.f, 0.f);
 	thruster2[5].position = sf::Vector2f(7.f, 12.f);
     
 	// Set the color gradient
@@ -63,6 +63,18 @@ Ship::Ship(): movementSpeed(SPEED), accelerating(false) {
 	thruster2[3].color = sf::Color::White;
 	thruster2[4].color = sf::Color(22, 69, 149, 255);
 	thruster2[5].color = sf::Color(22, 69, 149, 255);
+
+	// Make flame
+	flame.setPrimitiveType(sf::TriangleStrip);
+	flame.resize(3);
+	flame[0].position = sf::Vector2f(-8.f, -4.f);
+	flame[1].position = sf::Vector2f(0.f, -30.f);
+	flame[2].position = sf::Vector2f(8.f, -4.f);
+
+    // Set the color	
+	flame[0].color = sf::Color(255, 197, 36, 255);
+	flame[1].color = sf::Color(232, 48, 3, 255);
+	flame[2].color = sf::Color(255, 197, 36, 255);
 
 	// Make first flame
 	flame1.setPrimitiveType(sf::TriangleStrip);
@@ -166,12 +178,13 @@ void Ship::setBlueShipPoints(sf::ConvexShape * shape) {
 void Ship::draw(sf::RenderTarget& target, sf::RenderStates states)const{
     states.transform *= getTransform();
     target.draw(body, states); 
+	if (accelerating) {
+		// target.draw(flame1, states);
+		// target.draw(flame2, states);
+		target.draw(flame, states);
+	}
     target.draw(thruster1, states); 
     target.draw(thruster2, states); 
-	if (accelerating) {
-		target.draw(flame1, states);
-		target.draw(flame2, states);
-	}
 }
 
 
