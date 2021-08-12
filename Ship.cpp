@@ -1,23 +1,15 @@
+// Implement the ship class
+
 #include "Ship.h"
 
-Ship::Ship(): movementSpeed(SPEED), accelerating(false) {
 
-    // Create the ship
-	// setBlueShipPoints(&body);
-	// body.setOutlineThickness(3.f);
-	// body.setFillColor(sf::Color(22, 69, 149));
-	// body.scale(0.75f, 0.75f);
+
+Ship::Ship(): movementSpeed(SPEED), accelerating(false) {
 
 	// Create the ship
 	body.setPrimitiveType(sf::TriangleStrip);
 	body.resize(7);
 	
-	// setBlueShipPoints(&hitbox);
-	// hitbox.setOutlineThickness(3.f);
-	// hitbox.setFillColor(sf::Color::Transparent);
-	// hitbox.setOutlineColor(sf::Color::Red);
-	// hitbox.scale(0.75f, 0.75f);
-    	
     // Make main body of ship
 	body[0].position = sf::Vector2f(0.f, 0.f);
 	body[1].position = sf::Vector2f(-13.f, 0.f);
@@ -27,7 +19,7 @@ Ship::Ship(): movementSpeed(SPEED), accelerating(false) {
 	body[5].position = sf::Vector2f(13.f, 0.f);
 	body[6].position = sf::Vector2f(13.f, 38.f);
 
-
+    // Set the color gradient for the body
 	body[0].color = sf::Color::White;
 	body[1].color = sf::Color(22, 69, 149, 255);
 	body[2].color = sf::Color(22, 69, 149, 255);
@@ -36,17 +28,17 @@ Ship::Ship(): movementSpeed(SPEED), accelerating(false) {
 	body[5].color = sf::Color(22, 69, 149, 255);
 	body[6].color = sf::Color(22, 69, 149, 255);
 
-
     // Make first thruster of ship
     thruster1.setPrimitiveType(sf::TriangleStrip);
     thruster1.resize(6);
-	thruster1[0].position = sf::Vector2f(-19.f, 4.f);
+	thruster1[0].position = sf::Vector2f(-19.f, 0.f);
 	thruster1[1].position = sf::Vector2f(-19.f, 12.f);
-	thruster1[2].position = sf::Vector2f(-13.f, -8.f);
+	thruster1[2].position = sf::Vector2f(-19.f, -8.f);
 	thruster1[3].position = sf::Vector2f(-13.f, 17.f);
-	thruster1[4].position = sf::Vector2f(-7.f, 4.f);
+	thruster1[4].position = sf::Vector2f(-7.f, 0.f);
 	thruster1[5].position = sf::Vector2f(-7.f, 12.f);
-
+    
+	// Set the color gradient for the thruster
 	thruster1[0].color = sf::Color(22, 69, 149, 255);
 	thruster1[1].color = sf::Color(22, 69, 149, 255);
 	thruster1[2].color = sf::Color::White;
@@ -57,13 +49,14 @@ Ship::Ship(): movementSpeed(SPEED), accelerating(false) {
     // Make second thruster of ship
     thruster2.setPrimitiveType(sf::TriangleStrip);
     thruster2.resize(6);
-	thruster2[0].position = sf::Vector2f(19.f, 4.f);
+	thruster2[0].position = sf::Vector2f(19.f, 0.f);
 	thruster2[1].position = sf::Vector2f(19.f, 12.f);
-	thruster2[2].position = sf::Vector2f(13.f, -8.f);
+	thruster2[2].position = sf::Vector2f(19.f, -8.f);
 	thruster2[3].position = sf::Vector2f(13.f, 17.f);
-	thruster2[4].position = sf::Vector2f(7.f, 4.f);
+	thruster2[4].position = sf::Vector2f(7.f, 0.f);
 	thruster2[5].position = sf::Vector2f(7.f, 12.f);
-
+    
+	// Set the color gradient
 	thruster2[0].color = sf::Color(22, 69, 149, 255);
 	thruster2[1].color = sf::Color(22, 69, 149, 255);
 	thruster2[2].color = sf::Color::White;
@@ -71,13 +64,26 @@ Ship::Ship(): movementSpeed(SPEED), accelerating(false) {
 	thruster2[4].color = sf::Color(22, 69, 149, 255);
 	thruster2[5].color = sf::Color(22, 69, 149, 255);
 
+	// Make flame
+	flame.setPrimitiveType(sf::TriangleStrip);
+	flame.resize(3);
+	flame[0].position = sf::Vector2f(-8.f, -4.f);
+	flame[1].position = sf::Vector2f(0.f, -30.f);
+	flame[2].position = sf::Vector2f(8.f, -4.f);
+
+    // Set the color	
+	flame[0].color = sf::Color(255, 197, 36, 255);
+	flame[1].color = sf::Color(232, 48, 3, 255);
+	flame[2].color = sf::Color(255, 197, 36, 255);
+
 	// Make first flame
 	flame1.setPrimitiveType(sf::TriangleStrip);
 	flame1.resize(3);
 	flame1[0].position = sf::Vector2f(-13.f, -12.f);
 	flame1[1].position = sf::Vector2f(-17.f, -25.f);
 	flame1[2].position = sf::Vector2f(-9.f, -25.f);
-	
+
+    // Set the color	
 	flame1[0].color = sf::Color(255, 197, 36, 255);
 	flame1[1].color = sf::Color(232, 48, 3, 255);
 	flame1[2].color = sf::Color(232, 48, 3, 255);
@@ -88,7 +94,8 @@ Ship::Ship(): movementSpeed(SPEED), accelerating(false) {
 	flame2[0].position = sf::Vector2f(13.f, -12.f);
 	flame2[1].position = sf::Vector2f(17.f, -25.f);
 	flame2[2].position = sf::Vector2f(9.f, -25.f);
-	
+
+    // Set the color	
 	flame2[0].color = sf::Color(255, 197, 36, 255);
 	flame2[1].color = sf::Color(232, 48, 3, 255);
 	flame2[2].color = sf::Color(232, 48, 3, 255);
@@ -98,6 +105,7 @@ Ship::Ship(): movementSpeed(SPEED), accelerating(false) {
 	setRotation(180);
 	setOrigin(sf::Vector2f(0, 23));
 }
+
 
 
 // Sets points for a basic spacecraft outline
@@ -170,12 +178,13 @@ void Ship::setBlueShipPoints(sf::ConvexShape * shape) {
 void Ship::draw(sf::RenderTarget& target, sf::RenderStates states)const{
     states.transform *= getTransform();
     target.draw(body, states); 
+	if (accelerating) {
+		// target.draw(flame1, states);
+		// target.draw(flame2, states);
+		target.draw(flame, states);
+	}
     target.draw(thruster1, states); 
     target.draw(thruster2, states); 
-	if (accelerating) {
-		target.draw(flame1, states);
-		target.draw(flame2, states);
-	}
 }
 
 
@@ -184,25 +193,30 @@ void Ship::draw(sf::RenderTarget& target, sf::RenderStates states)const{
 void Ship::update(sf::Time dt){
 	accelerating = false;
 
+    // Rotate left
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::H)) {
 		rotate(-230.f * dt.asSeconds());
 	}
-
+    
+	// Rotate right
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::L)) {
 		rotate(230.f * dt.asSeconds());
 	}
 
+    // Reset
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
 		movement = sf::Vector2f(0.f, 0.f);
 		setPosition(0, 0);
 	}
 
+    // Go!
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) || sf::Keyboard::isKeyPressed(sf::Keyboard::K)) {
 		movement += movementSpeed * dt.asSeconds() * sf::Vector2f(-sin(getRotation() * (3.1415 / 180)), 
 			cos(getRotation() * (3.1415 / 180))); 
 		accelerating = true;
 	}
 
+    // Reverse thrusters -- it's ok to remove this
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) || sf::Keyboard::isKeyPressed(sf::Keyboard::J)) {
 		movement -= movementSpeed * dt.asSeconds() * sf::Vector2f(-sin(getRotation() * (3.1415 / 180)), 
 			cos(getRotation() * (3.1415 / 180)));
@@ -211,11 +225,3 @@ void Ship::update(sf::Time dt){
     sf::Transformable::move(movement * dt.asSeconds());
 
 }
-
-
-
-// Move the ship
-// Overrides Transformable move function to allow storage of movement as Ship class data member
-//void Ship::move(sf::Time dt){
-//    sf::Transformable::move(movement * dt.asSeconds());
-//}
