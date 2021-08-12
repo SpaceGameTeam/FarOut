@@ -8,7 +8,6 @@ public:
     Asteroid();
     void draw(sf::RenderTarget& target, sf::RenderStates states)const;
     void update(sf::Time dt);
-    //void move(sf::Time dt);
 
 private:
 

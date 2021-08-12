@@ -1,4 +1,4 @@
-// Planetary System class
+// Planet and Star classes
 
 #ifndef PLSYS 
 #define PLSYS
