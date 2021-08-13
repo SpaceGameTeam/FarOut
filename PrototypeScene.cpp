@@ -80,7 +80,8 @@ void PrototypeScene::update(sf::Time dt) {
 	}
     
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F4)) {
-		System.window.create(System.videoMode, "FarOut", sf::Style::Fullscreen);
+		if(System.videoMode.isValid())
+			System.window.create(System.videoMode, "FarOut", sf::Style::Fullscreen);
 	}
 
 	bg.update(dt);
