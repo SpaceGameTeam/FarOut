@@ -110,3 +110,16 @@ FarOut is available under the MIT License, which you can find in our repo [here]
 The font used in the demo and for the FPS counter is licensed as freeware and was designed by Wahyu Eka Prasetya! It's called Area Kilometer 50 and can be found [here](https://www.fontspace.com/a-area-kilometer-50-font-f53888).
 
 The starry background used in the demo was made by [Necro-Skeletal](https://www.deviantart.com/necro-skeletal) and can be found [here](https://www.deviantart.com/necro-skeletal/art/Pixelated-Halo-Starfield-313220165).
+
+
+## Work Summary
+
+During our class-directed development period, the work was roughly divided as follows. Most design decisions were discussed and contributed to as a team, so this breakdown is mostly concerning actual implementation. 
+
+Amila Ferron - 
+
+Mack Foggia - System implementation (Scene, SystemClass, game loop, window management, FPS counter), demo content (ship movement, starry background) 
+
+Jeffrey Jernstrom - Team leader and project organizer, Scene data structures and management, Data Storage module, Menu stuff (in development)
+
+Taylor Noah - 
