@@ -7,11 +7,22 @@ SystemClass System;
 
 
 //Constructor
-SystemClass::SystemClass() :
-	desktop(sf::VideoMode::getDesktopMode()),
-	window(desktop, "FarOut")
+SystemClass::SystemClass()
 {
 	inFocus = true;
+
+	desktop = sf::VideoMode::getDesktopMode();
+	std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
+
+	for (int i = 0; i < modes.size(); ++i) {
+		if (modes[i].height == desktop.height && modes[i].width == desktop.width) {
+			desktop = modes[i];
+			break;
+		}
+	}
+	if (desktop.isValid()) 
+		window.create(desktop, "FarOut", sf::Style::Fullscreen);
+	else window.create(desktop, "FarOut");
 
 	addData("DesktopX", desktop.width);
 	addData("DesktopY", desktop.height);
