@@ -1,3 +1,5 @@
+// FarOut - System Class
+
 #include "SystemClass.h"
 
 // Singular global instance of the System class
@@ -36,7 +38,7 @@ void SystemClass::pushScene(std::shared_ptr<Scene> toPush)
 {
 	sceneStack.push_front(toPush);
 
-  return;
+	return;
 }
 
 
@@ -46,7 +48,7 @@ void SystemClass::pushScene(std::shared_ptr<Scene> toPush)
 bool SystemClass::popScene()
 {
 	if (sceneStack.empty())
-	  return false;
+		return false;
 
 	sceneStack.pop_front();
 
@@ -60,8 +62,8 @@ bool SystemClass::popScene()
 bool SystemClass::addScene(int id, std::shared_ptr<Scene> toadd)
 {
 	if(!sceneCollection[id]) {
-	  sceneCollection[id] = toadd;
-	  return true; 
+		sceneCollection[id] = toadd;
+		return true; 
 	}
 
 	return false;
@@ -76,7 +78,7 @@ std::shared_ptr<Scene> SystemClass::getScene(int id)
 	std::shared_ptr<Scene> temp = sceneCollection[id];
 
 	if (temp)
-	  return temp;
+		return temp;
 
 	return NULL;
 }
@@ -100,8 +102,8 @@ bool SystemClass::removeScene(int id)
 bool SystemClass::addData(std::string name, float toadd)
 {
 	if(!dataCollection[name]) {
-	  dataCollection[name] = toadd;
-	  return true; 
+		dataCollection[name] = toadd;
+		return true; 
 	}
 
 	return false;
@@ -120,16 +122,6 @@ float SystemClass::getData(std::string name)
 // This function starts the window and runs the game loop
 void SystemClass::runWindow() {
 	sf::Time dt; //SFML time object for tracking time between updates
-	sf::Time timer; //Currently not used
-
-	//PrototypeScene scene;
-	/*std::shared_ptr<Scene> ps(new PrototypeScene);
-	std::shared_ptr<Scene> ps2(new PrototypeScene);
-	System.addScene(1, ps);
-	System.addScene(2, ps2);
-	System.pushScene(ps);*/
-
-
 
 	while (window.isOpen()) { //This is the game loop
 
@@ -171,16 +163,8 @@ void SystemClass::runWindow() {
 
 		if (inFocus) {
 			window.clear();
-			//window.setView(view);
-			update(dt);
 
-			// Remove the next 8 lines when done testing ship implementation
-			// Draw the ship
-			// This is just here for testing
-			//asteroid.move(dt);
-			//asteroid.update(dt);
-			//window.draw(asteroid);
-			//view.setCenter(asteroid.getPosition());
+			update(dt);
 
 			if (FPSActive) {
 				updateFPS();
@@ -203,11 +187,9 @@ void SystemClass::update(sf::Time dt) {
 	for (currentScene = sceneStack.rbegin(); currentScene != sceneStack.rend(); ++currentScene)
 		(*currentScene)->update(dt);
 
-
 	// Draw active scene
 	for (currentScene = sceneStack.rbegin(); currentScene != sceneStack.rend(); ++currentScene)
 		(*currentScene)->draw(window);
-
 }
 
 
@@ -231,12 +213,10 @@ void SystemClass::setFPSCounter(bool set) {
 }
 
 
-
 //VSync utility function
 void SystemClass::setVSync(bool set) {
 	window.setVerticalSyncEnabled(set);
 }
-
 
 
 //Quit function
