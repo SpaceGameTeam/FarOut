@@ -71,6 +71,10 @@ PrototypeScene::~PrototypeScene() {
 void PrototypeScene::update(sf::Time dt) {
 	
 	// Key press checks
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+		System.quit();
+	}
+
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::F3)) {
 		System.window.create(System.videoMode, "FarOut");
 	}

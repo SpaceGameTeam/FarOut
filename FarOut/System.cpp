@@ -153,11 +153,6 @@ void SystemClass::runWindow() {
 			//Most events should only be checked when in focus
 			if (inFocus) {
 				if (event.type == sf::Event::KeyPressed) {
-
-					//ESC
-					if (event.key.code == sf::Keyboard::Escape)
-						window.close();
-
 					//VSync toggle
 					if (event.key.code == sf::Keyboard::V) {
 						if (VSyncEnabled) VSyncEnabled = false;
