@@ -60,6 +60,7 @@ Either install on your system with
 or use the library locally, in which case place the FarOut library subdirectory in the directory with your files.
 
 
+
 To include the library, place 
 
 ~~~
@@ -69,21 +70,25 @@ To include the library, place
 in your header file.
 
 
+
+<!-- Do we have make run-demo? -->
 See the demo with
 
+~~~
 >make demo
 
 >./demo
+~~~
 
-<!-- Do we have make run-demo? -->
 
 
 To uninstall, run
 
->make uninstall
-
-
 ~~~
+>make uninstall
+~~~
+
+
 
 ### Windows  
 These instructions are specifically for use with Microsoft Visual Studio  
