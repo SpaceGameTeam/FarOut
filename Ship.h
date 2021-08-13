@@ -20,13 +20,10 @@ private:
 	sf::VertexArray body; 
 	sf::VertexArray thruster1; 
 	sf::VertexArray thruster2; 
-    sf::VertexArray flame1;
-    sf::VertexArray flame2;
     sf::VertexArray flame;
     float movementSpeed;
     sf::Vector2f movement;
     sf::ConvexShape hitbox;
     bool accelerating;
-
 };
 #endif

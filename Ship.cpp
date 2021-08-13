@@ -76,30 +76,6 @@ Ship::Ship(): movementSpeed(SPEED), accelerating(false) {
 	flame[1].color = sf::Color(232, 48, 3, 255);
 	flame[2].color = sf::Color(255, 197, 36, 255);
 
-	// Make first flame
-	flame1.setPrimitiveType(sf::TriangleStrip);
-	flame1.resize(3);
-	flame1[0].position = sf::Vector2f(-13.f, -12.f);
-	flame1[1].position = sf::Vector2f(-17.f, -25.f);
-	flame1[2].position = sf::Vector2f(-9.f, -25.f);
-
-    // Set the color	
-	flame1[0].color = sf::Color(255, 197, 36, 255);
-	flame1[1].color = sf::Color(232, 48, 3, 255);
-	flame1[2].color = sf::Color(232, 48, 3, 255);
-
-	// Make second flame
-	flame2.setPrimitiveType(sf::TriangleStrip);
-	flame2.resize(3);
-	flame2[0].position = sf::Vector2f(13.f, -12.f);
-	flame2[1].position = sf::Vector2f(17.f, -25.f);
-	flame2[2].position = sf::Vector2f(9.f, -25.f);
-
-    // Set the color	
-	flame2[0].color = sf::Color(255, 197, 36, 255);
-	flame2[1].color = sf::Color(232, 48, 3, 255);
-	flame2[2].color = sf::Color(232, 48, 3, 255);
-
     // setScale(sf::Vector2f(4.f, 4.f));
     setPosition(0, 0);
 	setRotation(180);
@@ -179,8 +155,6 @@ void Ship::draw(sf::RenderTarget& target, sf::RenderStates states)const{
     states.transform *= getTransform();
     target.draw(body, states); 
 	if (accelerating) {
-		// target.draw(flame1, states);
-		// target.draw(flame2, states);
 		target.draw(flame, states);
 	}
     target.draw(thruster1, states); 
@@ -223,5 +197,4 @@ void Ship::update(sf::Time dt){
 	}
 
     sf::Transformable::move(movement * dt.asSeconds());
-
 }
