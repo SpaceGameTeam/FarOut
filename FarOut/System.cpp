@@ -7,11 +7,13 @@ SystemClass System;
 
 
 //Constructor
-SystemClass::SystemClass()
+SystemClass::SystemClass() :
+	desktop(sf::VideoMode::getDesktopMode())
 {
 	inFocus = true;
 
-	desktop = sf::VideoMode::getDesktopMode();
+	windowTitle = "FarOut";
+
 	std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
 
 	for (int i = 0; i < modes.size(); ++i) {
@@ -21,8 +23,8 @@ SystemClass::SystemClass()
 		}
 	}
 	if (desktop.isValid()) 
-		window.create(desktop, "FarOut", sf::Style::Fullscreen);
-	else window.create(desktop, "FarOut");
+		window.create(desktop, windowTitle, sf::Style::Fullscreen);
+	else window.create(desktop, windowTitle);
 
 	addData("DesktopX", desktop.width);
 	addData("DesktopY", desktop.height);
@@ -39,7 +41,6 @@ SystemClass::SystemClass()
 	//VSync
 	VSyncEnabled = false;
 	window.setVerticalSyncEnabled(VSyncEnabled);
-	//window.setMouseCursorVisible(false); //debug
 }
 
 
@@ -236,10 +237,5 @@ void SystemClass::quit() {
 
 	window.close();
 }
-
-
-
-
-
 
 

@@ -59,6 +59,7 @@ private:
 	sf::View view; 
 	sf::Clock clock;
 	bool VSyncEnabled;
+	std::string windowTitle;
 
 	//FPS Counter
 	void updateFPS();
