@@ -151,7 +151,7 @@ Thank you for Bart Massey's support, especially with debugging.
 
 During our class-directed development period, the work was roughly divided as follows. Most design decisions were discussed and contributed to as a team, so this breakdown is mostly concerning actual implementation. 
 
-Amila Ferron -  Demo development (PrototypeScene, Ship, AlienShip, PlanetarySystem, movement), Linux install/include process
+Amila Ferron -  Demo development (PrototypeScene, Ship, AlienShip, PlanetarySystem, movement), Linux install/include structure 
 
 Mack Foggia - System implementation (Scene, SystemClass, game loop, window management, FPS counter), demo content (ship movement, starry background)
 
