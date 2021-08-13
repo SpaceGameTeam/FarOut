@@ -100,10 +100,13 @@ FarOut is available under the MIT License, which you can find in our repo [here]
 
 [SDL](https://www.libsdl.org/) Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.
 
-We found a few other projects scattered about, but they are incomplete and inactive.
 
 ## Acknowledgments 
 
-[SFML](https://github.com/SFML/SFML) is a simple, fast, cross-platform and object-oriented multimedia API. It provides access to windowing, graphics, audio and network. It is written in C++, and has bindings for various languages such as C, .Net, Ruby, and Python.
+[SFML](https://github.com/SFML/SFML) is a simple, fast, cross-platform and object-oriented multimedia API. It provides access to windowing, graphics, audio and network. It is written in C++, and has bindings for various languages such as C, .Net, Ruby, and Python. FarOut is built on top of SFML, and some of our class and function designs are inspired by information in the fantastic SFML documentation.
 
 [OneLoneCoder](https://github.com/OneLoneCoder) has created many useful YouTube tutorials on 2D shape collision detection. We implemented his Diagonals based hitbox detection in our project. OneLoneCoder makes other very useful and well presented tutorials on a myriad of programming topics. Check out his [youtube channel](https://www.youtube.com/channel/UC-yuWVUplUJZvieEligKBkA)! 
+
+The font used in the demo and for the FPS counter is licensed as freeware and was designed by Wahyu Eka Prasetya! It's called Area Kilometer 50 and can be found [here](https://www.fontspace.com/a-area-kilometer-50-font-f53888).
+
+The starry background used in the demo was made by [Necro-Skeletal](https://www.deviantart.com/necro-skeletal) and can be found [here](https://www.deviantart.com/necro-skeletal/art/Pixelated-Halo-Starfield-313220165).
