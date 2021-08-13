@@ -40,6 +40,7 @@ public:
 
 	// Window 
 	sf::RenderWindow window;
+	sf::VideoMode desktop;
 
 private:
 	// Basic actions to be taken each loop, including calling update
@@ -55,7 +56,6 @@ private:
 	std::unordered_map<std::string, float> dataCollection;
 
 	//Window stuff
-	sf::VideoMode desktop;
 	sf::View view; 
 	sf::Clock clock;
 	bool VSyncEnabled;
