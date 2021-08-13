@@ -50,18 +50,21 @@ git clone https://github.com/SpaceGameTeam/FarOut <destination>
 Download and install SFML <a href=https://www.sfml-dev.org/tutorials/2.5/start-linux.php>here</a>.
 
 <!-- Run the provided Makefile in project directory then run the executable. -->
-~~~
 
 Either install on your system with
 
+~~~
 >make install 
+~~~
 
 or use the library locally, in which case place the FarOut library subdirectory in the directory with your files.
 
 
 To include the library, place 
 
+~~~
 #include "FarOut/FarOut.h"
+~~~
 
 in your header file.
 
