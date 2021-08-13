@@ -1,9 +1,8 @@
-// Change this #include to FarOut.h eventually
-// #include "FarOut.h"
+// Alien ship class
 
 #ifndef ALIENSHIP
 #define ALIENSHIP
-#include "GameObject.h"
+#include "FarOut/FarOut.h"
 #include <math.h>
 
 
@@ -12,6 +11,7 @@ const sf::Vector2f DOMERADIUS(50.f, 20.f);
 
 
 // Ellipse class modeled after https://www.sfml-dev.org/tutorials/2.0/graphics-shape.php
+// For the dome of the Alien ship
 class EllipseShape : public sf:: Shape {
     public :
         explicit EllipseShape(const sf::Vector2f& radius);
@@ -29,10 +29,10 @@ class EllipseShape : public sf:: Shape {
 
 class AlienShip : public GameObject {
 public:
-	AlienShip(GameObject* commObject);
+	AlienShip();
     void draw(sf::RenderTarget& target, sf::RenderStates states)const;
+	void update(sf::Time dt, sf::Vector2f shipPosition);
 	void update(sf::Time dt);
-    //void move(sf::Time dt);
 
 private:
     float movementSpeed;
@@ -42,7 +42,6 @@ private:
 	sf::VertexArray saucer; 
     sf::RectangleShape midline;
     sf::ConvexShape hitbox;
-    GameObject* ship; // could be a data structure of GameObject pointers
 
     void setAlienShipPoints(sf::ConvexShape * shape);
     void setSaucerPoints(sf::VertexArray * shape);

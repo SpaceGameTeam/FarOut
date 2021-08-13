@@ -1,10 +1,11 @@
-// Planetary System class
-
+// Planet and Star classes
 
 #ifndef PLSYS 
 #define PLSYS
-#include "GameObject.h"
+#include "FarOut/FarOut.h"
 #include <math.h>
+
+
 
 class Star : public GameObject {
     public:
@@ -22,37 +23,16 @@ class Star : public GameObject {
 
 class Planet : public GameObject {
     public:
-        // Could add to these parameters texture, rings, moons
-        // Planet(int radius, int orbitDistance, sf::Color color, sf::Vector2f orbitCenter, float movementFactor);
         Planet(int radius, int orbitDistance, sf::Color color, float movementFactor);
         void draw(sf::RenderTarget& target, sf::RenderStates states)const;
         void update(sf::Time dt, sf::Vector2f systemCenter);
         void update(sf::Time dt);
-        //void move(sf::Time dt);
 
     private:
         sf::CircleShape mass;
         sf::CircleShape hitbox;
         int orbitDistance;
         float orbitAngle;
-        //sf::Vector2f movement;
-        float movementSpeed;
-        GameObject* star;
-        sf::Vector2f center;
         float angleChange;
 };
-
-
-class PlanetarySystem : public GameObject {
-    public: 
-        PlanetarySystem(sf::Vector2f position, GameObject** systemObjects, int numObj);
-        void draw(sf::RenderTarget& target, sf::RenderStates states)const;
-        void update(sf::Time dt);
-    
-    private:
-        GameObject** gravityBoundObjects;
-        int numObjects;
-};
-
-
 #endif

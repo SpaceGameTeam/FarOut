@@ -18,7 +18,7 @@ SystemClass::SystemClass() :
 
 	//FPS Stuff
 	FPSActive = true;
-	FPSFont.loadFromFile("AreaKilometer50.otf");
+	FPSFont.loadFromFile("Assets/AreaKilometer50.otf");
 	FPSText.setFont(FPSFont);
 	FPSText.setCharacterSize(desktop.height / 30);
 	FPSText.setPosition(10, 0);

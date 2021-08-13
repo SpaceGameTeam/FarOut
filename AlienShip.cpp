@@ -1,5 +1,6 @@
-#include "AlienShip.h"
+// Alien ship implementation
 
+#include "AlienShip.h"
 
 
 
@@ -9,6 +10,7 @@
 
 
 
+// Ellipse class modeled after https://www.sfml-dev.org/tutorials/2.0/graphics-shape.php
 EllipseShape::EllipseShape(const sf::Vector2f & radius = DOMERADIUS) : m_radius(radius), pointCount(NUMPOINTS) {
 	update();
 }
@@ -51,12 +53,7 @@ sf::Vector2f EllipseShape::getPoint(std::size_t index) const {
 ///  AlienShip Shape Class 
 ////////////////////////////////////////////////////////////////////////////
 
-
-
-// Takes a GameObject pointer as an argument, but this could also be a
-// data structure of GameObjects to facilitate communication
-AlienShip::AlienShip(GameObject * commObject){
-	ship = commObject;
+AlienShip::AlienShip() {
     movementSpeed = 0.0;
 	distanceFromShip = 500;
 
@@ -80,18 +77,24 @@ AlienShip::AlienShip(GameObject * commObject){
 	saucer[6].color = sf::Color(60, 60, 60, 255);
 	saucer[7].color = sf::Color(60, 60, 60, 255);
 
+    // Make the horizontal line across the middle
 	midline.setSize(sf::Vector2f(140, 0));
 	midline.setOutlineColor(sf::Color::White);
 	midline.setOutlineThickness(1.f);
+
+	// Make the dome
 	dome.setPosition(-50, -45);
 	dome.setFillColor(sf::Color(255, 255, 255, 150));
 	midline.setPosition(-70, -15);
 
+    // Make the hitbox
+	// This will change to be simpler for collision detection
 	setAlienShipPoints(&hitbox);
 	hitbox.setOutlineThickness(3.f);
 	hitbox.setFillColor(sf::Color::Transparent);
 	hitbox.setOutlineColor(sf::Color::Red);
 
+    // Set its position relative to the ship
     setPosition(300, distanceFromShip);
 }
 
@@ -118,26 +121,20 @@ void AlienShip::draw(sf::RenderTarget& target, sf::RenderStates states)const{
 	target.draw(dome, states);
     target.draw(saucer, states); 
     target.draw(midline, states); 
-    // target.draw(hitbox, states); 
 }
 
 
 
-// Chase the ship! A momentum term would help here
-void AlienShip::update(sf::Time dt){
-	sf::Vector2f diff = ship->getPosition() + sf::Vector2f(300, 500) - getPosition();
+// Chase the ship! 
+void AlienShip::update(sf::Time dt, sf::Vector2f shipPosition){
+	sf::Vector2f diff = shipPosition + sf::Vector2f(300, 500) - getPosition();
 	if (abs(diff.x) > 10 || abs(diff.y) > 10) {
-		float magnitude = sqrt (diff.x * diff.x + diff.y * diff.y);
-		movementSpeed += 0.001 * (magnitude - (distanceFromShip - 300));
-		movement += movementSpeed * dt.asSeconds() * diff / magnitude;
+		movement = diff;
 	}
     sf::Transformable::move(movement * dt.asSeconds());
 }
 
 
 
-// Move the alien ship
-// Overrides Transformable move function to allow storage of movement as AlienShip class data member
-//void AlienShip::move(sf::Time dt){
-//    sf::Transformable::move(movement * dt.asSeconds());
-//}
+// To overload the base class update function
+void AlienShip::update(sf::Time dt) {}
