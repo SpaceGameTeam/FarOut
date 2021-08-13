@@ -1,3 +1,8 @@
+// FarOut - System Class
+
+#ifndef SYSCLS
+#define SYSCLS
+
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <memory>
@@ -7,10 +12,6 @@
 
 #include "Scene.h"
 
-
-#ifndef SYSCLS
-#define SYSCLS
-
 class SystemClass {
 public:
 	SystemClass();
@@ -18,48 +19,47 @@ public:
 	// Starts the window and runs the game loop
 	void runWindow();
 
-	// Function to request a scene change (takes name/ID of new scene)
-
 	// Active Scene Stack Functions
 	void pushScene(std::shared_ptr<Scene> toPush);
 	void pushScene(int toPush);
 	bool popScene();
 
-  // Scene Collection Functions
+    // Scene Collection Functions
 	bool addScene(int id, std::shared_ptr<Scene> toadd);
-	// This is returning an object. Should it return a ref to a shared_ptr instead?
 	std::shared_ptr<Scene> getScene(int id);
 	bool removeScene(int id);
 
-	// Potential functions to access stored data
+	// Data Storage Module Functions
 	bool addData(std::string name, float toadd);
 	float getData(std::string name);
 
-	//Other utility functions for dev
+	// Other utility functions for developers 
 	void setVSync(bool);
 	void setFPSCounter(bool);
 	void quit();
 
+	// Window 
+	sf::RenderWindow window;
+	sf::VideoMode videoMode;
 
 private:
-
 	// Basic actions to be taken each loop, including calling update
 	// and draw functions for the active scene, and checking some key events
 	void update(sf::Time dt);
 
-	//Data module
 	//Scenes - All scenes in the hash table and active scenes in the stack
 	std::list<std::shared_ptr<Scene>> sceneStack;
 	std::list<std::shared_ptr<Scene>>::reverse_iterator currentScene;
 	std::unordered_map<int, std::shared_ptr<Scene>> sceneCollection;
+
+	//Data Storage Module
 	std::unordered_map<std::string, float> dataCollection;
 
 	//Window stuff
-	sf::VideoMode desktop;
-	sf::RenderWindow window;
 	sf::View view; 
 	sf::Clock clock;
 	bool VSyncEnabled;
+	std::string windowTitle;
 
 	//FPS Counter
 	void updateFPS();
@@ -75,4 +75,5 @@ private:
 };
 
 extern SystemClass System;
+
 #endif

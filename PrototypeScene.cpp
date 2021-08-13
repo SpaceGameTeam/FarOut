@@ -69,6 +69,21 @@ PrototypeScene::~PrototypeScene() {
 
 // Update data members that get updated
 void PrototypeScene::update(sf::Time dt) {
+	
+	// Key press checks
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+		System.quit();
+	}
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::F3)) {
+		System.window.create(System.videoMode, "FarOut");
+	}
+    
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F4)) {
+		if(System.videoMode.isValid())
+			System.window.create(System.videoMode, "FarOut", sf::Style::Fullscreen);
+	}
+
 	bg.update(dt);
 	ship.update(dt);
 	alien->update(dt, ship.getPosition());

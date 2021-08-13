@@ -1,3 +1,5 @@
+// FarOut - System Class
+
 #include "SystemClass.h"
 
 // Singular global instance of the System class
@@ -6,13 +8,26 @@ SystemClass System;
 
 //Constructor
 SystemClass::SystemClass() :
-	desktop(sf::VideoMode::getDesktopMode()),
-	window(desktop, "FarOut")
+	videoMode(sf::VideoMode::getDesktopMode())
 {
 	inFocus = true;
 
-	addData("DesktopX", desktop.width);
-	addData("DesktopY", desktop.height);
+	windowTitle = "FarOut";
+
+	std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
+
+	for (int i = 0; i < modes.size(); ++i) {
+		if (modes[i].height == videoMode.height && modes[i].width == videoMode.width) {
+			videoMode = modes[i];
+			break;
+		}
+	}
+	if (videoMode.isValid()) 
+		window.create(videoMode, windowTitle, sf::Style::Fullscreen);
+	else window.create(videoMode, windowTitle);
+
+	addData("DesktopX", videoMode.width);
+	addData("DesktopY", videoMode.height);
 
 	view = window.getDefaultView();
 
@@ -20,13 +35,12 @@ SystemClass::SystemClass() :
 	FPSActive = true;
 	FPSFont.loadFromFile("Assets/AreaKilometer50.otf");
 	FPSText.setFont(FPSFont);
-	FPSText.setCharacterSize(desktop.height / 30);
+	FPSText.setCharacterSize(videoMode.height / 30);
 	FPSText.setPosition(10, 0);
 
 	//VSync
 	VSyncEnabled = false;
 	window.setVerticalSyncEnabled(VSyncEnabled);
-	//window.setMouseCursorVisible(false); //debug
 }
 
 
@@ -36,7 +50,7 @@ void SystemClass::pushScene(std::shared_ptr<Scene> toPush)
 {
 	sceneStack.push_front(toPush);
 
-  return;
+	return;
 }
 
 
@@ -46,7 +60,7 @@ void SystemClass::pushScene(std::shared_ptr<Scene> toPush)
 bool SystemClass::popScene()
 {
 	if (sceneStack.empty())
-	  return false;
+		return false;
 
 	sceneStack.pop_front();
 
@@ -60,8 +74,8 @@ bool SystemClass::popScene()
 bool SystemClass::addScene(int id, std::shared_ptr<Scene> toadd)
 {
 	if(!sceneCollection[id]) {
-	  sceneCollection[id] = toadd;
-	  return true; 
+		sceneCollection[id] = toadd;
+		return true; 
 	}
 
 	return false;
@@ -76,7 +90,7 @@ std::shared_ptr<Scene> SystemClass::getScene(int id)
 	std::shared_ptr<Scene> temp = sceneCollection[id];
 
 	if (temp)
-	  return temp;
+		return temp;
 
 	return NULL;
 }
@@ -100,8 +114,8 @@ bool SystemClass::removeScene(int id)
 bool SystemClass::addData(std::string name, float toadd)
 {
 	if(!dataCollection[name]) {
-	  dataCollection[name] = toadd;
-	  return true; 
+		dataCollection[name] = toadd;
+		return true; 
 	}
 
 	return false;
@@ -120,16 +134,6 @@ float SystemClass::getData(std::string name)
 // This function starts the window and runs the game loop
 void SystemClass::runWindow() {
 	sf::Time dt; //SFML time object for tracking time between updates
-	sf::Time timer; //Currently not used
-
-	//PrototypeScene scene;
-	/*std::shared_ptr<Scene> ps(new PrototypeScene);
-	std::shared_ptr<Scene> ps2(new PrototypeScene);
-	System.addScene(1, ps);
-	System.addScene(2, ps2);
-	System.pushScene(ps);*/
-
-
 
 	while (window.isOpen()) { //This is the game loop
 
@@ -149,11 +153,6 @@ void SystemClass::runWindow() {
 			//Most events should only be checked when in focus
 			if (inFocus) {
 				if (event.type == sf::Event::KeyPressed) {
-
-					//ESC
-					if (event.key.code == sf::Keyboard::Escape)
-						window.close();
-
 					//VSync toggle
 					if (event.key.code == sf::Keyboard::V) {
 						if (VSyncEnabled) VSyncEnabled = false;
@@ -171,16 +170,8 @@ void SystemClass::runWindow() {
 
 		if (inFocus) {
 			window.clear();
-			//window.setView(view);
-			update(dt);
 
-			// Remove the next 8 lines when done testing ship implementation
-			// Draw the ship
-			// This is just here for testing
-			//asteroid.move(dt);
-			//asteroid.update(dt);
-			//window.draw(asteroid);
-			//view.setCenter(asteroid.getPosition());
+			update(dt);
 
 			if (FPSActive) {
 				updateFPS();
@@ -203,11 +194,9 @@ void SystemClass::update(sf::Time dt) {
 	for (currentScene = sceneStack.rbegin(); currentScene != sceneStack.rend(); ++currentScene)
 		(*currentScene)->update(dt);
 
-
 	// Draw active scene
 	for (currentScene = sceneStack.rbegin(); currentScene != sceneStack.rend(); ++currentScene)
 		(*currentScene)->draw(window);
-
 }
 
 
@@ -231,12 +220,10 @@ void SystemClass::setFPSCounter(bool set) {
 }
 
 
-
 //VSync utility function
 void SystemClass::setVSync(bool set) {
 	window.setVerticalSyncEnabled(set);
 }
-
 
 
 //Quit function
@@ -245,10 +232,5 @@ void SystemClass::quit() {
 
 	window.close();
 }
-
-
-
-
-
 
 
