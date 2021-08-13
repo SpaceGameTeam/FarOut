@@ -40,7 +40,7 @@ public:
 
 	// Window 
 	sf::RenderWindow window;
-	sf::VideoMode desktop;
+	sf::VideoMode videoMode;
 
 private:
 	// Basic actions to be taken each loop, including calling update

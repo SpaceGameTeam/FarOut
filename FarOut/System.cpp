@@ -8,7 +8,7 @@ SystemClass System;
 
 //Constructor
 SystemClass::SystemClass() :
-	desktop(sf::VideoMode::getDesktopMode())
+	videoMode(sf::VideoMode::getDesktopMode())
 {
 	inFocus = true;
 
@@ -17,17 +17,17 @@ SystemClass::SystemClass() :
 	std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
 
 	for (int i = 0; i < modes.size(); ++i) {
-		if (modes[i].height == desktop.height && modes[i].width == desktop.width) {
-			desktop = modes[i];
+		if (modes[i].height == videoMode.height && modes[i].width == videoMode.width) {
+			videoMode = modes[i];
 			break;
 		}
 	}
-	if (desktop.isValid()) 
-		window.create(desktop, windowTitle, sf::Style::Fullscreen);
-	else window.create(desktop, windowTitle);
+	if (videoMode.isValid()) 
+		window.create(videoMode, windowTitle, sf::Style::Fullscreen);
+	else window.create(videoMode, windowTitle);
 
-	addData("DesktopX", desktop.width);
-	addData("DesktopY", desktop.height);
+	addData("DesktopX", videoMode.width);
+	addData("DesktopY", videoMode.height);
 
 	view = window.getDefaultView();
 
@@ -35,7 +35,7 @@ SystemClass::SystemClass() :
 	FPSActive = true;
 	FPSFont.loadFromFile("Assets/AreaKilometer50.otf");
 	FPSText.setFont(FPSFont);
-	FPSText.setCharacterSize(desktop.height / 30);
+	FPSText.setCharacterSize(videoMode.height / 30);
 	FPSText.setPosition(10, 0);
 
 	//VSync

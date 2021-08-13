@@ -72,11 +72,11 @@ void PrototypeScene::update(sf::Time dt) {
 	
 	// Key press checks
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::F3)) {
-		System.window.create(System.desktop, "FarOut");
+		System.window.create(System.videoMode, "FarOut");
 	}
     
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F4)) {
-		System.window.create(System.desktop, "FarOut", sf::Style::Fullscreen);
+		System.window.create(System.videoMode, "FarOut", sf::Style::Fullscreen);
 	}
 
 	bg.update(dt);
