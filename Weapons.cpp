@@ -27,3 +27,15 @@ bool Projectile::isAlive() {
 
 Weapon::Weapon(unsigned int newFireRate, std::shared_ptr<Projectile> newProjectileType) :
 	fireRate(newFireRate), projectileType(newProjectileType) { }
+
+
+//void Weapon::draw(sf::RenderTarget& target, sf::RenderStates states)const {
+void Weapon::draw() {
+	for (iter = liveProjectiles.begin(); iter != liveProjectiles.end(); ++iter) {
+		System.window.draw(**liveProjectiles)
+	}
+}
+
+void Weapon::update(sf::Time dt) {
+
+}

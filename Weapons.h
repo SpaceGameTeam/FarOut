@@ -26,6 +26,10 @@ private:
 class Weapon : public GameObject {
 public:
 	Weapon(unsigned int newFireRate, std::shared_ptr<Projectile> newProjectileType);
+    
+	void draw(sf::RenderTarget& target, sf::RenderStates states)const;
+	void draw();
+	void update(sf::Time dt);
 
 private:
 	unsigned int fireRate;
