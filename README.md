@@ -21,7 +21,7 @@ Scenes are populated with a collection of example game objects and graphical ele
 
 ## Operation Demo
 
-We've compiled a short video to give you an overview of the project so far, find that [here](youtube.com).
+We've compiled a short video to give you an overview of the project so far, find that [here] (https://www.youtube.com/watch?v=uCaFi-yU7Ro).
 
 ## Project Roadmap
 
