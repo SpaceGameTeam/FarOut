@@ -151,10 +151,11 @@ Thank you for Bart Massey's support, especially with debugging.
 
 During our class-directed development period, the work was roughly divided as follows. Most design decisions were discussed and contributed to as a team, so this breakdown is mostly concerning actual implementation. 
 
-Amila Ferron -  Demo development (PrototypeScene, Ship, AlienShip, PlanetarySystem, movement), Linux install/include structure 
+Amila Ferron -  Demo development (PrototypeScene, Ship, AlienShip, PlanetarySystem, movement), System implementation (Unit Testing) Linux install/include structure , Documentation 
 
-Mack Foggia - System implementation (Scene, SystemClass, game loop, window management, FPS counter), demo content (ship movement, starry background)
+Mack Foggia - System implementation (Scene, SystemClass, game loop, window management, FPS counter), demo content (ship movement, starry background), Primary Documentation
 
-Jeffrey Jernstrom - Team leader and project organizer, Scene data structures and management, Data Storage module, Menu stuff (in development), Makefile
+Jeffrey Jernstrom - Team leader and project organizer, System implimentation (Scene data structures and management, Data Storage module, Unit Testing), Menu stuff (in development), Makefile, Documentation
 
-Taylor Noah - 
+Taylor Noah - Demo development (Astroid and Ship prototyping), Collision Dection (in development), Documentation
+
