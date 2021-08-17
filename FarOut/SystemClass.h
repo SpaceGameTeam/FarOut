@@ -33,11 +33,15 @@ public:
 	bool addData(std::string name, float toadd);
 	float getData(std::string name);
 
-	//Other utility functions for developers 
+	// Other utility functions for developers 
 	void setVSync(bool);
 	void setFPSCounter(bool);
 	void quit();
-	
+
+	// Window 
+	sf::RenderWindow window;
+	sf::VideoMode videoMode;
+
 private:
 	// Basic actions to be taken each loop, including calling update
 	// and draw functions for the active scene, and checking some key events
@@ -52,11 +56,10 @@ private:
 	std::unordered_map<std::string, float> dataCollection;
 
 	//Window stuff
-	sf::VideoMode desktop;
-	sf::RenderWindow window;
 	sf::View view; 
 	sf::Clock clock;
 	bool VSyncEnabled;
+	std::string windowTitle;
 
 	//FPS Counter
 	void updateFPS();
