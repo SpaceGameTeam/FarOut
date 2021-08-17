@@ -69,9 +69,6 @@ private:
 	sf::Time FPSTime;
 	sf::Clock FPSClock;
 	int FPSFrames;
-
-	//Misc
-	bool inFocus;
 };
 
 extern SystemClass System;

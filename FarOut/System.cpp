@@ -10,8 +10,6 @@ SystemClass System;
 SystemClass::SystemClass() :
 	videoMode(sf::VideoMode::getDesktopMode())
 {
-	inFocus = true;
-
 	windowTitle = "FarOut";
 
 	std::vector<sf::VideoMode> modes = sf::VideoMode::getFullscreenModes();
@@ -144,14 +142,8 @@ void SystemClass::runWindow() {
 			if (event.type == sf::Event::Closed)
 				window.close();
 			
-			//Pauses when out of focus
-			if (event.type == sf::Event::LostFocus)
-				inFocus = false;
-			if (event.type == sf::Event::GainedFocus)
-				inFocus = true;
-
 			//Most events should only be checked when in focus
-			if (inFocus) {
+			if (window.hasFocus()) {
 				if (event.type == sf::Event::KeyPressed) {
 					//VSync toggle
 					if (event.key.code == sf::Keyboard::V) {
@@ -168,7 +160,7 @@ void SystemClass::runWindow() {
 		//time we came through this loop
 		dt = clock.restart();
 
-		if (inFocus) {
+		if (window.hasFocus()) {
 			window.clear();
 
 			update(dt);
